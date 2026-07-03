@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLVAI — Atelier d'ouvrages numériques. La machine prépare, l'artisan signe.</title>
+<meta name="description" content="Fichiers en désordre, savoir oral, courriers en attente : vous envoyez la matière brute, l'atelier vous rend l'ouvrage fini. Artisan de l'IA, 100 % par écrit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --encre:#161311;
+    --encre-2:#1d1815;
+    --ivoire:#F2E8D8;
+    --ivoire-doux:#B9A98F;
+    --ivoire-muet:#8A7A5F;
+    --cuivre:#A56A43;
+    --sepia:#6B4A32;
+    --sepia-texte:#5C4030;
+    --brun-fiche:#3E2A1A;
+    --veilleuse:#C7E36B;
+    --veilleuse-eteinte:#3A4520;
+    --veilleuse-lueur:#8FA84B;
+    --serif:'EB Garamond', Georgia, serif;
+    --sans:system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--encre);color:var(--ivoire);font-family:var(--sans);font-size:16px;line-height:1.65;}
+  .page{max-width:1010px;margin:0 auto;padding:0 24px;}
+
+  header{display:flex;justify-content:space-between;align-items:center;padding:26px 0;flex-wrap:wrap;gap:14px;}
+  .marque{display:inline-flex;align-items:center;gap:12px;text-decoration:none;}
+  .marque span{font-size:15px;letter-spacing:0.3em;color:var(--ivoire);font-weight:600;}
+  nav a{font-size:13px;color:var(--ivoire-doux);text-decoration:none;margin-left:22px;}
+  nav a:hover, nav a:focus-visible{color:var(--veilleuse);outline:none;}
+
+  .hero{text-align:center;padding:44px 0 10px;}
+  .accroche{font-family:var(--serif);font-style:italic;font-size:clamp(28px,4.6vw,40px);line-height:1.35;font-weight:500;max-width:560px;margin:26px auto 20px;}
+  .preuve{font-size:clamp(16px,2.4vw,19px);font-weight:600;max-width:620px;margin:0 auto 14px;line-height:1.55;}
+  .cadre{font-size:13px;color:var(--ivoire-doux);}
+  .hero .appel{margin-top:30px;}
+
+  .filet{border:none;border-top:1px solid var(--sepia);margin:56px 0 40px;}
+  .titre-section{font-size:13px;letter-spacing:0.22em;color:var(--cuivre);text-align:center;margin-bottom:10px;font-weight:600;}
+  .sous-titre-section{font-family:var(--serif);font-style:italic;text-align:center;color:var(--ivoire-doux);font-size:17px;margin-bottom:34px;}
+
+  .ouvrages{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:16px;}
+  .fiche{background:var(--ivoire);border-radius:6px;padding:20px 22px 16px;display:flex;flex-direction:column;}
+  .fiche h3{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--brun-fiche);margin-bottom:8px;}
+  .fiche .couture{border-top:1.5px dashed var(--cuivre);margin-bottom:10px;}
+  .fiche p{font-size:14px;color:var(--sepia-texte);line-height:1.55;flex:1;}
+  .fiche .rituel{font-size:11.5px;color:var(--cuivre);margin-top:14px;flex:0;}
+  .fiche .public{display:inline-block;font-size:11px;color:var(--ivoire);background:var(--sepia);border-radius:3px;padding:2px 8px;margin-bottom:8px;align-self:flex-start;}
+
+  .facon{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:8px;}
+  .geste{border:1px solid var(--sepia);border-radius:6px;padding:18px 20px;background:var(--encre-2);}
+  .geste .num{font-family:var(--serif);font-size:24px;color:var(--cuivre);display:block;margin-bottom:6px;}
+  .geste h3{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ivoire);margin-bottom:6px;}
+  .geste p{font-size:13.5px;color:var(--ivoire-doux);line-height:1.6;}
+  .serment{max-width:640px;margin:36px auto 0;text-align:center;font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ivoire);line-height:1.7;}
+  .serment small{display:block;font-family:var(--sans);font-style:normal;font-size:12.5px;color:var(--ivoire-muet);margin-top:10px;}
+
+  .commande{max-width:640px;margin:0 auto;}
+  .ecritoire{position:relative;border:1px solid var(--sepia);border-radius:6px;background:var(--encre-2);overflow:hidden;}
+  .ecritoire svg.filigrane{position:absolute;right:10px;bottom:-16px;opacity:0.04;transition:opacity 0.8s ease;pointer-events:none;}
+  .ecritoire textarea{position:relative;z-index:1;width:100%;min-height:170px;background:transparent;border:none;resize:vertical;padding:18px 20px;color:var(--ivoire);font-family:var(--serif);font-size:16.5px;line-height:1.7;}
+  .ecritoire textarea::placeholder{color:var(--ivoire-muet);font-style:italic;}
+  .ecritoire textarea:focus{outline:none;}
+  .ecritoire:focus-within{border-color:var(--cuivre);}
+  .legende-filigrane{font-size:11.5px;color:var(--ivoire-muet);text-align:right;margin-top:7px;}
+  .champ-nom{width:100%;margin-top:14px;background:var(--encre-2);border:1px solid var(--sepia);border-radius:6px;padding:12px 16px;color:var(--ivoire);font-family:var(--sans);font-size:14px;}
+  .champ-nom::placeholder{color:var(--ivoire-muet);}
+  .champ-nom:focus{outline:none;border-color:var(--cuivre);}
+
+  .appel{text-align:center;}
+  .bouton{display:inline-block;border:1px solid var(--cuivre);padding:3px;border-radius:2px;background:transparent;cursor:pointer;transition:transform 0.12s ease;}
+  .bouton .coeur{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--veilleuse-eteinte);background:var(--encre-2);padding:11px 26px;font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ivoire);letter-spacing:0.04em;border-radius:1px;transition:border-color 0.4s ease, background 0.4s ease;}
+  .bouton .veilleuse{width:9px;height:9px;border-radius:50%;background:var(--veilleuse);display:inline-block;}
+  .bouton:hover .coeur, .bouton:focus-visible .coeur{border-color:var(--veilleuse-lueur);background:#211d16;}
+  .bouton:focus-visible{outline:none;}
+  .bouton:active{transform:translateY(2px);}
+  .note-bouton{font-size:12px;color:var(--ivoire-doux);margin-top:10px;}
+
+  .foulage{display:none;margin-top:26px;background:var(--ivoire);border-radius:6px;padding:24px 26px;box-shadow:inset 0 2px 10px rgba(62,42,26,0.3);}
+  .foulage.visible{display:block;animation:presse 0.45s ease;}
+  @keyframes presse{0%{transform:scale(1.015);opacity:0.4;}60%{transform:scale(0.997);}100%{transform:scale(1);opacity:1;}}
+  .foulage h3{font-family:var(--serif);font-size:17px;color:var(--brun-fiche);margin-bottom:10px;font-weight:600;}
+  .foulage .empreinte{font-family:var(--serif);font-size:15.5px;color:var(--sepia-texte);line-height:1.7;white-space:pre-wrap;text-shadow:0 1px 0 rgba(255,255,255,0.55);border-top:1.5px dashed var(--cuivre);padding-top:12px;}
+  .foulage .actes{margin-top:18px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .foulage .sceller{display:inline-block;background:var(--sepia);color:var(--ivoire);text-decoration:none;font-size:14px;padding:10px 20px;border-radius:3px;font-weight:500;}
+  .foulage .sceller:hover{background:var(--brun-fiche);}
+  .foulage .reprendre{background:none;border:none;font-size:13px;color:var(--sepia-texte);text-decoration:underline;cursor:pointer;font-family:var(--sans);}
+
+  footer{padding:40px 0 46px;text-align:center;}
+  .tailles{display:flex;justify-content:center;align-items:flex-end;gap:22px;margin-bottom:16px;}
+  .tailles span{font-size:11px;color:var(--ivoire-muet);padding-bottom:3px;}
+  .signature{font-size:12.5px;color:var(--ivoire-doux);}
+  .mentions{font-size:11px;color:var(--ivoire-muet);margin-top:8px;}
+  .mentions a{color:var(--ivoire-muet);}
+
+  @media (max-width:640px){
+    nav a{margin-left:14px;font-size:12px;}
+    .hero{padding-top:26px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <a class="marque" href="#haut" aria-label="SOLVAI, retour en haut">
+    <svg width="26" height="30" viewBox="0 0 100 120" aria-hidden="true"><path d="M50 6 C 72 6 82 32 82 56 C 82 82 68 96 50 96 C 32 96 18 82 18 56 C 18 32 28 6 50 6 Z M50 96 L38 118 M50 96 L50 119 M50 96 L62 118" fill="#A56A43" stroke="#A56A43" stroke-width="7" stroke-linecap="round"/></svg>
+    <span>SOLVAI</span>
+  </a>
+  <nav aria-label="Navigation principale">
+    <a href="#ouvrages">les ouvrages</a>
+    <a href="#facon">la façon</a>
+    <a href="#ecrire">écrire à l'atelier</a>
+  </nav>
+</header>
+
+<main id="haut">
+<section class="hero">
+  <svg width="118" height="142" viewBox="0 0 140 168" role="img" aria-labelledby="poincon-titre">
+    <title id="poincon-titre">Le poinçon de l'atelier SOLVAI : une seiche gravée</title>
+    <circle cx="70" cy="80" r="62" fill="none" stroke="#A56A43" stroke-width="2"/>
+    <path d="M70 20 C 90 20 99 44 99 64 C 99 87 86 99 70 99 C 54 99 41 87 41 64 C 41 44 50 20 70 20 Z" fill="none" stroke="#A56A43" stroke-width="3.4"/>
+    <path d="M43 40 Q 34 60 41 82" fill="none" stroke="#A56A43" stroke-width="1.4"/>
+    <path d="M97 40 Q 106 60 99 82" fill="none" stroke="#A56A43" stroke-width="1.4"/>
+    <circle cx="60" cy="108" r="3.6" fill="#A56A43"/>
+    <circle cx="80" cy="108" r="3.6" fill="#A56A43"/>
+    <path d="M58 116 C 54 126 49 132 44 137" fill="none" stroke="#A56A43" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M70 118 C 70 129 70 137 70 144" fill="none" stroke="#A56A43" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M82 116 C 86 126 91 132 96 137" fill="none" stroke="#A56A43" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M50 113 C 40 123 31 126 25 120" fill="none" stroke="#A56A43" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M90 113 C 100 123 109 126 115 120" fill="none" stroke="#A56A43" stroke-width="1.8" stroke-linecap="round"/>
+  </svg>
+  <h1 class="accroche">La machine prépare.<br>L'artisan signe.</h1>
+  <p class="preuve">Fichiers en désordre, savoir oral, courriers en attente : vous envoyez la matière brute, l'atelier vous rend l'ouvrage fini.</p>
+  <p class="cadre">Pour TPE, PME et particuliers &nbsp;·&nbsp; 100 % par écrit, 0 réunion</p>
+  <p class="appel"><a class="bouton" href="#ecrire" style="text-decoration:none;"><span class="coeur"><span class="veilleuse"></span>Confier l'ouvrage</span></a></p>
+</section>
+
+<hr class="filet">
+
+<section id="ouvrages">
+  <h2 class="titre-section">LES OUVRAGES DE L'ATELIER</h2>
+  <p class="sous-titre-section">Dix savoir-faire, un même geste : votre matière brute devient un ouvrage utile, vérifié et signé.</p>
+  <div class="ouvrages">
+    <article class="fiche">
+      <h3>L'assistant sur-mesure</h3>
+      <div class="couture"></div>
+      <p>Un assistant IA façonné pour votre entreprise, nourri de vos documents, de vos tarifs et de votre ton — livré prêt à l'emploi, avec son manuel écrit.</p>
+      <p class="rituel">demande · matière · transformation · livraison</p>
+    </article>
+    <article class="fiche">
+      <h3>Le livret de gestes IA</h3>
+      <div class="couture"></div>
+      <p>Les instructions qui marchent vraiment pour votre métier, testées sur vos propres cas — pas des listes recopiées, de l'outillage éprouvé.</p>
+      <p class="rituel">demande · matière · transformation · livraison</p>
+    </article>
+    <article class="fiche">
+      <h3>La retouche de données</h3>
+      <div class="couture"></div>
+      <p>Votre fichier en désordre entre à l'atelier ; il en ressort propre, cohérent et utilisable, accompagné de sa note de façon détaillant chaque réparation.</p>
+      <p class="rituel">demande · matière · transformation · livraison</p>
+    </article>
+    <article class="fiche">
+      <h3>Les mémoires d'atelier</h3>
+      <div class="couture"></div>
+      <p>Trente ans de savoir-faire dans la tête, rien sur le papier ? Dictez en vocal, librement : l'atelier en fait des procédures et livrets prêts à transmettre.</p>
+      <p class="rituel">demande · matière · transformation · livraison</p>
+    </article>
+    <article class="fiche">
+      <h3>La restauration d'archives</h3>
+      <div class="couture"></div>
+      <p>Cartons de scans, PDF en vrac, classeurs numérisés : l'atelier en fait une mémoire ordonnée, indexée et consultable en quelques instants.</p>
+      <p class="rituel">demande · matière · transformation · livraison</p>
+    </article>
+    <article class="fiche">
+      <h3>La gazette privée</h3>
+      <div class="couture"></div>
+      <p>Chaque semaine, par écrit : vos concurrents, votre réglementation, vos occasions à saisir — une veille façonnée pour vous seul, courte et lisible.</p>
+      <p class="rituel">demande · matière · transformation · livraison</p>
+    </article>
+    <article class="fiche">
+      <h3>L'atelier de correspondance</h3>
+      <div class="couture"></div>
+      <p>Avis clients, courriers délicats, réclamations : des réponses rédigées à votre ton, selon le cahier de style de votre maison, validées avant de partir.</p>
+      <p class="rituel">demande · matière · transformation · livraison</p>
+    </article>
+    <article class="fiche">
+      <h3>Le contrôle de façon</h3>
+      <div class="couture"></div>
+      <p>Vous produisez déjà avec l'IA ? L'atelier repasse derrière la machine : relecture, correction et mise au net avant que vos documents n'atteignent vos clients.</p>
+      <p class="rituel">demande · matière · transformation · livraison</p>
+    </article>
+    <article class="fiche">
+      <h3>Le tableau de bord cousu main</h3>
+      <div class="couture"></div>
+      <p>Chaque mois, vos exports bruts deviennent une page claire et commentée : ce qui va, ce qui inquiète, ce qui mérite votre attention.</p>
+      <p class="rituel">demande · matière · transformation · livraison</p>
+    </article>
+    <article class="fiche">
+      <span class="public">pour les particuliers</span>
+      <h3>Le livre de mémoire</h3>
+      <div class="couture"></div>
+      <p>À partir de vocaux et de photos de famille, l'atelier compose un livre : le parcours d'un grand-parent, l'histoire d'une maison, d'un commerce, d'une vie.</p>
+      <p class="rituel">demande · matière · transformation · livraison</p>
+    </article>
+  </div>
+</section>
+
+<hr class="filet">
+
+<section id="facon">
+  <h2 class="titre-section">LA FAÇON</h2>
+  <p class="sous-titre-section">Quatre gestes, toujours les mêmes — c'est la règle de la maison.</p>
+  <div class="facon">
+    <div class="geste"><span class="num">I</span><h3>La demande</h3><p>Vous écrivez en vrac — idées, contexte, contraintes. Pas de formulaire rigide, pas de rendez-vous : votre message suffit à ouvrir l'ouvrage.</p></div>
+    <div class="geste"><span class="num">II</span><h3>La matière</h3><p>Vous confiez la matière brute : fichiers, exports, scans, messages vocaux. L'atelier accuse réception par écrit et annonce le délai.</p></div>
+    <div class="geste"><span class="num">III</span><h3>La transformation</h3><p>La machine prépare — tri, volume, premiers jets. L'artisan façonne, vérifie et finit. Rien ne sort de l'atelier sans un regard qui n'a pas construit.</p></div>
+    <div class="geste"><span class="num">IV</span><h3>La livraison</h3><p>Vous recevez l'ouvrage fini et sa note de façon : ce qui a été fait, ce qui a été choisi, ce qui reste à votre main. Signé.</p></div>
+  </div>
+  <p class="serment">« Celui qui construit ne voit plus ses erreurs. Nous non plus — c'est pourquoi chaque ouvrage est relu par un autre regard que celui qui l'a façonné, et livré avec sa note de façon. »<small>La règle de l'atelier, imprimée sur chaque livraison.</small></p>
+</section>
+
+<hr class="filet">
+
+<section id="ecrire" class="commande">
+  <h2 class="titre-section">ÉCRIRE À L'ATELIER</h2>
+  <p class="sous-titre-section">Décrivez votre besoin comme il vient — l'atelier répond par écrit, sous 24 h ouvrées.</p>
+  <div class="ecritoire">
+    <svg class="filigrane" id="filigrane" width="120" height="146" viewBox="0 0 140 168" aria-hidden="true">
+      <path d="M70 20 C 90 20 99 44 99 64 C 99 87 86 99 70 99 C 54 99 41 87 41 64 C 41 44 50 20 70 20 Z" fill="none" stroke="#F2E8D8" stroke-width="3"/>
+      <path d="M58 116 C 54 126 49 132 44 137 M70 118 C 70 129 70 137 70 144 M82 116 C 86 126 91 132 96 137" fill="none" stroke="#F2E8D8" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <textarea id="demande" placeholder="Décrivez votre besoin en vrac — idées, fichiers dont vous disposez, messages vocaux que vous pourrez joindre…" aria-label="Votre demande à l'atelier"></textarea>
+  </div>
+  <p class="legende-filigrane">le filigrane de l'atelier prend à mesure que vous écrivez</p>
+  <input class="champ-nom" id="contact" type="email" placeholder="Votre adresse email, pour la réponse écrite" aria-label="Votre adresse email">
+  <div class="appel" style="margin-top:20px;">
+    <button class="bouton" id="confier" type="button"><span class="coeur"><span class="veilleuse"></span>Confier l'ouvrage</span></button>
+    <p class="note-bouton">La veilleuse verte ne s'allume qu'ici : là où votre ouvrage commence.</p>
+  </div>
+  <div class="foulage" id="foulage" aria-live="polite">
+    <h3>Votre demande, marquée en creux</h3>
+    <div class="empreinte" id="empreinte"></div>
+    <div class="actes">
+      <a class="sceller" id="sceller" href="#">Sceller et envoyer</a>
+      <button class="reprendre" id="reprendre" type="button">reprendre la plume</button>
+    </div>
+  </div>
+</section>
+
+<hr class="filet">
+</main>
+
+<footer>
+  <div class="tailles" aria-hidden="true">
+    <svg width="40" height="48" viewBox="0 0 100 120"><path d="M50 6 C 72 6 82 32 82 56 C 82 82 68 96 50 96 C 32 96 18 82 18 56 C 18 32 28 6 50 6 Z M50 96 L38 118 M50 96 L50 119 M50 96 L62 118" fill="#A56A43" stroke="#A56A43" stroke-width="7" stroke-linecap="round"/></svg>
+    <svg width="24" height="29" viewBox="0 0 100 120"><path d="M50 6 C 72 6 82 32 82 56 C 82 82 68 96 50 96 C 32 96 18 82 18 56 C 18 32 28 6 50 6 Z M50 96 L38 118 M50 96 L50 119 M50 96 L62 118" fill="#A56A43" stroke="#A56A43" stroke-width="7" stroke-linecap="round"/></svg>
+    <svg width="14" height="17" viewBox="0 0 100 120"><path d="M50 6 C 72 6 82 32 82 56 C 82 82 68 96 50 96 C 32 96 18 82 18 56 C 18 32 28 6 50 6 Z M50 96 L38 118 M50 96 L50 119 M50 96 L62 118" fill="#A56A43" stroke="#A56A43" stroke-width="7" stroke-linecap="round"/></svg>
+  </div>
+  <p class="signature">Chaque ouvrage sort signé, accompagné de sa note de façon. — SOLVAI, artisan de l'IA · 100 % par écrit, 0 réunion</p>
+  <p class="mentions">SOLVAI — conseil en systèmes et logiciels informatiques (APE 62.02A) · <a href="mailto:atelier@solvai.fr">atelier@solvai.fr</a></p>
+</footer>
+
+</div>
+<script>
+(function(){
+  var demande = document.getElementById('demande');
+  var filigrane = document.getElementById('filigrane');
+  var confier = document.getElementById('confier');
+  var foulage = document.getElementById('foulage');
+  var empreinte = document.getElementById('empreinte');
+  var sceller = document.getElementById('sceller');
+  var reprendre = document.getElementById('reprendre');
+  var contact = document.getElementById('contact');
+  var EMAIL_ATELIER = 'atelier@solvai.fr';
+
+  demande.addEventListener('input', function(){
+    var densite = 0.04 + Math.min(demande.value.length / 420, 1) * 0.34;
+    filigrane.style.opacity = densite.toFixed(3);
+  });
+
+  confier.addEventListener('click', function(){
+    var texte = demande.value.trim();
+    if(!texte){ demande.focus(); return; }
+    empreinte.textContent = texte + (contact.value.trim() ? '\n\n— Réponse à écrire à : ' + contact.value.trim() : '');
+    foulage.classList.add('visible');
+    var sujet = encodeURIComponent("Demande d'ouvrage — via solvai.fr");
+    var corps = encodeURIComponent(texte + '\n\n(Demande rédigée sur solvai.fr — répondre par écrit.)');
+    sceller.href = 'mailto:' + EMAIL_ATELIER + '?subject=' + sujet + '&body=' + corps;
+    foulage.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+
+  reprendre.addEventListener('click', function(){
+    foulage.classList.remove('visible');
+    demande.focus();
+  });
+})();
+</script>
+</body>
+</html>
