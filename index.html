@@ -11,7 +11,7 @@
 <style>
   :root{
     --encre:#161311;
-    --encre-2:#1d1815;
+    --encre-2:#241b14;
     --ivoire:#F2E8D8;
     --ivoire-doux:#B9A98F;
     --ivoire-muet:#8A7A5F;
@@ -55,7 +55,7 @@
   .fiche .public{display:inline-block;font-size:11px;color:var(--ivoire);background:var(--sepia);border-radius:3px;padding:2px 8px;margin-bottom:8px;align-self:flex-start;}
 
   .facon{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:8px;}
-  .geste{border:1px solid #82562F;border-radius:6px;padding:18px 20px;background:#251D15;}
+  .geste{border:1px solid #9A6A41;border-radius:6px;padding:18px 20px;background:#4C3928;}
   .geste .num{font-family:var(--serif);font-size:24px;color:var(--cuivre);display:block;margin-bottom:6px;}
   .geste h3{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ivoire);margin-bottom:6px;}
   .geste p{font-size:13.5px;color:#C9B99E;line-height:1.6;}
@@ -63,22 +63,22 @@
   .serment small{display:block;font-family:var(--sans);font-style:normal;font-size:12.5px;color:var(--ivoire-muet);margin-top:10px;}
 
   .commande{max-width:640px;margin:0 auto;}
-  .ecritoire{position:relative;border:1px solid #82562F;border-radius:6px;background:#231B13;overflow:hidden;}
+  .ecritoire{position:relative;border:1px solid #9A6A41;border-radius:6px;background:#433222;overflow:hidden;}
   .ecritoire svg.filigrane{position:absolute;right:10px;bottom:-16px;opacity:0.04;transition:opacity 0.8s ease;pointer-events:none;}
   .ecritoire textarea{position:relative;z-index:1;width:100%;min-height:170px;background:transparent;border:none;resize:vertical;padding:18px 20px;color:var(--ivoire);font-family:var(--serif);font-size:16.5px;line-height:1.7;}
-  .ecritoire textarea::placeholder{color:var(--ivoire-muet);font-style:italic;}
+  .ecritoire textarea::placeholder{color:var(--ivoire-doux);font-style:italic;}
   .ecritoire textarea:focus{outline:none;}
   .ecritoire:focus-within{border-color:var(--cuivre);}
   .legende-filigrane{font-size:11.5px;color:var(--ivoire-muet);text-align:right;margin-top:7px;}
-  .champ-nom{width:100%;margin-top:14px;background:#231B13;border:1px solid #82562F;border-radius:6px;padding:12px 16px;color:var(--ivoire);font-family:var(--sans);font-size:14px;}
-  .champ-nom::placeholder{color:var(--ivoire-muet);}
+  .champ-nom{width:100%;margin-top:14px;background:#433222;border:1px solid #9A6A41;border-radius:6px;padding:12px 16px;color:var(--ivoire);font-family:var(--sans);font-size:14px;}
+  .champ-nom::placeholder{color:var(--ivoire-doux);}
   .champ-nom:focus{outline:none;border-color:var(--cuivre);}
 
   .appel{text-align:center;}
   .bouton{display:inline-block;border:1px solid var(--cuivre);padding:3px;border-radius:2px;background:transparent;cursor:pointer;transition:transform 0.12s ease;}
-  .bouton .coeur{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--veilleuse-eteinte);background:#251D15;padding:11px 26px;font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ivoire);letter-spacing:0.04em;border-radius:1px;transition:border-color 0.4s ease, background 0.4s ease;}
+  .bouton .coeur{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--veilleuse-eteinte);background:#433222;padding:11px 26px;font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ivoire);letter-spacing:0.04em;border-radius:1px;transition:border-color 0.4s ease, background 0.4s ease;}
   .bouton .veilleuse{width:9px;height:9px;border-radius:50%;background:var(--veilleuse);display:inline-block;}
-  .bouton:hover .coeur, .bouton:focus-visible .coeur{border-color:var(--veilleuse-lueur);background:#2C2216;}
+  .bouton:hover .coeur, .bouton:focus-visible .coeur{border-color:var(--veilleuse-lueur);background:#58412F;}
   .bouton:focus-visible{outline:none;}
   .bouton:active{transform:translateY(2px);}
   .note-bouton{font-size:12px;color:var(--ivoire-doux);margin-top:10px;}
