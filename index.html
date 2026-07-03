@@ -57,24 +57,24 @@
   .fiche .public{display:inline-block;font-size:11px;color:var(--ivoire);background:var(--sepia);border-radius:3px;padding:2px 8px;margin-bottom:8px;align-self:flex-start;}
 
   .facon{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:8px;}
-  .geste{border:1px solid var(--cuivre);border-radius:6px;padding:18px 20px;background:var(--brun-chaud);}
+  .geste{border-radius:6px;padding:18px 20px;background:var(--ivoire);display:flex;flex-direction:column;}
   .geste .num{font-family:var(--serif);font-size:24px;color:var(--cuivre);display:block;margin-bottom:6px;}
-  .geste h3{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ivoire);margin-bottom:6px;}
-  .geste p{font-size:13.5px;color:#C9B99E;line-height:1.6;}
+  .geste h3{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--brun-fiche);margin-bottom:6px;}
+  .geste p{font-size:13.5px;color:var(--sepia-texte);line-height:1.6;}
   .serment{max-width:640px;margin:36px auto 0;text-align:center;font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ivoire);line-height:1.7;}
   .serment small{display:block;font-family:var(--sans);font-style:normal;font-size:12.5px;color:var(--ivoire-muet);margin-top:10px;}
 
   .commande{max-width:640px;margin:0 auto;}
-  .ecritoire{position:relative;border:1px solid var(--cuivre);border-radius:6px;background:var(--brun-chaud);overflow:hidden;}
-  .ecritoire svg.filigrane{position:absolute;right:10px;bottom:-16px;opacity:0.04;transition:opacity 0.8s ease;pointer-events:none;}
-  .ecritoire textarea{position:relative;z-index:1;width:100%;min-height:170px;background:transparent;border:none;resize:vertical;padding:18px 20px;color:var(--ivoire);font-family:var(--serif);font-size:16.5px;line-height:1.7;}
-  .ecritoire textarea::placeholder{color:var(--ivoire-doux);font-style:italic;}
+  .ecritoire{position:relative;border-radius:6px;background:var(--ivoire);overflow:hidden;transition:box-shadow 0.3s ease;}
+  .ecritoire svg.filigrane{position:absolute;right:10px;bottom:-16px;opacity:0.05;transition:opacity 0.8s ease;pointer-events:none;}
+  .ecritoire textarea{position:relative;z-index:1;width:100%;min-height:170px;background:transparent;border:none;resize:vertical;padding:18px 20px;color:var(--brun-fiche);font-family:var(--serif);font-size:16.5px;line-height:1.7;}
+  .ecritoire textarea::placeholder{color:var(--sepia-texte);font-style:italic;opacity:0.75;}
   .ecritoire textarea:focus{outline:none;}
-  .ecritoire:focus-within{border-color:var(--cuivre);}
-  .legende-filigrane{font-size:11.5px;color:var(--ivoire-muet);text-align:right;margin-top:7px;}
-  .champ-nom{width:100%;margin-top:14px;background:var(--brun-chaud);border:1px solid var(--cuivre);border-radius:6px;padding:12px 16px;color:var(--ivoire);font-family:var(--sans);font-size:14px;}
-  .champ-nom::placeholder{color:var(--ivoire-doux);}
-  .champ-nom:focus{outline:none;border-color:var(--cuivre);}
+  .ecritoire:focus-within{box-shadow:0 0 0 2px var(--cuivre);}
+  .legende-filigrane{font-size:11.5px;color:var(--ivoire-doux);text-align:right;margin-top:7px;}
+  .champ-nom{width:100%;margin-top:14px;background:var(--ivoire);border:none;border-radius:6px;padding:12px 16px;color:var(--brun-fiche);font-family:var(--sans);font-size:14px;transition:box-shadow 0.3s ease;}
+  .champ-nom::placeholder{color:var(--sepia-texte);opacity:0.75;}
+  .champ-nom:focus{outline:none;box-shadow:0 0 0 2px var(--cuivre);}
 
   .appel{text-align:center;}
   .bouton{display:inline-block;border:1px solid var(--cuivre);padding:3px;border-radius:6px;background:transparent;cursor:pointer;transition:transform 0.12s ease;}
@@ -236,8 +236,8 @@
   <p class="sous-titre-section">Décrivez votre besoin comme il vient — l'atelier répond par écrit, sous 24 h ouvrées.</p>
   <div class="ecritoire">
     <svg class="filigrane" id="filigrane" width="120" height="146" viewBox="0 0 140 168" aria-hidden="true">
-      <path d="M70 20 C 90 20 99 44 99 64 C 99 87 86 99 70 99 C 54 99 41 87 41 64 C 41 44 50 20 70 20 Z" fill="none" stroke="#F2E8D8" stroke-width="3"/>
-      <path d="M58 116 C 54 126 49 132 44 137 M70 118 C 70 129 70 137 70 144 M82 116 C 86 126 91 132 96 137" fill="none" stroke="#F2E8D8" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M70 20 C 90 20 99 44 99 64 C 99 87 86 99 70 99 C 54 99 41 87 41 64 C 41 44 50 20 70 20 Z" fill="none" stroke="#A56A43" stroke-width="3"/>
+      <path d="M58 116 C 54 126 49 132 44 137 M70 118 C 70 129 70 137 70 144 M82 116 C 86 126 91 132 96 137" fill="none" stroke="#A56A43" stroke-width="2.4" stroke-linecap="round"/>
     </svg>
     <textarea id="demande" placeholder="Décrivez votre besoin en vrac — idées, fichiers dont vous disposez, messages vocaux que vous pourrez joindre…" aria-label="Votre demande à l'atelier"></textarea>
   </div>
