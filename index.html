@@ -222,10 +222,10 @@
   }
 
   h1 {
-    font-size: clamp(44px, 6vw, 74px);
-    line-height: 0.95;
-    max-width: 10ch;
-    margin: 18px 0 18px;
+    font-size: clamp(38px, 5.2vw, 62px);
+    line-height: 0.92;
+    max-width: 7ch;
+    margin: 18px 0 12px;
   }
 
   h2 {
@@ -242,8 +242,8 @@
   }
 
   .lead {
-    max-width: 60ch;
-    font-size: 18px;
+    max-width: 32ch;
+    font-size: 16px;
     color: rgba(22, 24, 27, 0.84);
   }
 
@@ -263,7 +263,7 @@
   }
 
   .hero-strip {
-    margin-top: 18px;
+    margin-top: 14px;
   }
 
   .live-ticker {
@@ -299,6 +299,10 @@
     background: rgba(255, 255, 255, 0.68);
     border: 1px solid var(--line);
     color: var(--ink);
+  }
+
+  .hero-chip.hide-mobile {
+    display: none;
   }
 
   .ticker-chip {
@@ -520,13 +524,7 @@
     justify-content: space-between;
     align-items: end;
     gap: 18px;
-    margin-bottom: 18px;
-  }
-
-  .section-head p {
-    max-width: 56ch;
-    margin: 0;
-    color: var(--muted);
+    margin-bottom: 14px;
   }
 
   .card {
@@ -576,13 +574,13 @@
   }
 
   .offer-core {
-    margin: 10px 0 14px;
-    font-size: 15px;
+    margin: 8px 0 12px;
+    font-size: 14px;
     color: var(--ink);
   }
 
   .offer-tags {
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
 
   .offer-tag {
@@ -702,16 +700,16 @@
 
   .method-mini {
     display: grid;
-    gap: 10px;
-    margin-top: 16px;
+    gap: 8px;
+    margin-top: 8px;
   }
 
   .method-step {
     display: grid;
-    grid-template-columns: 74px 1fr;
-    gap: 12px;
+    grid-template-columns: 64px 1fr;
+    gap: 10px;
     align-items: center;
-    padding: 12px 14px;
+    padding: 10px 12px;
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -727,7 +725,7 @@
 
   .method-step span {
     color: #fff;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
   }
 
@@ -779,8 +777,8 @@
   }
 
   .closing-box {
-    padding: 30px;
-    margin: 18px 0 34px;
+    padding: 24px;
+    margin: 12px 0 28px;
     background: linear-gradient(145deg, #f1e8d8, #ffffff);
   }
 
@@ -824,9 +822,10 @@
     .closing-box { padding: 22px; }
     .nav a:not(.nav-cta) { display: none; }
     .hero { padding-top: 28px; }
-    h1 { font-size: 42px; }
-    h2 { font-size: 34px; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
     .monitor-grid { grid-template-columns: 1fr; }
+    .hero-chip.hide-mobile { display: none; }
   }
 </style>
 </head>
@@ -846,13 +845,13 @@
   <header class="hero wrap" id="top">
     <div class="hero-grid">
       <div class="panel">
-        <span class="eyebrow">Moins de charge mentale, plus de clarté</span>
-        <h1>Votre automatisation devait vous faire gagner du temps. Aujourd'hui, c'est vous qui la surveillez.</h1>
-        <p class="lead">Moins d'interruptions. Plus de temps de tranquillité.</p>
+        <span class="eyebrow">Moins de surveillance</span>
+        <h1>Elle tourne. Vous surveillez.</h1>
+        <p class="lead">SOLVAI réduit le pompier de service.</p>
         <div class="hero-strip">
-          <span class="hero-chip">Protocole d'intervention</span>
-          <span class="hero-chip">Carnet de stabilité</span>
-          <span class="hero-chip">Fichier STOP</span>
+          <span class="hero-chip">Protocole</span>
+          <span class="hero-chip">Carnet</span>
+          <span class="hero-chip hide-mobile">STOP</span>
         </div>
         <div class="live-ticker" aria-hidden="true">
           <div class="ticker-track">
@@ -917,12 +916,12 @@
       <div class="section-head">
         <div>
           <span class="eyebrow">Pour qui</span>
-          <h2>Déjà en marche. Pas encore tranquille.</h2>
+          <h2>Déjà en marche.</h2>
         </div>
       </div>
       <div class="target-grid compact">
         <article class="card target-yes target-card">
-          <strong>Oui, c'est pour vous</strong>
+          <strong>Pour vous</strong>
           <div class="signal-row">
             <span class="signal-chip">bot</span>
             <span class="signal-chip">script</span>
@@ -931,7 +930,7 @@
           <p>Quelque chose tourne déjà.</p>
         </article>
         <article class="card target-yes target-card">
-          <strong>Douleur typique</strong>
+          <strong>Douleur</strong>
           <div class="signal-row">
             <span class="signal-chip">dérive</span>
             <span class="signal-chip">cas limite</span>
@@ -953,8 +952,8 @@
     <section id="offres">
       <div class="section-head">
         <div>
-          <span class="eyebrow">Les 3 offres</span>
-          <h2>Trois livrables, pas un catalogue infini.</h2>
+          <span class="eyebrow">3 offres</span>
+          <h2>Trois livrables.</h2>
         </div>
       </div>
       <div class="offers-grid">
@@ -963,9 +962,8 @@
           <h3>Protocole Pompier</h3>
           <p class="offer-core">Quoi faire. Quand s'arrêter.</p>
           <div class="offer-tags">
-            <span class="offer-tag">points de fragilité</span>
-            <span class="offer-tag">procédure écrite</span>
-            <span class="offer-tag">fichier STOP</span>
+          <span class="offer-tag">fragilités</span>
+          <span class="offer-tag">STOP</span>
           </div>
           <div class="offer-point">
             <strong>Livrable</strong>
@@ -978,9 +976,8 @@
           <h3>Carnet de Stabilité</h3>
           <p class="offer-core">Une trace claire.</p>
           <div class="offer-tags">
-            <span class="offer-tag">journal des incidents</span>
-            <span class="offer-tag">GO / NO GO</span>
-            <span class="offer-tag">mise à jour</span>
+          <span class="offer-tag">incidents</span>
+          <span class="offer-tag">GO / NO GO</span>
           </div>
           <div class="offer-point">
             <strong>Livrable</strong>
@@ -993,9 +990,8 @@
           <h3>Maintenance évolutive</h3>
           <p class="offer-core">Plus d'air entre deux alertes.</p>
           <div class="offer-tags">
-            <span class="offer-tag">ajustements</span>
-            <span class="offer-tag">moins de feux</span>
-            <span class="offer-tag">temps de tranquillité</span>
+          <span class="offer-tag">ajustements</span>
+          <span class="offer-tag">tranquillité</span>
           </div>
           <div class="offer-point">
             <strong>Livrable</strong>
@@ -1008,13 +1004,12 @@
     <section id="preuve">
       <div class="section-head">
         <div>
-          <span class="eyebrow">Preuve de méthode</span>
-          <h2>Nous montrons un chantier réel, pas un décor.</h2>
+          <span class="eyebrow">Méthode</span>
+          <h2>Un chantier réel.</h2>
         </div>
       </div>
       <div class="proof-grid">
         <article class="proof-box method">
-          <strong>Ce que vous y verrez</strong>
           <div class="method-mini">
             <div class="method-step">
               <strong>Observer</strong>
@@ -1035,7 +1030,7 @@
           </div>
         </article>
         <article class="proof-box">
-          <span class="proof-live-label">Indicateur vivant</span>
+          <span class="proof-live-label">Indicateur</span>
           <div class="proof-live-head">
             <span class="proof-live-dot" aria-hidden="true"></span>
             <div class="proof-live-value">Temps de tranquillité<strong>EN HAUSSE</strong></div>
@@ -1054,7 +1049,7 @@
 
     <section id="contact">
       <div class="closing-box">
-        <span class="eyebrow">Contact écrit uniquement</span>
+        <span class="eyebrow">Contact</span>
         <h3>Décrivez votre situation.</h3>
         <div class="hero-actions" style="margin-bottom:0;">
           <a href="mailto:atelier@solvai.fr?subject=Situation%20%C3%A0%20structurer&body=Bonjour,%0A%0AVoici ce qui tourne d%C3%A9j%C3%A0 :%0A%0AVoici quand je dois encore intervenir :%0A%0AVoici ce que je veux rendre moins d%C3%A9pendant de moi :%0A" class="btn-primary">Décrivez votre situation</a>
@@ -1068,7 +1063,6 @@
           <strong style="display:block; margin-bottom:8px;">SOLVAI</strong>
           <div class="footer-notes">
             <span>Moins de feux à éteindre.</span>
-            <span>Plus de clarté sur ce qui tourne, ce qui dérive et ce qu'il reste à faire.</span>
           </div>
         </div>
         <div class="footer-meta">
