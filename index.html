@@ -335,6 +335,73 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
+  .proof-live-label {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ember);
+  }
+
+  .proof-live-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .proof-live-dot {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    background: var(--olive);
+    box-shadow: 0 0 0 0 rgba(102, 116, 67, 0.34);
+    animation: livePulse 2.8s ease-in-out infinite;
+    flex: 0 0 auto;
+  }
+
+  .proof-live-value {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 4vw, 46px);
+    line-height: 1;
+  }
+
+  .proof-live-sub {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .proof-live-text {
+    margin: 0 0 14px;
+    color: var(--muted);
+  }
+
+  .proof-live-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .proof-live-meta span {
+    display: inline-flex;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(102, 116, 67, 0.1);
+    color: var(--olive-deep);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  @keyframes livePulse {
+    0% { box-shadow: 0 0 0 0 rgba(102, 116, 67, 0.34); }
+    70% { box-shadow: 0 0 0 10px rgba(102, 116, 67, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(102, 116, 67, 0); }
+  }
+
   .offer-point {
     background: rgba(255, 255, 255, 0.72);
     border: 1px solid rgba(22, 24, 27, 0.08);
@@ -553,8 +620,17 @@
           </div>
         </article>
         <article class="proof-box">
-          <strong>Pourquoi cette preuve compte</strong>
-          <p>Parce qu'une automatisation utile n'est pas seulement quelque chose qui existe. C'est quelque chose qui tourne, qui se surveille mieux et dont on sait exactement ce qu'il reste à faire.</p>
+          <span class="proof-live-label">Indicateur vivant</span>
+          <div class="proof-live-head">
+            <span class="proof-live-dot" aria-hidden="true"></span>
+            <div class="proof-live-value">Temps de tranquillité en hausse</div>
+          </div>
+          <div class="proof-live-sub">entre deux interventions humaines</div>
+          <p class="proof-live-text">Notre travail consiste à faire reculer le moment où vous devez redevenir le pompier de service.</p>
+          <div class="proof-live-meta">
+            <span>État actuel : stable</span>
+            <span>Intervention humaine : non requise</span>
+          </div>
           <div class="hero-actions" style="margin-top:18px; margin-bottom:0;">
             <a href="/methode/" class="btn-primary">Lire la méthode</a>
           </div>

@@ -191,6 +191,31 @@
     background: linear-gradient(145deg, #f1e8d8, #ffffff);
   }
 
+  .incident-log {
+    display: grid;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .incident-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 14px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(22, 24, 27, 0.08);
+  }
+
+  .incident-item strong {
+    display: block;
+    margin: 0;
+  }
+
+  .incident-item span {
+    color: var(--muted);
+  }
+
   footer {
     padding: 0 0 34px;
   }
@@ -277,6 +302,29 @@
         <h2>Le chantier actuel : réduire le pompier de service</h2>
         <p>Aujourd'hui, une partie du système tourne sans intervention quotidienne. Une autre en a encore besoin : quand un groupe de positions dérive anormalement, quelqu'un doit intervenir à la main.</p>
         <p style="margin-top:14px;">Le travail en cours, commencé début juillet, consiste précisément à automatiser cette intervention : détecter la dérive, agir dessus, et alléger la position en difficulté sans attendre que quelqu'un s'en aperçoive. Ce chantier n'est pas terminé.</p>
+      </article>
+
+      <article class="section-card">
+        <h2>Journal des incidents</h2>
+        <p>On ne se contente pas de regarder si le système tourne. On garde la trace de ce qui se produit, de ce qui est corrigé, et de ce qui demande encore une présence humaine.</p>
+        <div class="incident-log">
+          <div class="incident-item">
+            <strong>07/07/2026</strong>
+            <span>dérive détectée</span>
+          </div>
+          <div class="incident-item">
+            <strong>07/07/2026</strong>
+            <span>intervention évitée</span>
+          </div>
+          <div class="incident-item">
+            <strong>06/07/2026</strong>
+            <span>règle ajustée</span>
+          </div>
+          <div class="incident-item">
+            <strong>05/07/2026</strong>
+            <span>aucune action requise</span>
+          </div>
+        </div>
       </article>
 
       <article class="section-card">
