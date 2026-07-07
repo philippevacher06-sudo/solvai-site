@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Methode | SOLVAI</title>
+<meta name="description" content="La methode SOLVAI : observer ce qui casse reellement, corriger, documenter chaque decision et reduire ce qui depend encore d'une personne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #16181b;
+    --muted: #5d6470;
+    --paper: #f6efe1;
+    --card: rgba(255, 255, 255, 0.76);
+    --line: rgba(22, 24, 27, 0.12);
+    --olive: #667443;
+    --ember: #8a4d2e;
+    --shadow: 0 22px 60px rgba(22, 24, 27, 0.08);
+    --font-body: "Manrope", sans-serif;
+    --font-display: "Fraunces", serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background:
+      radial-gradient(circle at top left, rgba(102, 116, 67, 0.12), transparent 18%),
+      radial-gradient(circle at top right, rgba(138, 77, 46, 0.08), transparent 22%),
+      linear-gradient(180deg, #f8f3ea 0%, #f4eddf 50%, #efe6d7 100%);
+    line-height: 1.68;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    width: min(980px, calc(100% - 28px));
+    margin: 0 auto;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(14px);
+    background: rgba(248, 243, 234, 0.82);
+    border-bottom: 1px solid rgba(22, 24, 27, 0.06);
+  }
+
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px 0;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--ember); }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 800;
+    background: var(--ink);
+    color: #fff;
+    box-shadow: 0 14px 26px rgba(22, 24, 27, 0.13);
+  }
+
+  .hero {
+    padding: 42px 0 22px;
+  }
+
+  .hero-card,
+  .section-card,
+  .closing {
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+  }
+
+  .hero-card {
+    padding: 36px;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(236, 227, 209, 0.9)),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 13px;
+    border-radius: 999px;
+    background: rgba(102, 116, 67, 0.12);
+    color: var(--olive);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+  }
+
+  h1, h2 {
+    margin: 0;
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+
+  h1 {
+    font-size: clamp(42px, 6vw, 70px);
+    line-height: 0.96;
+    margin: 18px 0 16px;
+    max-width: 10ch;
+  }
+
+  h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+
+  p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .intro {
+    max-width: 66ch;
+    font-size: 18px;
+    color: rgba(22, 24, 27, 0.84);
+  }
+
+  main section {
+    padding: 18px 0;
+  }
+
+  .section-card {
+    padding: 26px;
+    background: var(--card);
+  }
+
+  .section-card + .section-card {
+    margin-top: 18px;
+  }
+
+  .section-card ul {
+    margin: 14px 0 0;
+    padding-left: 20px;
+    color: var(--muted);
+  }
+
+  .section-card li + li {
+    margin-top: 10px;
+  }
+
+  .closing {
+    padding: 28px;
+    margin: 18px 0 34px;
+    background: linear-gradient(145deg, #f1e8d8, #ffffff);
+  }
+
+  footer {
+    padding: 0 0 34px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 18px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(22, 24, 27, 0.1);
+  }
+
+  .footer-meta {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  @media (max-width: 720px) {
+    .wrap { width: min(980px, calc(100% - 22px)); }
+    .hero-card,
+    .section-card,
+    .closing { padding: 22px; }
+    .nav a:not(.nav-cta) { display: none; }
+    h1 { font-size: 40px; }
+    h2 { font-size: 30px; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="/" class="logo">SOL<span>VAI</span></a>
+      <div class="nav">
+        <a href="/">Accueil</a>
+        <a href="#contenu">Methode</a>
+        <a href="mailto:atelier@solvai.fr?subject=Situation%20a%20structurer&body=Bonjour,%0A%0AVoici ce qui tourne deja :%0A%0AVoici quand je dois encore intervenir :%0A%0AVoici ce que je veux rendre moins dependant de moi :%0A" class="nav-cta">Decrivez votre situation</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero wrap">
+    <div class="hero-card">
+      <span class="eyebrow">Methode</span>
+      <h1>Observer ce qui casse. Corriger. Documenter.</h1>
+      <p class="intro">
+        Depuis mai 2026, nous travaillons sur un systeme de decision automatise qui execute des operations sur les marches financiers, avec un objectif simple : reduire, etape par etape, le besoin d'intervention humaine sans jamais pretendre l'avoir supprime.
+      </p>
+      <p class="intro" style="margin-top:14px;">
+        Ce que nous montrons ici n'est pas un resultat. C'est un chantier, avec ses erreurs corrigees et son travail encore en cours.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap" id="contenu">
+    <section>
+      <article class="section-card">
+        <h2>Ouvrir large, puis se heurter au reel</h2>
+        <p>Le systeme a d'abord ete ouvert largement : plusieurs marches suivis en parallele, avec des seuils calques sur des simulations passees. En conditions reelles, deux constats sont vite apparus :</p>
+        <ul>
+          <li>presque toutes les operations etaient refusees a l'entree : les seuils fixes en simulation ne correspondaient pas aux conditions reelles d'execution ;</li>
+          <li>une fois ce premier reglage corrige, le declencheur retenu restait bien trop strict : sur plusieurs milliers d'evaluations, aucune decision n'etait prise.</li>
+        </ul>
+        <p style="margin-top:14px;">Les deux problemes ont ete documentes, dates, et corriges le jour meme.</p>
+      </article>
+
+      <article class="section-card">
+        <h2>Assouplir, puis revenir en arriere</h2>
+        <p>Un reglage plus souple a ete teste pour faire reagir le systeme. Il a permis d'obtenir des decisions, mais sans preuve solide derriere lui. Apres quelques jours d'observation, le reglage d'origine, le seul confirme par une simulation longue et fiable, a ete retabli. L'assouplissement est reste ce qu'il etait : une exploration, pas une methode.</p>
+      </article>
+
+      <article class="section-card">
+        <h2>Comparer plutot que supposer</h2>
+        <p>Plutot que de choisir une seule version sur intuition, deux reglages differents, un prudent, un plus risque, ont ete mis a tourner en parallele, sur le meme marche, pour trancher sur preuve plutot que sur pari.</p>
+      </article>
+
+      <article class="section-card">
+        <h2>Un risque assume, ecrit noir sur blanc</h2>
+        <p>Une version test a ete deployee avec un risque techniquement non plafonne en cas de mouvement de marche prolonge. Ce risque n'a pas ete minimise : il a ete ecrit, date, et limite au seul compte de test, jamais un compte reel.</p>
+      </article>
+
+      <article class="section-card">
+        <h2>Le chantier actuel : reduire le pompier de service</h2>
+        <p>Aujourd'hui, une partie du systeme tourne sans intervention quotidienne. Une autre en a encore besoin : quand un groupe de positions derive anormalement, quelqu'un doit intervenir a la main.</p>
+        <p style="margin-top:14px;">Le travail en cours, commence debut juillet, consiste precisement a automatiser cette intervention : detecter la derive, agir dessus, et alleger la position en difficulte sans attendre que quelqu'un s'en apercoive. Ce chantier n'est pas termine.</p>
+      </article>
+
+      <article class="section-card">
+        <h2>Ce que ca dit de notre facon de travailler</h2>
+        <p>Ce cas n'est pas un service que nous vendons. C'est la preuve qu'on applique, avant de le proposer a quelqu'un d'autre, un principe simple : observer ce qui casse reellement, corriger, documenter chaque decision, assumer ce qui reste risque, et reduire, jamais pretendre supprimer, ce qui depend encore d'une personne.</p>
+      </article>
+    </section>
+
+    <section id="contact">
+      <div class="closing">
+        <span class="eyebrow">Contact ecrit uniquement</span>
+        <h2 style="margin-top:14px;">Decrivez votre situation.</h2>
+        <p style="margin-top:12px; max-width:62ch;">
+          Si une automatisation tourne deja chez vous mais continue de vous rappeler a l'ordre, ecrivez-nous ce qui derive, ce que vous surveillez encore et ce que vous voulez rendre moins dependant de vous.
+        </p>
+        <p style="margin-top:18px;">
+          <a href="mailto:atelier@solvai.fr?subject=Situation%20a%20structurer&body=Bonjour,%0A%0AVoici ce qui tourne deja :%0A%0AVoici quand je dois encore intervenir :%0A%0AVoici ce que je veux rendre moins dependant de moi :%0A" class="nav-cta">Decrivez votre situation</a>
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <strong style="display:block; margin-bottom:8px;">SOLVAI</strong>
+          <p>Observer ce qui casse reellement, corriger, documenter, et reduire ce qui depend encore d'une personne.</p>
+        </div>
+        <div class="footer-meta">
+          <p>Contact : atelier@solvai.fr</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
