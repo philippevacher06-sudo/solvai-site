@@ -139,6 +139,7 @@
   .hero-grid {
     grid-template-columns: 1.15fr 0.85fr;
     align-items: stretch;
+    position: relative;
   }
 
   .panel,
@@ -152,16 +153,43 @@
   }
 
   .panel {
+    position: relative;
+    overflow: hidden;
     padding: 38px;
     background:
       linear-gradient(140deg, rgba(255, 255, 255, 0.82), rgba(236, 227, 209, 0.9)),
       linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
   }
 
+  .panel::after {
+    content: "";
+    position: absolute;
+    inset: -20% auto -20% -30%;
+    width: 46%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: skewX(-18deg);
+    animation: panelSweep 7s linear infinite;
+    pointer-events: none;
+  }
+
   .side-panel {
+    position: relative;
+    overflow: hidden;
     padding: 22px;
     background: linear-gradient(180deg, #1c2127 0%, #2b3138 100%);
     color: #f6f1e7;
+  }
+
+  .side-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 26px 26px;
+    mask-image: linear-gradient(180deg, rgba(0,0,0,0.8), transparent);
+    pointer-events: none;
   }
 
   .eyebrow,
@@ -238,6 +266,23 @@
     margin-top: 18px;
   }
 
+  .live-ticker {
+    position: relative;
+    overflow: hidden;
+    margin-top: 22px;
+    margin-bottom: 8px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(22, 24, 27, 0.08);
+    border-bottom: 1px solid rgba(22, 24, 27, 0.08);
+  }
+
+  .ticker-track {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    animation: tickerMove 22s linear infinite;
+  }
+
   .hero-chip,
   .signal-chip,
   .offer-tag {
@@ -256,6 +301,19 @@
     color: var(--ink);
   }
 
+  .ticker-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px solid rgba(22, 24, 27, 0.08);
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
   .quote-stack,
   .offer-points,
   .footer-notes {
@@ -267,6 +325,8 @@
     display: grid;
     gap: 14px;
     height: 100%;
+    position: relative;
+    z-index: 1;
   }
 
   .monitor-top {
@@ -369,6 +429,26 @@
     gap: 10px;
   }
 
+  .monitor-orbits {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .orbit-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #c6e676;
+    box-shadow: 0 0 0 0 rgba(198, 230, 118, 0.28);
+    animation: orbitFloat 6s ease-in-out infinite, livePulse 2.2s ease-in-out infinite;
+  }
+
+  .orbit-dot.one { top: 16%; right: 18%; animation-delay: 0s; }
+  .orbit-dot.two { top: 46%; right: 9%; animation-delay: 1.3s; }
+  .orbit-dot.three { bottom: 18%; right: 24%; animation-delay: 2.2s; }
+
   .monitor-cell {
     padding: 14px;
     border-radius: 18px;
@@ -452,6 +532,7 @@
   .card {
     padding: 26px;
     background: var(--card);
+    animation: floatCard 7.5s ease-in-out infinite;
   }
 
   .target-grid.compact {
@@ -470,11 +551,12 @@
 
   .target-card {
     display: grid;
-    gap: 14px;
+    gap: 10px;
   }
 
   .target-card p {
-    font-size: 15px;
+    font-size: 14px;
+    margin: 0;
   }
 
   .offer-card {
@@ -494,8 +576,8 @@
   }
 
   .offer-core {
-    margin: 12px 0 16px;
-    font-size: 16px;
+    margin: 10px 0 14px;
+    font-size: 15px;
     color: var(--ink);
   }
 
@@ -507,6 +589,10 @@
     background: rgba(22, 24, 27, 0.05);
     border: 1px solid rgba(22, 24, 27, 0.08);
     color: var(--muted);
+  }
+
+  .offer-point {
+    padding: 14px 16px;
   }
 
   .target-grid,
@@ -530,6 +616,7 @@
   .proof-box {
     padding: 28px;
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(236, 227, 209, 0.84));
+    animation: floatCard 8.2s ease-in-out infinite;
   }
 
   .proof-box.method {
@@ -592,14 +679,9 @@
   }
 
   .proof-live-sub {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--muted);
-    margin-bottom: 14px;
-  }
-
-  .proof-live-text {
-    margin: 0 0 14px;
-    color: var(--muted);
+    margin-bottom: 10px;
   }
 
   .proof-live-meta {
@@ -659,6 +741,26 @@
     0% { width: 22%; opacity: 0.8; }
     50% { width: 82%; opacity: 1; }
     100% { width: 38%; opacity: 0.86; }
+  }
+
+  @keyframes panelSweep {
+    0% { transform: translateX(-120%) skewX(-18deg); }
+    100% { transform: translateX(340%) skewX(-18deg); }
+  }
+
+  @keyframes tickerMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes orbitFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-12px) scale(1.12); }
+  }
+
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
   }
 
   .offer-point {
@@ -746,11 +848,23 @@
       <div class="panel">
         <span class="eyebrow">Moins de charge mentale, plus de clarté</span>
         <h1>Votre automatisation devait vous faire gagner du temps. Aujourd'hui, c'est vous qui la surveillez.</h1>
-        <p class="lead">Moins d'improvisation. Moins d'interruptions. Plus de temps de tranquillité entre deux interventions humaines.</p>
+        <p class="lead">Moins d'interruptions. Plus de temps de tranquillité.</p>
         <div class="hero-strip">
           <span class="hero-chip">Protocole d'intervention</span>
           <span class="hero-chip">Carnet de stabilité</span>
           <span class="hero-chip">Fichier STOP</span>
+        </div>
+        <div class="live-ticker" aria-hidden="true">
+          <div class="ticker-track">
+            <span class="ticker-chip">moins de feux à éteindre</span>
+            <span class="ticker-chip">critères GO / NO GO</span>
+            <span class="ticker-chip">intervention humaine non requise</span>
+            <span class="ticker-chip">ce qui reste à faire : on le sait</span>
+            <span class="ticker-chip">moins de feux à éteindre</span>
+            <span class="ticker-chip">critères GO / NO GO</span>
+            <span class="ticker-chip">intervention humaine non requise</span>
+            <span class="ticker-chip">ce qui reste à faire : on le sait</span>
+          </div>
         </div>
         <div class="hero-actions">
           <a href="#contact" class="btn-primary">Décrivez votre situation</a>
@@ -759,6 +873,11 @@
       </div>
 
       <aside class="side-panel">
+        <div class="monitor-orbits" aria-hidden="true">
+          <span class="orbit-dot one"></span>
+          <span class="orbit-dot two"></span>
+          <span class="orbit-dot three"></span>
+        </div>
         <div class="hero-monitor">
           <div class="monitor-top">
             <span class="monitor-title">Poste de contrôle</span>
@@ -809,7 +928,7 @@
             <span class="signal-chip">script</span>
             <span class="signal-chip">no-code</span>
           </div>
-          <p>Quelque chose tourne déjà. Mais vous devez encore surveiller, corriger ou couper.</p>
+          <p>Quelque chose tourne déjà.</p>
         </article>
         <article class="card target-yes target-card">
           <strong>Douleur typique</strong>
@@ -818,7 +937,7 @@
             <span class="signal-chip">cas limite</span>
             <span class="signal-chip">arrêt manuel</span>
           </div>
-          <p>Vous redevenez le pompier de service dès qu'un cas sort du cadre.</p>
+          <p>Vous redevenez le pompier de service.</p>
         </article>
         <article class="card target-no target-card">
           <strong>Hors cadre</strong>
@@ -826,7 +945,7 @@
             <span class="signal-chip no">DSI</span>
             <span class="signal-chip no">infra lourde</span>
           </div>
-          <p>Pas de supervision industrielle ni de grosse infrastructure.</p>
+          <p>Pas d'infrastructure lourde.</p>
         </article>
       </div>
     </section>
@@ -842,7 +961,7 @@
         <article class="card offer-card">
           <span class="offer-kicker">Offre 1</span>
           <h3>Protocole Pompier</h3>
-          <p class="offer-core">Quand ça chauffe, on sait quoi faire et quand s'arrêter.</p>
+          <p class="offer-core">Quoi faire. Quand s'arrêter.</p>
           <div class="offer-tags">
             <span class="offer-tag">points de fragilité</span>
             <span class="offer-tag">procédure écrite</span>
@@ -850,14 +969,14 @@
           </div>
           <div class="offer-point">
             <strong>Livrable</strong>
-            <p>Le protocole d'intervention complet.</p>
+            <p>Le protocole.</p>
           </div>
         </article>
 
         <article class="card offer-card">
           <span class="offer-kicker">Offre 2</span>
           <h3>Carnet de Stabilité</h3>
-          <p class="offer-core">On remplace la mémoire floue par une trace claire.</p>
+          <p class="offer-core">Une trace claire.</p>
           <div class="offer-tags">
             <span class="offer-tag">journal des incidents</span>
             <span class="offer-tag">GO / NO GO</span>
@@ -865,14 +984,14 @@
           </div>
           <div class="offer-point">
             <strong>Livrable</strong>
-            <p>Le carnet vivant de ce qui dérive et de ce qui tient.</p>
+            <p>Le carnet.</p>
           </div>
         </article>
 
         <article class="card offer-card">
           <span class="offer-kicker">Offre 3</span>
           <h3>Maintenance évolutive</h3>
-          <p class="offer-core">On fait reculer la prochaine intervention humaine utile.</p>
+          <p class="offer-core">Plus d'air entre deux alertes.</p>
           <div class="offer-tags">
             <span class="offer-tag">ajustements</span>
             <span class="offer-tag">moins de feux</span>
@@ -880,7 +999,7 @@
           </div>
           <div class="offer-point">
             <strong>Livrable</strong>
-            <p>Un suivi périodique des dérives et des corrections.</p>
+            <p>Le suivi.</p>
           </div>
         </article>
       </div>
@@ -896,7 +1015,6 @@
       <div class="proof-grid">
         <article class="proof-box method">
           <strong>Ce que vous y verrez</strong>
-          <p>Un cas réel, documenté, encore en cours.</p>
           <div class="method-mini">
             <div class="method-step">
               <strong>Observer</strong>
@@ -923,7 +1041,6 @@
             <div class="proof-live-value">Temps de tranquillité<strong>EN HAUSSE</strong></div>
           </div>
           <div class="proof-live-sub">entre deux interventions humaines</div>
-          <p class="proof-live-text">Notre travail consiste à faire reculer le moment où vous devez redevenir le pompier de service.</p>
           <div class="proof-live-meta">
             <span>État actuel : stable</span>
             <span>Intervention humaine : non requise</span>
@@ -939,7 +1056,6 @@
       <div class="closing-box">
         <span class="eyebrow">Contact écrit uniquement</span>
         <h3>Décrivez votre situation.</h3>
-        <p style="margin-top:12px; color:var(--muted); max-width:52ch;">Ce qui tourne déjà. Là où vous intervenez encore. Ce qu'il faut rendre moins dépendant de vous.</p>
         <div class="hero-actions" style="margin-bottom:0;">
           <a href="mailto:atelier@solvai.fr?subject=Situation%20%C3%A0%20structurer&body=Bonjour,%0A%0AVoici ce qui tourne d%C3%A9j%C3%A0 :%0A%0AVoici quand je dois encore intervenir :%0A%0AVoici ce que je veux rendre moins d%C3%A9pendant de moi :%0A" class="btn-primary">Décrivez votre situation</a>
         </div>
