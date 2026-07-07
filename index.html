@@ -398,6 +398,51 @@
     border: 1px solid rgba(255,255,255,0.08);
   }
 
+  .monitor-story {
+    position: relative;
+    min-height: 62px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .monitor-story-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(246, 241, 231, 0.5);
+  }
+
+  .story-rotator {
+    position: relative;
+    height: 30px;
+  }
+
+  .story-line {
+    position: absolute;
+    inset: 0;
+    font-size: 22px;
+    line-height: 1.05;
+    font-family: var(--font-display);
+    color: #f6f1e7;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: storyCycle 16s infinite;
+  }
+
+  .story-line strong {
+    color: #c6e676;
+    font-weight: 700;
+  }
+
+  .story-line.one { animation-delay: 0s; }
+  .story-line.two { animation-delay: 4s; }
+  .story-line.three { animation-delay: 8s; }
+  .story-line.four { animation-delay: 12s; }
+
   .monitor-label {
     display: block;
     margin-bottom: 8px;
@@ -780,6 +825,14 @@
     50% { transform: translateY(-6px); }
   }
 
+  @keyframes storyCycle {
+    0% { opacity: 0; transform: translateY(12px); }
+    8% { opacity: 1; transform: translateY(0); }
+    17% { opacity: 1; transform: translateY(0); }
+    24% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 0; transform: translateY(-10px); }
+  }
+
   .offer-point {
     background: rgba(255, 255, 255, 0.72);
     border: 1px solid rgba(22, 24, 27, 0.08);
@@ -905,6 +958,15 @@
             <span class="monitor-label">Temps de tranquillité</span>
             <div class="monitor-value">En <span class="monitor-accent">hausse</span></div>
             <div class="monitor-sub">entre deux interventions humaines</div>
+            <div class="monitor-story" aria-live="polite">
+              <span class="monitor-story-label">Chantier réel</span>
+              <div class="story-rotator">
+                <div class="story-line one">VPS <strong>en place</strong></div>
+                <div class="story-line two">Deux automatismes <strong>en parallèle</strong></div>
+                <div class="story-line three">Critères d'arrêt <strong>écrits</strong></div>
+                <div class="story-line four">Un cas reste <strong>manuel</strong></div>
+              </div>
+            </div>
           </div>
           <div class="monitor-bar" aria-hidden="true"></div>
           <div class="monitor-grid">
