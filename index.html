@@ -233,6 +233,135 @@
     gap: 12px;
   }
 
+  .hero-monitor {
+    display: grid;
+    gap: 14px;
+    height: 100%;
+  }
+
+  .monitor-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .monitor-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    color: rgba(246, 241, 231, 0.7);
+  }
+
+  .monitor-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: #eef3dd;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .monitor-status::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: #a8c36a;
+    box-shadow: 0 0 0 0 rgba(168, 195, 106, 0.34);
+    animation: livePulse 2.6s ease-in-out infinite;
+  }
+
+  .monitor-main {
+    padding: 18px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .monitor-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(246, 241, 231, 0.62);
+  }
+
+  .monitor-value {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 4vw, 56px);
+    line-height: 0.92;
+    color: #fff;
+  }
+
+  .monitor-accent {
+    display: inline-block;
+    margin-top: 6px;
+    color: #b8d86d;
+  }
+
+  .monitor-sub {
+    margin-top: 10px;
+    font-size: 15px;
+    color: rgba(246, 241, 231, 0.72);
+  }
+
+  .monitor-bar {
+    position: relative;
+    overflow: hidden;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .monitor-bar::before {
+    content: "";
+    position: absolute;
+    inset: 1px auto 1px 1px;
+    width: 44%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #8ca44f, #c6e676);
+    animation: liveSweep 4.2s ease-in-out infinite;
+  }
+
+  .monitor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .monitor-cell {
+    padding: 14px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .monitor-cell span {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(246, 241, 231, 0.56);
+    font-weight: 800;
+  }
+
+  .monitor-cell strong {
+    display: block;
+    font-size: 16px;
+    color: #fff;
+  }
+
   .quote-box,
   .offer-point {
     border-radius: 22px;
@@ -365,8 +494,16 @@
 
   .proof-live-value {
     font-family: var(--font-display);
-    font-size: clamp(30px, 4vw, 46px);
-    line-height: 1;
+    font-size: clamp(28px, 3.4vw, 42px);
+    line-height: 0.96;
+  }
+
+  .proof-live-value strong {
+    display: block;
+    margin-top: 4px;
+    font-size: clamp(40px, 5vw, 66px);
+    line-height: 0.9;
+    color: var(--olive-deep);
   }
 
   .proof-live-sub {
@@ -400,6 +537,12 @@
     0% { box-shadow: 0 0 0 0 rgba(102, 116, 67, 0.34); }
     70% { box-shadow: 0 0 0 10px rgba(102, 116, 67, 0); }
     100% { box-shadow: 0 0 0 0 rgba(102, 116, 67, 0); }
+  }
+
+  @keyframes liveSweep {
+    0% { width: 22%; opacity: 0.8; }
+    50% { width: 82%; opacity: 1; }
+    100% { width: 38%; opacity: 0.86; }
   }
 
   .offer-point {
@@ -465,6 +608,7 @@
     .hero { padding-top: 28px; }
     h1 { font-size: 42px; }
     h2 { font-size: 34px; }
+    .monitor-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -496,19 +640,34 @@
       </div>
 
       <aside class="side-panel">
-        <div class="quote-stack">
-          <div class="quote-box">
-            <strong>Ce que nous prenons en charge</strong>
-            <p>Le moment où une automatisation tourne déjà, mais continue de tirer votre attention, vos arbitrages et vos interventions régulières.</p>
+        <div class="hero-monitor">
+          <div class="monitor-top">
+            <span class="monitor-title">Poste de contrôle</span>
+            <span class="monitor-status">Stable</span>
           </div>
-          <div class="quote-box">
-            <strong>Ce que nous ne promettons pas</strong>
-            <p>Ni disparition totale de l'humain, ni tranquillité factice. Nous cherchons moins de feux à éteindre, pas une fiction parfaite.</p>
+          <div class="monitor-main">
+            <span class="monitor-label">Temps de tranquillité</span>
+            <div class="monitor-value">En <span class="monitor-accent">hausse</span></div>
+            <div class="monitor-sub">entre deux interventions humaines</div>
           </div>
-          <div class="proof-callout">
-            <span class="pill">protocole d'intervention</span>
-            <span class="pill">carnet de stabilité</span>
-            <span class="pill">fichier STOP</span>
+          <div class="monitor-bar" aria-hidden="true"></div>
+          <div class="monitor-grid">
+            <div class="monitor-cell">
+              <span>Surveillance</span>
+              <strong>Normale</strong>
+            </div>
+            <div class="monitor-cell">
+              <span>Intervention humaine</span>
+              <strong>Non requise</strong>
+            </div>
+            <div class="monitor-cell">
+              <span>Dérive détectée</span>
+              <strong>Non</strong>
+            </div>
+            <div class="monitor-cell">
+              <span>Ce qui reste à faire</span>
+              <strong>On le sait</strong>
+            </div>
           </div>
         </div>
       </aside>
@@ -623,7 +782,7 @@
           <span class="proof-live-label">Indicateur vivant</span>
           <div class="proof-live-head">
             <span class="proof-live-dot" aria-hidden="true"></span>
-            <div class="proof-live-value">Temps de tranquillité en hausse</div>
+            <div class="proof-live-value">Temps de tranquillité<strong>EN HAUSSE</strong></div>
           </div>
           <div class="proof-live-sub">entre deux interventions humaines</div>
           <p class="proof-live-text">Notre travail consiste à faire reculer le moment où vous devez redevenir le pompier de service.</p>
