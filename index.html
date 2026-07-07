@@ -226,6 +226,36 @@
     margin: 28px 0 0;
   }
 
+  .hero-strip,
+  .signal-row,
+  .offer-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hero-strip {
+    margin-top: 18px;
+  }
+
+  .hero-chip,
+  .signal-chip,
+  .offer-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .hero-chip {
+    background: rgba(255, 255, 255, 0.68);
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+
   .quote-stack,
   .offer-points,
   .footer-notes {
@@ -424,6 +454,61 @@
     background: var(--card);
   }
 
+  .target-grid.compact {
+    grid-template-columns: 1.1fr 1.1fr 0.8fr;
+  }
+
+  .signal-chip {
+    background: rgba(102, 116, 67, 0.1);
+    color: var(--olive-deep);
+  }
+
+  .signal-chip.no {
+    background: rgba(138, 77, 46, 0.12);
+    color: var(--ember);
+  }
+
+  .target-card {
+    display: grid;
+    gap: 14px;
+  }
+
+  .target-card p {
+    font-size: 15px;
+  }
+
+  .offer-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offer-card::after {
+    content: "";
+    position: absolute;
+    inset: auto -40px -40px auto;
+    width: 140px;
+    height: 140px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(102, 116, 67, 0.14), transparent 68%);
+    pointer-events: none;
+  }
+
+  .offer-core {
+    margin: 12px 0 16px;
+    font-size: 16px;
+    color: var(--ink);
+  }
+
+  .offer-tags {
+    margin-bottom: 14px;
+  }
+
+  .offer-tag {
+    background: rgba(22, 24, 27, 0.05);
+    border: 1px solid rgba(22, 24, 27, 0.08);
+    color: var(--muted);
+  }
+
   .target-grid,
   .offers-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -533,6 +618,37 @@
     font-weight: 700;
   }
 
+  .method-mini {
+    display: grid;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .method-step {
+    display: grid;
+    grid-template-columns: 74px 1fr;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 14px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .method-step strong {
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(246, 241, 231, 0.62);
+  }
+
+  .method-step span {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
   @keyframes livePulse {
     0% { box-shadow: 0 0 0 0 rgba(102, 116, 67, 0.34); }
     70% { box-shadow: 0 0 0 10px rgba(102, 116, 67, 0); }
@@ -630,9 +746,12 @@
       <div class="panel">
         <span class="eyebrow">Moins de charge mentale, plus de clarté</span>
         <h1>Votre automatisation devait vous faire gagner du temps. Aujourd'hui, c'est vous qui la surveillez.</h1>
-        <p class="lead">
-          SOLVAI rend vos automatisations moins dépendantes de vous, sans jamais prétendre qu'elles n'ont plus besoin de personne.
-        </p>
+        <p class="lead">Moins d'improvisation. Moins d'interruptions. Plus de temps de tranquillité entre deux interventions humaines.</p>
+        <div class="hero-strip">
+          <span class="hero-chip">Protocole d'intervention</span>
+          <span class="hero-chip">Carnet de stabilité</span>
+          <span class="hero-chip">Fichier STOP</span>
+        </div>
         <div class="hero-actions">
           <a href="#contact" class="btn-primary">Décrivez votre situation</a>
           <a href="/methode/" class="btn-secondary">Voir la preuve de méthode</a>
@@ -679,24 +798,35 @@
       <div class="section-head">
         <div>
           <span class="eyebrow">Pour qui</span>
-          <h2>Pour les structures qui ont déjà quelque chose qui tourne.</h2>
+          <h2>Déjà en marche. Pas encore tranquille.</h2>
         </div>
-        <p>
-          SOLVAI s'adresse aux TPE et PME qui ont déjà un bot, un script ou un enchaînement d'actions en place, mais qui doivent encore intervenir pour corriger, surveiller ou couper.
-        </p>
       </div>
-      <div class="target-grid">
-        <article class="card target-yes">
-          <strong>Oui</strong>
-          <p>Vous avez déjà une automatisation en marche, mais elle vous rappelle régulièrement à l'ordre.</p>
+      <div class="target-grid compact">
+        <article class="card target-yes target-card">
+          <strong>Oui, c'est pour vous</strong>
+          <div class="signal-row">
+            <span class="signal-chip">bot</span>
+            <span class="signal-chip">script</span>
+            <span class="signal-chip">no-code</span>
+          </div>
+          <p>Quelque chose tourne déjà. Mais vous devez encore surveiller, corriger ou couper.</p>
         </article>
-        <article class="card target-yes">
-          <strong>Oui</strong>
-          <p>Vous êtes encore le pompier de service quand une dérive apparaît, qu'un cas sort du cadre ou qu'il faut savoir quand arrêter.</p>
+        <article class="card target-yes target-card">
+          <strong>Douleur typique</strong>
+          <div class="signal-row">
+            <span class="signal-chip">dérive</span>
+            <span class="signal-chip">cas limite</span>
+            <span class="signal-chip">arrêt manuel</span>
+          </div>
+          <p>Vous redevenez le pompier de service dès qu'un cas sort du cadre.</p>
         </article>
-        <article class="card target-no">
-          <strong>Non</strong>
-          <p>Si vous cherchez une infrastructure lourde, une DSI, ou un cadre de supervision industriel, vous n'êtes pas dans notre périmètre.</p>
+        <article class="card target-no target-card">
+          <strong>Hors cadre</strong>
+          <div class="signal-row">
+            <span class="signal-chip no">DSI</span>
+            <span class="signal-chip no">infra lourde</span>
+          </div>
+          <p>Pas de supervision industrielle ni de grosse infrastructure.</p>
         </article>
       </div>
     </section>
@@ -707,53 +837,50 @@
           <span class="eyebrow">Les 3 offres</span>
           <h2>Trois livrables, pas un catalogue infini.</h2>
         </div>
-        <p>
-          Chaque offre produit un objet concret qui réduit l'improvisation, clarifie les gestes utiles et fixe ce qu'il faut surveiller, faire ou stopper.
-        </p>
       </div>
       <div class="offers-grid">
-        <article class="card">
+        <article class="card offer-card">
           <span class="offer-kicker">Offre 1</span>
           <h3>Protocole Pompier</h3>
-          <div class="offer-points">
-            <div class="offer-point">
-              <strong>Ce que vous recevez</strong>
-              <p>Une cartographie des points de fragilité, une procédure écrite d'intervention et un fichier STOP qui fixe la limite d'arrêt.</p>
-            </div>
-            <div class="offer-point">
-              <strong>Ce que ca change</strong>
-              <p>Quand un incident arrive, on sait exactement quoi regarder, quoi faire et quand ne pas insister.</p>
-            </div>
+          <p class="offer-core">Quand ça chauffe, on sait quoi faire et quand s'arrêter.</p>
+          <div class="offer-tags">
+            <span class="offer-tag">points de fragilité</span>
+            <span class="offer-tag">procédure écrite</span>
+            <span class="offer-tag">fichier STOP</span>
+          </div>
+          <div class="offer-point">
+            <strong>Livrable</strong>
+            <p>Le protocole d'intervention complet.</p>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card offer-card">
           <span class="offer-kicker">Offre 2</span>
           <h3>Carnet de Stabilité</h3>
-          <div class="offer-points">
-            <div class="offer-point">
-              <strong>Ce que vous recevez</strong>
-              <p>Un tableau de suivi, un journal des incidents et des critères GO/NO GO d'intervention, mis à jour à chaque évolution.</p>
-            </div>
-            <div class="offer-point">
-              <strong>Ce que ça change</strong>
-              <p>On sort de la mémoire floue. Les incidents laissent une trace, les choix aussi.</p>
-            </div>
+          <p class="offer-core">On remplace la mémoire floue par une trace claire.</p>
+          <div class="offer-tags">
+            <span class="offer-tag">journal des incidents</span>
+            <span class="offer-tag">GO / NO GO</span>
+            <span class="offer-tag">mise à jour</span>
+          </div>
+          <div class="offer-point">
+            <strong>Livrable</strong>
+            <p>Le carnet vivant de ce qui dérive et de ce qui tient.</p>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card offer-card">
           <span class="offer-kicker">Offre 3</span>
           <h3>Maintenance évolutive</h3>
-          <div class="offer-points">
-            <div class="offer-point">
-              <strong>Ce que vous recevez</strong>
-              <p>Un accompagnement périodique pour réduire la fréquence d'intervention humaine et ajuster aux dérives constatées.</p>
-            </div>
-            <div class="offer-point">
-              <strong>Ce que ça change</strong>
-              <p>Moins de feux à éteindre, plus de temps de tranquillité, et une vision plus nette de ce qu'il reste à faire.</p>
-            </div>
+          <p class="offer-core">On fait reculer la prochaine intervention humaine utile.</p>
+          <div class="offer-tags">
+            <span class="offer-tag">ajustements</span>
+            <span class="offer-tag">moins de feux</span>
+            <span class="offer-tag">temps de tranquillité</span>
+          </div>
+          <div class="offer-point">
+            <strong>Livrable</strong>
+            <p>Un suivi périodique des dérives et des corrections.</p>
           </div>
         </article>
       </div>
@@ -765,14 +892,25 @@
           <span class="eyebrow">Preuve de méthode</span>
           <h2>Nous montrons un chantier réel, pas un décor.</h2>
         </div>
-        <p>
-          La page Méthode montre comment nous documentons ce qui casse, ce qui est corrigé, ce qui reste risqué et ce qui dépend encore d'une personne.
-        </p>
       </div>
       <div class="proof-grid">
         <article class="proof-box method">
           <strong>Ce que vous y verrez</strong>
-          <p>Un système déjà en marche, des réglages comparés plutôt que supposés, un risque écrit noir sur blanc et un chantier encore ouvert pour réduire le pompier de service.</p>
+          <p>Un cas réel, documenté, encore en cours.</p>
+          <div class="method-mini">
+            <div class="method-step">
+              <strong>Observer</strong>
+              <span>Ce qui casse vraiment</span>
+            </div>
+            <div class="method-step">
+              <strong>Corriger</strong>
+              <span>Sans masquer le risque</span>
+            </div>
+            <div class="method-step">
+              <strong>Réduire</strong>
+              <span>Le pompier de service</span>
+            </div>
+          </div>
           <div class="proof-callout">
             <strong style="margin-bottom:6px;">Important</strong>
             <p>Aucun chiffre d'argent. Aucune promesse de résultat. Seulement une méthode de travail observable.</p>
@@ -801,9 +939,7 @@
       <div class="closing-box">
         <span class="eyebrow">Contact écrit uniquement</span>
         <h3>Décrivez votre situation.</h3>
-        <p style="margin-top:12px; color:var(--muted); max-width:62ch;">
-          Dites ce qui tourne déjà, où vous devez encore intervenir, et à quel moment vous redevenez le pompier de service. Nous revenons par écrit avec un premier cadre de travail.
-        </p>
+        <p style="margin-top:12px; color:var(--muted); max-width:52ch;">Ce qui tourne déjà. Là où vous intervenez encore. Ce qu'il faut rendre moins dépendant de vous.</p>
         <div class="hero-actions" style="margin-bottom:0;">
           <a href="mailto:atelier@solvai.fr?subject=Situation%20%C3%A0%20structurer&body=Bonjour,%0A%0AVoici ce qui tourne d%C3%A9j%C3%A0 :%0A%0AVoici quand je dois encore intervenir :%0A%0AVoici ce que je veux rendre moins d%C3%A9pendant de moi :%0A" class="btn-primary">Décrivez votre situation</a>
         </div>
