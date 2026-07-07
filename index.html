@@ -228,6 +228,25 @@
     margin: 18px 0 12px;
   }
 
+  .hero-strong,
+  .hero-soft,
+  .hero-accent {
+    display: block;
+  }
+
+  .hero-strong {
+    color: var(--ink);
+  }
+
+  .hero-soft {
+    color: rgba(22, 24, 27, 0.42);
+  }
+
+  .hero-accent {
+    color: var(--olive-deep);
+    text-shadow: 0 8px 22px rgba(102, 116, 67, 0.14);
+  }
+
   h2 {
     font-size: clamp(31px, 4vw, 52px);
     line-height: 0.98;
@@ -846,7 +865,7 @@
     <div class="hero-grid">
       <div class="panel">
         <span class="eyebrow">Moins de surveillance</span>
-        <h1>Elle tourne. Vous surveillez.</h1>
+        <h1><span class="hero-strong">Elle tourne.</span><span class="hero-soft">Vous</span><span class="hero-accent">surveillez.</span></h1>
         <p class="lead">SOLVAI réduit le pompier de service.</p>
         <div class="hero-strip">
           <span class="hero-chip">Protocole</span>
