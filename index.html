@@ -4,29 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SOLVAI | Moins de feux à éteindre</title>
-<meta name="description" content="SOLVAI réduit la charge mentale liée à une automatisation qui tourne déjà mais dépend encore d'une intervention humaine régulière.">
+<meta name="description" content="SOLVAI montre un chantier réel de fiabilité appliquée à des systèmes automatisés déjà en marche, avec un statut différencié par actif et des preuves d'ingénierie documentées.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #16181b;
-    --muted: #5c6470;
-    --paper: #f5efe3;
-    --paper-strong: #ece3d1;
-    --card: rgba(255, 255, 255, 0.72);
-    --line: rgba(22, 24, 27, 0.12);
-    --line-strong: rgba(22, 24, 27, 0.22);
-    --olive: #667443;
-    --olive-deep: #4e5b31;
-    --ember: #8a4d2e;
-    --shadow: 0 22px 60px rgba(22, 24, 27, 0.09);
+    --ink: #17191c;
+    --muted: #5e6672;
+    --paper: #f6efe2;
+    --paper-strong: #ece2d0;
+    --card: rgba(255, 255, 255, 0.74);
+    --line: rgba(23, 25, 28, 0.12);
+    --olive: #657444;
+    --olive-deep: #4c5a31;
+    --ember: #8a4c2c;
+    --night: #20252c;
+    --night-soft: #2c3139;
+    --shadow: 0 22px 60px rgba(23, 25, 28, 0.09);
     --font-body: "Manrope", sans-serif;
     --font-display: "Fraunces", serif;
   }
 
   * { box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -34,9 +34,9 @@
     font-family: var(--font-body);
     color: var(--ink);
     background:
-      radial-gradient(circle at top right, rgba(138, 77, 46, 0.08), transparent 22%),
-      radial-gradient(circle at top left, rgba(102, 116, 67, 0.12), transparent 18%),
-      linear-gradient(180deg, #f8f3ea 0%, #f4eddf 44%, #efe6d7 100%);
+      radial-gradient(circle at top right, rgba(138, 76, 44, 0.08), transparent 22%),
+      radial-gradient(circle at top left, rgba(101, 116, 68, 0.12), transparent 18%),
+      linear-gradient(180deg, #f8f3ea 0%, #f4eddf 46%, #efe6d7 100%);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
@@ -54,7 +54,7 @@
     z-index: 10;
     backdrop-filter: blur(14px);
     background: rgba(248, 243, 234, 0.82);
-    border-bottom: 1px solid rgba(22, 24, 27, 0.06);
+    border-bottom: 1px solid rgba(23, 25, 28, 0.06);
   }
 
   .topbar-inner {
@@ -84,13 +84,13 @@
   }
 
   .nav a {
-    font-size: 14px;
     text-decoration: none;
     color: var(--muted);
+    font-size: 14px;
     font-weight: 700;
   }
 
-  .nav .nav-cta,
+  .nav-cta,
   .btn-primary,
   .btn-secondary {
     display: inline-flex;
@@ -104,115 +104,91 @@
     transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
   }
 
-  .nav .nav-cta,
+  .nav-cta,
   .btn-primary {
     background: var(--ink);
     color: #fff;
-    box-shadow: 0 14px 26px rgba(22, 24, 27, 0.13);
+    box-shadow: 0 14px 26px rgba(23, 25, 28, 0.13);
   }
 
   .btn-secondary {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.72);
     border: 1px solid var(--line);
     color: var(--ink);
   }
 
-  .nav .nav-cta:hover,
+  .nav-cta:hover,
   .btn-primary:hover,
   .btn-secondary:hover {
     transform: translateY(-1px);
   }
 
   .hero {
-    padding: 42px 0 24px;
+    padding: 42px 0 22px;
   }
 
   .hero-grid,
-  .target-grid,
-  .offers-grid,
+  .status-grid,
   .proof-grid,
+  .timeline-grid,
+  .offers-grid,
   .footer-grid {
     display: grid;
     gap: 18px;
   }
 
   .hero-grid {
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: 1.08fr 0.92fr;
     align-items: stretch;
-    position: relative;
   }
 
   .panel,
-  .side-panel,
+  .night-panel,
   .card,
-  .proof-box,
-  .closing-box {
+  .closing {
     border: 1px solid var(--line);
     border-radius: 30px;
     box-shadow: var(--shadow);
   }
 
   .panel {
-    position: relative;
-    overflow: hidden;
     padding: 38px;
     background:
-      linear-gradient(140deg, rgba(255, 255, 255, 0.82), rgba(236, 227, 209, 0.9)),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.84), rgba(236, 226, 208, 0.9)),
       linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
   }
 
-  .panel::after {
-    content: "";
-    position: absolute;
-    inset: -20% auto -20% -30%;
-    width: 46%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transform: skewX(-18deg);
-    animation: panelSweep 7s linear infinite;
-    pointer-events: none;
-  }
-
-  .side-panel {
+  .night-panel {
     position: relative;
     overflow: hidden;
     padding: 22px;
-    background: linear-gradient(180deg, #1c2127 0%, #2b3138 100%);
+    background: linear-gradient(180deg, var(--night) 0%, var(--night-soft) 100%);
     color: #f6f1e7;
   }
 
-  .side-panel::after {
+  .night-panel::after {
     content: "";
     position: absolute;
     inset: 0;
     background-image:
       linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-    background-size: 26px 26px;
-    mask-image: linear-gradient(180deg, rgba(0,0,0,0.8), transparent);
+    background-size: 28px 28px;
+    mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), transparent);
     pointer-events: none;
   }
 
-  .eyebrow,
-  .pill {
+  .eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    border-radius: 999px;
     padding: 8px 13px;
+    border-radius: 999px;
+    background: rgba(101, 116, 68, 0.12);
+    color: var(--olive-deep);
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-weight: 800;
-  }
-
-  .eyebrow {
-    background: rgba(102, 116, 67, 0.12);
-    color: var(--olive-deep);
-  }
-
-  .pill {
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(246, 241, 231, 0.88);
   }
 
   h1, h2, h3 {
@@ -222,92 +198,67 @@
   }
 
   h1 {
-    font-size: clamp(38px, 5.2vw, 62px);
+    font-size: clamp(42px, 5.6vw, 72px);
     line-height: 0.92;
-    max-width: 7ch;
-    margin: 18px 0 12px;
-  }
-
-  .hero-strong,
-  .hero-soft,
-  .hero-accent {
-    display: block;
-  }
-
-  .hero-strong {
-    color: var(--ink);
-  }
-
-  .hero-soft {
-    color: rgba(22, 24, 27, 0.42);
-  }
-
-  .hero-accent {
-    color: var(--olive-deep);
-    text-shadow: 0 8px 22px rgba(102, 116, 67, 0.14);
+    margin: 18px 0 14px;
+    max-width: 9ch;
   }
 
   h2 {
-    font-size: clamp(31px, 4vw, 52px);
+    font-size: clamp(28px, 4vw, 46px);
     line-height: 0.98;
-    margin-bottom: 12px;
-    max-width: 12ch;
-  }
-
-  h3 {
-    font-size: 28px;
-    line-height: 1.04;
     margin-bottom: 10px;
   }
 
-  .lead {
-    max-width: 32ch;
-    font-size: 16px;
-    color: rgba(22, 24, 27, 0.84);
+  h3 {
+    font-size: 24px;
+    line-height: 1;
+    margin-bottom: 8px;
   }
 
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin: 28px 0 0;
+  p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .hero-title-strong,
+  .hero-title-soft,
+  .hero-title-accent {
+    display: block;
+  }
+
+  .hero-title-strong { color: var(--ink); }
+  .hero-title-soft { color: rgba(23, 25, 28, 0.4); }
+  .hero-title-accent {
+    color: var(--olive-deep);
+    text-shadow: 0 10px 22px rgba(101, 116, 68, 0.12);
+  }
+
+  .lead {
+    max-width: 34ch;
+    font-size: 17px;
+    color: rgba(23, 25, 28, 0.82);
   }
 
   .hero-strip,
-  .signal-row,
+  .hero-actions,
+  .proof-tags,
+  .asset-tags,
   .offer-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
   }
 
-  .hero-strip {
-    margin-top: 14px;
-  }
-
-  .live-ticker {
-    position: relative;
-    overflow: hidden;
-    margin-top: 22px;
-    margin-bottom: 8px;
-    padding: 12px 0;
-    border-top: 1px solid rgba(22, 24, 27, 0.08);
-    border-bottom: 1px solid rgba(22, 24, 27, 0.08);
-  }
-
-  .ticker-track {
-    display: flex;
-    gap: 12px;
-    width: max-content;
-    animation: tickerMove 22s linear infinite;
-  }
+  .hero-strip { margin-top: 16px; }
+  .hero-actions { margin-top: 22px; }
 
   .hero-chip,
-  .signal-chip,
+  .proof-tag,
+  .asset-tag,
   .offer-tag {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
     padding: 10px 14px;
     border-radius: 999px;
     font-size: 13px;
@@ -315,44 +266,19 @@
   }
 
   .hero-chip {
-    background: rgba(255, 255, 255, 0.68);
+    background: rgba(255, 255, 255, 0.72);
     border: 1px solid var(--line);
     color: var(--ink);
   }
 
-  .hero-chip.hide-mobile {
-    display: none;
-  }
-
-  .ticker-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 14px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.76);
-    border: 1px solid rgba(22, 24, 27, 0.08);
-    white-space: nowrap;
-    font-size: 13px;
-    font-weight: 800;
-  }
-
-  .quote-stack,
-  .offer-points,
-  .footer-notes {
-    display: grid;
-    gap: 12px;
-  }
-
-  .hero-monitor {
-    display: grid;
-    gap: 14px;
-    height: 100%;
+  .monitor {
     position: relative;
     z-index: 1;
+    display: grid;
+    gap: 14px;
   }
 
-  .monitor-top {
+  .monitor-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -367,53 +293,95 @@
     color: rgba(246, 241, 231, 0.7);
   }
 
-  .monitor-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+  .monitor-note {
     padding: 8px 12px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.06);
-    color: #eef3dd;
+    color: rgba(246, 241, 231, 0.84);
     font-size: 12px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
 
-  .monitor-status::before {
-    content: "";
-    width: 9px;
-    height: 9px;
-    border-radius: 999px;
-    background: #a8c36a;
-    box-shadow: 0 0 0 0 rgba(168, 195, 106, 0.34);
-    animation: livePulse 2.6s ease-in-out infinite;
+  .status-grid {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .monitor-main {
+  .asset-card {
+    position: relative;
+    overflow: hidden;
     padding: 18px;
     border-radius: 24px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .monitor-story {
-    position: relative;
-    min-height: 62px;
-    margin-top: 14px;
-    padding-top: 12px;
+  .asset-card::before {
+    content: "";
+    position: absolute;
+    inset: auto -30px -30px auto;
+    width: 110px;
+    height: 110px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(198, 230, 118, 0.16), transparent 68%);
+    pointer-events: none;
+  }
+
+  .asset-label {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 7px 11px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(246, 241, 231, 0.76);
+  }
+
+  .asset-status {
+    font-family: var(--font-display);
+    font-size: 34px;
+    line-height: 0.94;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+
+  .asset-status.safe { color: #c6e676; }
+  .asset-status.watch { color: #f3c27b; }
+
+  .asset-sub {
+    font-size: 14px;
+    color: rgba(246, 241, 231, 0.72);
+    min-height: 42px;
+  }
+
+  .asset-tags {
+    margin-top: 12px;
+  }
+
+  .asset-tag {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(246, 241, 231, 0.86);
+  }
+
+  .story-strip {
+    margin-top: 6px;
+    padding-top: 14px;
     border-top: 1px solid rgba(255,255,255,0.08);
   }
 
-  .monitor-story-label {
+  .story-label {
     display: block;
     margin-bottom: 8px;
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(246, 241, 231, 0.5);
+    color: rgba(246, 241, 231, 0.52);
   }
 
   .story-rotator {
@@ -433,155 +401,13 @@
     animation: storyCycle 16s infinite;
   }
 
-  .story-line strong {
-    color: #c6e676;
-    font-weight: 700;
-  }
-
+  .story-line strong { color: #c6e676; }
   .story-line.one { animation-delay: 0s; }
   .story-line.two { animation-delay: 4s; }
   .story-line.three { animation-delay: 8s; }
   .story-line.four { animation-delay: 12s; }
 
-  .monitor-label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(246, 241, 231, 0.62);
-  }
-
-  .monitor-value {
-    font-family: var(--font-display);
-    font-size: clamp(38px, 4vw, 56px);
-    line-height: 0.92;
-    color: #fff;
-  }
-
-  .monitor-accent {
-    display: inline-block;
-    margin-top: 6px;
-    color: #b8d86d;
-  }
-
-  .monitor-sub {
-    margin-top: 10px;
-    font-size: 15px;
-    color: rgba(246, 241, 231, 0.72);
-  }
-
-  .monitor-bar {
-    position: relative;
-    overflow: hidden;
-    height: 8px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .monitor-bar::before {
-    content: "";
-    position: absolute;
-    inset: 1px auto 1px 1px;
-    width: 44%;
-    border-radius: 999px;
-    background: linear-gradient(90deg, #8ca44f, #c6e676);
-    animation: liveSweep 4.2s ease-in-out infinite;
-  }
-
-  .monitor-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  .monitor-orbits {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  .orbit-dot {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 999px;
-    background: #c6e676;
-    box-shadow: 0 0 0 0 rgba(198, 230, 118, 0.28);
-    animation: orbitFloat 6s ease-in-out infinite, livePulse 2.2s ease-in-out infinite;
-  }
-
-  .orbit-dot.one { top: 16%; right: 18%; animation-delay: 0s; }
-  .orbit-dot.two { top: 46%; right: 9%; animation-delay: 1.3s; }
-  .orbit-dot.three { bottom: 18%; right: 24%; animation-delay: 2.2s; }
-
-  .monitor-cell {
-    padding: 14px;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.07);
-  }
-
-  .monitor-cell span {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: rgba(246, 241, 231, 0.56);
-    font-weight: 800;
-  }
-
-  .monitor-cell strong {
-    display: block;
-    font-size: 16px;
-    color: #fff;
-  }
-
-  .quote-box,
-  .offer-point {
-    border-radius: 22px;
-    padding: 16px 18px;
-  }
-
-  .quote-box {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .quote-box strong,
-  .offer-point strong,
-  .card strong,
-  .proof-box strong {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 16px;
-  }
-
-  .quote-box p,
-  .offer-point p,
-  .card p,
-  .proof-box p,
-  footer p {
-    margin: 0;
-  }
-
-  .quote-box p,
-  .footer-meta,
-  .footer-notes {
-    color: rgba(246, 241, 231, 0.76);
-  }
-
-  .card p,
-  .proof-box p {
-    color: var(--muted);
-  }
-
-  section {
-    padding: 24px 0;
-  }
+  main section { padding: 18px 0; }
 
   .section-head {
     display: flex;
@@ -594,36 +420,92 @@
   .card {
     padding: 26px;
     background: var(--card);
-    animation: floatCard 7.5s ease-in-out infinite;
   }
 
-  .target-grid.compact {
-    grid-template-columns: 1.1fr 1.1fr 0.8fr;
+  .proof-grid,
+  .timeline-grid,
+  .offers-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .signal-chip {
-    background: rgba(102, 116, 67, 0.1);
+  .proof-card {
+    animation: floatCard 7.6s ease-in-out infinite;
+  }
+
+  .proof-number {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4vw, 54px);
+    line-height: 0.92;
+    color: var(--olive-deep);
+    margin-bottom: 10px;
+  }
+
+  .proof-number span {
+    display: block;
+    font-size: 13px;
+    font-family: var(--font-body);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ember);
+    margin-bottom: 6px;
+  }
+
+  .proof-tags {
+    margin-top: 12px;
+  }
+
+  .proof-tag {
+    background: rgba(101, 116, 68, 0.1);
     color: var(--olive-deep);
   }
 
-  .signal-chip.no {
-    background: rgba(138, 77, 46, 0.12);
+  .timeline-card {
+    animation: floatCard 8.2s ease-in-out infinite;
+  }
+
+  .timeline-date {
+    display: inline-flex;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(138, 76, 44, 0.1);
     color: var(--ember);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
-  .target-card {
-    display: grid;
-    gap: 10px;
-  }
-
-  .target-card p {
+  .timeline-card p {
     font-size: 14px;
-    margin: 0;
+  }
+
+  .method-lead {
+    padding: 28px;
+    background: linear-gradient(180deg, var(--night) 0%, var(--night-soft) 100%);
+    color: #f6f1e7;
+  }
+
+  .method-lead p {
+    color: rgba(246, 241, 231, 0.74);
+  }
+
+  .method-lead .btn-secondary {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.08);
+    color: #fff;
+  }
+
+  .offers-wrap {
+    display: grid;
+    gap: 18px;
   }
 
   .offer-card {
     position: relative;
     overflow: hidden;
+    animation: floatCard 8.8s ease-in-out infinite;
   }
 
   .offer-card::after {
@@ -633,14 +515,24 @@
     width: 140px;
     height: 140px;
     border-radius: 999px;
-    background: radial-gradient(circle, rgba(102, 116, 67, 0.14), transparent 68%);
+    background: radial-gradient(circle, rgba(101, 116, 68, 0.14), transparent 68%);
     pointer-events: none;
   }
 
+  .offer-kicker {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    color: var(--ember);
+  }
+
   .offer-core {
-    margin: 8px 0 12px;
     font-size: 14px;
     color: var(--ink);
+    margin: 8px 0 12px;
   }
 
   .offer-tags {
@@ -648,181 +540,37 @@
   }
 
   .offer-tag {
-    background: rgba(22, 24, 27, 0.05);
-    border: 1px solid rgba(22, 24, 27, 0.08);
+    background: rgba(23, 25, 28, 0.05);
+    border: 1px solid rgba(23, 25, 28, 0.08);
     color: var(--muted);
   }
 
   .offer-point {
     padding: 14px 16px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(23, 25, 28, 0.08);
   }
 
-  .target-grid,
-  .offers-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .closing {
+    padding: 24px;
+    margin: 12px 0 28px;
+    background: linear-gradient(145deg, #f1e8d8, #ffffff);
   }
 
-  .target-no {
-    background: linear-gradient(180deg, rgba(138, 77, 46, 0.12), rgba(255, 255, 255, 0.7));
+  footer { padding: 0 0 34px; }
+
+  .footer-grid {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 18px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(23, 25, 28, 0.1);
   }
 
-  .target-yes {
-    background: linear-gradient(180deg, rgba(102, 116, 67, 0.14), rgba(255, 255, 255, 0.7));
-  }
-
-  .proof-grid {
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
-  }
-
-  .proof-box {
-    padding: 28px;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(236, 227, 209, 0.84));
-    animation: floatCard 8.2s ease-in-out infinite;
-  }
-
-  .proof-box.method {
-    background: linear-gradient(180deg, #1f252c 0%, #303741 100%);
-    color: #f6f1e7;
-  }
-
-  .proof-box.method p {
-    color: rgba(246, 241, 231, 0.74);
-  }
-
-  .proof-callout {
-    margin-top: 18px;
-    padding: 14px 16px;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .proof-live-label {
-    display: inline-block;
-    margin-bottom: 10px;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ember);
-  }
-
-  .proof-live-head {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 8px;
-  }
-
-  .proof-live-dot {
-    position: relative;
-    width: 12px;
-    height: 12px;
-    border-radius: 999px;
-    background: var(--olive);
-    box-shadow: 0 0 0 0 rgba(102, 116, 67, 0.34);
-    animation: livePulse 2.8s ease-in-out infinite;
-    flex: 0 0 auto;
-  }
-
-  .proof-live-value {
-    font-family: var(--font-display);
-    font-size: clamp(28px, 3.4vw, 42px);
-    line-height: 0.96;
-  }
-
-  .proof-live-value strong {
-    display: block;
-    margin-top: 4px;
-    font-size: clamp(40px, 5vw, 66px);
-    line-height: 0.9;
-    color: var(--olive-deep);
-  }
-
-  .proof-live-sub {
-    font-size: 14px;
+  .footer-meta {
     color: var(--muted);
-    margin-bottom: 10px;
-  }
-
-  .proof-live-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .proof-live-meta span {
-    display: inline-flex;
-    padding: 8px 12px;
-    border-radius: 999px;
-    background: rgba(102, 116, 67, 0.1);
-    color: var(--olive-deep);
-    font-size: 13px;
-    font-weight: 700;
-  }
-
-  .method-mini {
-    display: grid;
-    gap: 8px;
-    margin-top: 8px;
-  }
-
-  .method-step {
-    display: grid;
-    grid-template-columns: 64px 1fr;
-    gap: 10px;
-    align-items: center;
-    padding: 10px 12px;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .method-step strong {
-    margin: 0;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(246, 241, 231, 0.62);
-  }
-
-  .method-step span {
-    color: #fff;
     font-size: 14px;
-    font-weight: 700;
-  }
-
-  @keyframes livePulse {
-    0% { box-shadow: 0 0 0 0 rgba(102, 116, 67, 0.34); }
-    70% { box-shadow: 0 0 0 10px rgba(102, 116, 67, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(102, 116, 67, 0); }
-  }
-
-  @keyframes liveSweep {
-    0% { width: 22%; opacity: 0.8; }
-    50% { width: 82%; opacity: 1; }
-    100% { width: 38%; opacity: 0.86; }
-  }
-
-  @keyframes panelSweep {
-    0% { transform: translateX(-120%) skewX(-18deg); }
-    100% { transform: translateX(340%) skewX(-18deg); }
-  }
-
-  @keyframes tickerMove {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  @keyframes orbitFloat {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-12px) scale(1.12); }
-  }
-
-  @keyframes floatCard {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
   }
 
   @keyframes storyCycle {
@@ -833,48 +581,17 @@
     100% { opacity: 0; transform: translateY(-10px); }
   }
 
-  .offer-point {
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(22, 24, 27, 0.08);
-  }
-
-  .offer-kicker {
-    display: inline-block;
-    margin-bottom: 12px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 800;
-    color: var(--ember);
-  }
-
-  .closing-box {
-    padding: 24px;
-    margin: 12px 0 28px;
-    background: linear-gradient(145deg, #f1e8d8, #ffffff);
-  }
-
-  footer {
-    padding: 0 0 34px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    padding-top: 24px;
-    border-top: 1px solid rgba(22, 24, 27, 0.1);
-  }
-
-  .footer-meta {
-    color: var(--muted);
-    font-size: 14px;
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
   }
 
   @media (max-width: 1024px) {
     .hero-grid,
-    .target-grid,
-    .offers-grid,
+    .status-grid,
     .proof-grid,
+    .timeline-grid,
+    .offers-grid,
     .footer-grid {
       grid-template-columns: 1fr;
     }
@@ -888,16 +605,13 @@
   @media (max-width: 720px) {
     .wrap { width: min(1120px, calc(100% - 22px)); }
     .panel,
-    .side-panel,
+    .night-panel,
     .card,
-    .proof-box,
-    .closing-box { padding: 22px; }
+    .closing { padding: 22px; }
     .nav a:not(.nav-cta) { display: none; }
-    .hero { padding-top: 28px; }
-    h1 { font-size: 36px; }
-    h2 { font-size: 28px; }
-    .monitor-grid { grid-template-columns: 1fr; }
-    .hero-chip.hide-mobile { display: none; }
+    h1 { font-size: 38px; }
+    h2 { font-size: 30px; }
+    .story-line { font-size: 18px; }
   }
 </style>
 </head>
@@ -906,8 +620,8 @@
     <div class="wrap topbar-inner">
       <a href="#top" class="logo">SOL<span>VAI</span></a>
       <div class="nav">
-        <a href="#pour-qui">Pour qui</a>
-        <a href="#offres">Offres</a>
+        <a href="#statuts">Statuts</a>
+        <a href="#preuve">Preuves</a>
         <a href="/methode/">Méthode</a>
         <a href="#contact" class="nav-cta">Décrivez votre situation</a>
       </div>
@@ -917,74 +631,55 @@
   <header class="hero wrap" id="top">
     <div class="hero-grid">
       <div class="panel">
-        <span class="eyebrow">Moins de surveillance</span>
-        <h1><span class="hero-strong">Moins de surveillance.</span><span class="hero-soft">Plus de</span><span class="hero-accent">tranquillité.</span></h1>
-        <p class="lead">SOLVAI réduit le pompier de service.</p>
+        <span class="eyebrow">Vitrine technologique</span>
+        <h1><span class="hero-title-strong">Moins de surveillance.</span><span class="hero-title-soft">Plus de</span><span class="hero-title-accent">tranquillité.</span></h1>
+        <p class="lead">SOLVAI montre un chantier réel de fiabilité sur des systèmes automatisés déjà en marche, avec une question simple : où l'humain reste-t-il encore le pompier de service ?</p>
         <div class="hero-strip">
-          <span class="hero-chip">Protocole</span>
-          <span class="hero-chip">Carnet</span>
-          <span class="hero-chip hide-mobile">STOP</span>
-        </div>
-        <div class="live-ticker" aria-hidden="true">
-          <div class="ticker-track">
-            <span class="ticker-chip">moins de feux à éteindre</span>
-            <span class="ticker-chip">critères GO / NO GO</span>
-            <span class="ticker-chip">intervention humaine non requise</span>
-            <span class="ticker-chip">ce qui reste à faire : on le sait</span>
-            <span class="ticker-chip">moins de feux à éteindre</span>
-            <span class="ticker-chip">critères GO / NO GO</span>
-            <span class="ticker-chip">intervention humaine non requise</span>
-            <span class="ticker-chip">ce qui reste à faire : on le sait</span>
-          </div>
+          <span class="hero-chip">US500 stable</span>
+          <span class="hero-chip">GOLD encore manuel</span>
+          <span class="hero-chip">écrit uniquement</span>
         </div>
         <div class="hero-actions">
-          <a href="#contact" class="btn-primary">Décrivez votre situation</a>
-          <a href="/methode/" class="btn-secondary">Voir la preuve de méthode</a>
+          <a href="#statuts" class="btn-primary">Voir les statuts</a>
+          <a href="/methode/" class="btn-secondary">Lire la méthode</a>
         </div>
       </div>
 
-      <aside class="side-panel">
-        <div class="monitor-orbits" aria-hidden="true">
-          <span class="orbit-dot one"></span>
-          <span class="orbit-dot two"></span>
-          <span class="orbit-dot three"></span>
-        </div>
-        <div class="hero-monitor">
-          <div class="monitor-top">
-            <span class="monitor-title">Poste de contrôle</span>
-            <span class="monitor-status">Stable</span>
+      <aside class="night-panel">
+        <div class="monitor">
+          <div class="monitor-head">
+            <span class="monitor-title">Statut différencié par actif</span>
+            <span class="monitor-note">chantier réel</span>
           </div>
-          <div class="monitor-main">
-            <span class="monitor-label">Temps de tranquillité</span>
-            <div class="monitor-value">En <span class="monitor-accent">hausse</span></div>
-            <div class="monitor-sub">entre deux interventions humaines</div>
-            <div class="monitor-story" aria-live="polite">
-              <span class="monitor-story-label">Chantier réel</span>
-              <div class="story-rotator">
-                <div class="story-line one">VPS <strong>en place</strong></div>
-                <div class="story-line two">Deux automatismes <strong>en parallèle</strong></div>
-                <div class="story-line three">Critères d'arrêt <strong>écrits</strong></div>
-                <div class="story-line four">Un cas reste <strong>manuel</strong></div>
+          <div class="status-grid">
+            <article class="asset-card">
+              <span class="asset-label">US500</span>
+              <div class="asset-status safe">Stable</div>
+              <p class="asset-sub">Deux bots tournent en parallèle depuis fin juin, sans intervention humaine quotidienne à ce stade.</p>
+              <div class="asset-tags">
+                <span class="asset-tag">2 bots</span>
+                <span class="asset-tag">fin juin</span>
+                <span class="asset-tag">état documenté</span>
               </div>
-            </div>
+            </article>
+            <article class="asset-card">
+              <span class="asset-label">GOLD</span>
+              <div class="asset-status watch">Sous pompier</div>
+              <p class="asset-sub">Quand un panier dérive anormalement, une intervention humaine reste encore nécessaire.</p>
+              <div class="asset-tags">
+                <span class="asset-tag">cas manuel</span>
+                <span class="asset-tag">chantier ouvert</span>
+                <span class="asset-tag">réduction en cours</span>
+              </div>
+            </article>
           </div>
-          <div class="monitor-bar" aria-hidden="true"></div>
-          <div class="monitor-grid">
-            <div class="monitor-cell">
-              <span>Surveillance</span>
-              <strong>Normale</strong>
-            </div>
-            <div class="monitor-cell">
-              <span>Intervention humaine</span>
-              <strong>Non requise</strong>
-            </div>
-            <div class="monitor-cell">
-              <span>Dérive détectée</span>
-              <strong>Non</strong>
-            </div>
-            <div class="monitor-cell">
-              <span>Ce qui reste à faire</span>
-              <strong>On le sait</strong>
+          <div class="story-strip" aria-live="polite">
+            <span class="story-label">Ce que le chantier a déjà obligé à faire</span>
+            <div class="story-rotator">
+              <div class="story-line one">Onze marchés <strong>ouverts</strong></div>
+              <div class="story-line two">5 141 évaluations <strong>sans signal</strong></div>
+              <div class="story-line three">Deux versions US500 <strong>comparées</strong></div>
+              <div class="story-line four">Un chantier <strong>anti-pompier</strong></div>
             </div>
           </div>
         </div>
@@ -993,90 +688,37 @@
   </header>
 
   <main class="wrap">
-    <section id="pour-qui">
+    <section id="statuts">
       <div class="section-head">
         <div>
-          <span class="eyebrow">Pour qui</span>
-          <h2>Déjà en marche.</h2>
+          <span class="eyebrow">Statuts</span>
+          <h2>Le système ne dit pas une seule chose.</h2>
         </div>
+        <p>US500 et GOLD n'en sont pas au même point. C'est précisément ce décalage, observé et documenté, qui fonde la crédibilité du site.</p>
       </div>
-      <div class="target-grid compact">
-        <article class="card target-yes target-card">
-          <strong>Pour vous</strong>
-          <div class="signal-row">
-            <span class="signal-chip">bot</span>
-            <span class="signal-chip">script</span>
-            <span class="signal-chip">no-code</span>
-          </div>
-          <p>Quelque chose tourne déjà.</p>
-        </article>
-        <article class="card target-yes target-card">
-          <strong>Douleur</strong>
-          <div class="signal-row">
-            <span class="signal-chip">dérive</span>
-            <span class="signal-chip">cas limite</span>
-            <span class="signal-chip">arrêt manuel</span>
-          </div>
-          <p>Vous redevenez le pompier de service.</p>
-        </article>
-        <article class="card target-no target-card">
-          <strong>Hors cadre</strong>
-          <div class="signal-row">
-            <span class="signal-chip no">DSI</span>
-            <span class="signal-chip no">infra lourde</span>
-          </div>
-          <p>Pas d'infrastructure lourde.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="offres">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">3 offres</span>
-          <h2>Trois livrables.</h2>
-        </div>
-      </div>
-      <div class="offers-grid">
-        <article class="card offer-card">
-          <span class="offer-kicker">Offre 1</span>
-          <h3>Protocole Pompier</h3>
-          <p class="offer-core">Quoi faire. Quand s'arrêter.</p>
-          <div class="offer-tags">
-          <span class="offer-tag">fragilités</span>
-          <span class="offer-tag">STOP</span>
-          </div>
-          <div class="offer-point">
-            <strong>Livrable</strong>
-            <p>Le protocole.</p>
+      <div class="proof-grid">
+        <article class="card proof-card">
+          <div class="proof-number"><span>Actifs ouverts au départ</span>11</div>
+          <p>Le chantier a commencé large, avec plusieurs marchés suivis en parallèle avant de se heurter au réel.</p>
+          <div class="proof-tags">
+            <span class="proof-tag">ouverture large</span>
+            <span class="proof-tag">retour au réel</span>
           </div>
         </article>
-
-        <article class="card offer-card">
-          <span class="offer-kicker">Offre 2</span>
-          <h3>Carnet de Stabilité</h3>
-          <p class="offer-core">Une trace claire.</p>
-          <div class="offer-tags">
-          <span class="offer-tag">incidents</span>
-          <span class="offer-tag">GO / NO GO</span>
-          </div>
-          <div class="offer-point">
-            <strong>Livrable</strong>
-            <p>Le carnet.</p>
+        <article class="card proof-card">
+          <div class="proof-number"><span>Évaluations sans entrée</span>5 141</div>
+          <p>Le déclencheur réel s'est d'abord révélé trop strict. Le problème a été daté, tracé, puis corrigé.</p>
+          <div class="proof-tags">
+            <span class="proof-tag">zéro signal</span>
+            <span class="proof-tag">correction</span>
           </div>
         </article>
-
-        <article class="card offer-card">
-          <span class="offer-kicker">Offre 3</span>
-          <h3>Maintenance évolutive</h3>
-          <p class="offer-core">Plus d'air entre deux alertes.</p>
-          <div class="offer-tags">
-          <span class="offer-tag">ajustements</span>
-          <span class="offer-tag">tranquillité</span>
-          </div>
-          <div class="offer-point">
-            <strong>Livrable</strong>
-            <p>Le suivi.</p>
+        <article class="card proof-card">
+          <div class="proof-number"><span>Versions comparées sur US500</span>2</div>
+          <p>Deux réglages ont été mis à tourner en parallèle pour trancher sur preuve plutôt que sur intuition.</p>
+          <div class="proof-tags">
+            <span class="proof-tag">preuve réelle</span>
+            <span class="proof-tag">comparaison</span>
           </div>
         </article>
       </div>
@@ -1085,54 +727,95 @@
     <section id="preuve">
       <div class="section-head">
         <div>
-          <span class="eyebrow">Méthode</span>
-          <h2>Un chantier réel.</h2>
+          <span class="eyebrow">Chronologie</span>
+          <h2>Le récit réel passe avant l'offre.</h2>
         </div>
+        <p>La pièce centrale du site n'est pas un service abstrait. C'est un chantier suivi, corrigé, et encore en cours.</p>
       </div>
-      <div class="proof-grid">
-        <article class="proof-box method">
-          <div class="method-mini">
-            <div class="method-step">
-              <strong>Observer</strong>
-              <span>Ce qui casse vraiment</span>
-            </div>
-            <div class="method-step">
-              <strong>Corriger</strong>
-              <span>Sans masquer le risque</span>
-            </div>
-            <div class="method-step">
-              <strong>Réduire</strong>
-              <span>Le pompier de service</span>
-            </div>
+      <div class="timeline-grid">
+        <article class="card timeline-card">
+          <span class="timeline-date">22/06/2026</span>
+          <h3>Ouvrir large</h3>
+          <p>Plusieurs marchés sont lancés en parallèle. Les seuils hérités des simulations se heurtent aux conditions réelles.</p>
+        </article>
+        <article class="card timeline-card">
+          <span class="timeline-date">23/06/2026</span>
+          <h3>Comparer sur US500</h3>
+          <p>Deux versions sont mises à tourner en parallèle pour comparer des choix de réglage sur preuve réelle.</p>
+        </article>
+        <article class="card timeline-card">
+          <span class="timeline-date">06/07/2026</span>
+          <h3>Réduire le pompier</h3>
+          <p>Un bot séparé est ouvert pour détecter une dérive anormale et intervenir avant l'humain sur les cas encore manuels.</p>
+        </article>
+      </div>
+      <article class="card method-lead" style="margin-top:18px;">
+        <span class="eyebrow" style="background:rgba(255,255,255,0.08); color:#f6f1e7;">Méthode</span>
+        <h3 style="margin-top:14px;">Observer. Corriger. Documenter.</h3>
+        <p>La page Méthode contient la chronologie complète, sans chiffre financier, avec les retours en arrière, les risques assumés et le chantier encore ouvert pour réduire ce qui dépend d'une personne.</p>
+        <div class="hero-actions">
+          <a href="/methode/" class="btn-secondary">Lire la chronologie complète</a>
+        </div>
+      </article>
+    </section>
+
+    <section id="offres">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Déclinaisons</span>
+          <h2>Ce que ce savoir-faire permet de produire.</h2>
+        </div>
+        <p>Les offres restent là, mais elles viennent après la preuve. Elles montrent comment cette discipline de travail peut s'appliquer à un tiers.</p>
+      </div>
+      <div class="offers-grid">
+        <article class="card offer-card">
+          <span class="offer-kicker">Offre 1</span>
+          <h3>Protocole Pompier</h3>
+          <p class="offer-core">Quoi faire. Quand s'arrêter.</p>
+          <div class="offer-tags">
+            <span class="offer-tag">fragilités</span>
+            <span class="offer-tag">STOP</span>
           </div>
-          <div class="proof-callout">
-            <strong style="margin-bottom:6px;">Important</strong>
-            <p>Aucun chiffre d'argent. Aucune promesse de résultat. Seulement une méthode de travail observable.</p>
+          <div class="offer-point">
+            <strong>Livrable</strong>
+            <p>Le protocole écrit d'intervention.</p>
           </div>
         </article>
-        <article class="proof-box">
-          <span class="proof-live-label">Indicateur</span>
-          <div class="proof-live-head">
-            <span class="proof-live-dot" aria-hidden="true"></span>
-            <div class="proof-live-value">Temps de tranquillité<strong>EN HAUSSE</strong></div>
+        <article class="card offer-card">
+          <span class="offer-kicker">Offre 2</span>
+          <h3>Carnet de Stabilité</h3>
+          <p class="offer-core">Une trace claire.</p>
+          <div class="offer-tags">
+            <span class="offer-tag">incidents</span>
+            <span class="offer-tag">GO / NO GO</span>
           </div>
-          <div class="proof-live-sub">entre deux interventions humaines</div>
-          <div class="proof-live-meta">
-            <span>État actuel : stable</span>
-            <span>Intervention humaine : non requise</span>
+          <div class="offer-point">
+            <strong>Livrable</strong>
+            <p>Le carnet vivant des dérives et des corrections.</p>
           </div>
-          <div class="hero-actions" style="margin-top:18px; margin-bottom:0;">
-            <a href="/methode/" class="btn-primary">Lire la méthode</a>
+        </article>
+        <article class="card offer-card">
+          <span class="offer-kicker">Offre 3</span>
+          <h3>Maintenance évolutive</h3>
+          <p class="offer-core">Plus d'air entre deux alertes.</p>
+          <div class="offer-tags">
+            <span class="offer-tag">ajustements</span>
+            <span class="offer-tag">tranquillité</span>
+          </div>
+          <div class="offer-point">
+            <strong>Livrable</strong>
+            <p>Le suivi périodique des dérives encore actives.</p>
           </div>
         </article>
       </div>
     </section>
 
     <section id="contact">
-      <div class="closing-box">
-        <span class="eyebrow">Contact</span>
-        <h3>Décrivez votre situation.</h3>
-        <div class="hero-actions" style="margin-bottom:0;">
+      <div class="closing">
+        <span class="eyebrow">Contact écrit uniquement</span>
+        <h2 style="margin-top:14px;">Décrivez votre situation.</h2>
+        <p style="max-width:64ch;">Si quelque chose tourne déjà chez vous mais continue de dépendre d'une présence humaine régulière, écrivez ce qui tient, ce qui dérive, et ce qui vous remet encore en pompier de service.</p>
+        <div class="hero-actions">
           <a href="mailto:atelier@solvai.fr?subject=Situation%20%C3%A0%20structurer&body=Bonjour,%0A%0AVoici ce qui tourne d%C3%A9j%C3%A0 :%0A%0AVoici quand je dois encore intervenir :%0A%0AVoici ce que je veux rendre moins d%C3%A9pendant de moi :%0A" class="btn-primary">Décrivez votre situation</a>
         </div>
       </div>
@@ -1142,9 +825,7 @@
       <div class="footer-grid">
         <div>
           <strong style="display:block; margin-bottom:8px;">SOLVAI</strong>
-          <div class="footer-notes">
-            <span>Moins de feux à éteindre.</span>
-          </div>
+          <p>Un chantier réel de fiabilité, documenté, avec un statut différencié par actif et des décisions écrites noir sur blanc.</p>
         </div>
         <div class="footer-meta">
           <p>Contact : atelier@solvai.fr</p>
