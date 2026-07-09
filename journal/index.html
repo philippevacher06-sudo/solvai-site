@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journal | SOLVAI</title>
+<meta name="description" content="Journal d'ingenierie SOLVAI: evenements techniques, corrections, etiquettes de version et incidents resolus.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #172129;
+    --muted: #5a6770;
+    --paper: #f5efe8;
+    --card: rgba(255,255,255,0.80);
+    --line: rgba(23,33,41,0.12);
+    --olive: #607149;
+    --ember: #995d3d;
+    --signal: #86d29c;
+    --shadow: 0 22px 60px rgba(23,33,41,0.09);
+    --font-body: "Manrope", sans-serif;
+    --font-display: "Fraunces", serif;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background:
+      radial-gradient(circle at top left, rgba(96,113,73,0.10), transparent 18%),
+      radial-gradient(circle at top right, rgba(153,93,61,0.08), transparent 22%),
+      linear-gradient(180deg, #f8f3ec 0%, #f2ece3 52%, #ece4d9 100%);
+    line-height: 1.65;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    width: min(1040px, calc(100% - 28px));
+    margin: 0 auto;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(14px);
+    background: rgba(248,243,236,0.84);
+    border-bottom: 1px solid rgba(23,33,41,0.07);
+  }
+
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px 0;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--ember); }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .hero {
+    padding: 38px 0 20px;
+  }
+
+  .hero-card,
+  .entry,
+  .closing {
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+  }
+
+  .hero-card,
+  .entry,
+  .closing {
+    background: var(--card);
+  }
+
+  .hero-card,
+  .closing {
+    padding: 32px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 13px;
+    border-radius: 999px;
+    background: rgba(96,113,73,0.12);
+    color: var(--olive);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+  }
+
+  h1, h2 {
+    margin: 0;
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+
+  h1 {
+    font-size: clamp(42px, 6vw, 66px);
+    line-height: 0.96;
+    margin: 18px 0 16px;
+    max-width: 10ch;
+  }
+
+  h2 {
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  p { margin: 0; color: var(--muted); }
+
+  .journal {
+    display: grid;
+    gap: 16px;
+    padding: 16px 0 26px;
+  }
+
+  .entry {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 92px 18px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+  }
+
+  .entry time {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ember);
+    padding-top: 4px;
+  }
+
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: var(--signal);
+    box-shadow: 0 0 0 8px rgba(134,210,156,0.12);
+    margin-top: 4px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 12px;
+    border-radius: 999px;
+    background: rgba(23,33,41,0.05);
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--muted);
+  }
+
+  .closing {
+    margin-bottom: 34px;
+    background: linear-gradient(145deg, #f2eadc, #ffffff);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 800;
+    background: var(--ink);
+    color: #fff;
+    margin-top: 18px;
+  }
+
+  @media (max-width: 720px) {
+    .wrap { width: min(1040px, calc(100% - 22px)); }
+    .nav { display: none; }
+    .entry {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .dot { display: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="/" class="logo">SOL<span>VAI</span></a>
+      <div class="nav">
+        <a href="/">Accueil</a>
+        <a href="/methode/">Methode</a>
+        <a href="/journal/">Journal</a>
+        <a href="/observatoire/">Observatoire</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero wrap">
+    <div class="hero-card">
+      <span class="eyebrow">Journal d'ingenierie</span>
+      <h1>Le fil factuel avant l'argumentaire.</h1>
+      <p>Chaque entree relie un evenement technique a une action concrete: ce qui a ete vu, ce qui a ete change, et ce qui a ete considere comme resolu. C'est ce niveau de trace qui rend le systeme credible.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="journal">
+      <article class="entry">
+        <time>09:06</time>
+        <div class="dot" aria-hidden="true"></div>
+        <div>
+          <h2>Incident de collecte resolu</h2>
+          <p>Une latence ponctuelle dans la remontee des traces a ete detectee, consignee puis refermee apres reprise de la file technique.</p>
+          <div class="tags">
+            <span class="tag">incident visible</span>
+            <span class="tag">resolution tracee</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <time>08:41</time>
+        <div class="dot" aria-hidden="true"></div>
+        <div>
+          <h2>Version v27 etiquetee</h2>
+          <p>Clarification des definitions de compteurs, uniformisation des libelles et nettoyage du flux pour garder uniquement les evenements qui aident a comprendre le systeme.</p>
+          <div class="tags">
+            <span class="tag">version</span>
+            <span class="tag">qualite de lecture</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <time>07:58</time>
+        <div class="dot" aria-hidden="true"></div>
+        <div>
+          <h2>Serie de tests rejouee</h2>
+          <p>Le lot du matin a ete relance avec journalisation complete pour verifier que les indicateurs affiches reposent bien sur un etat coherent.</p>
+          <div class="tags">
+            <span class="tag">tests</span>
+            <span class="tag">verification</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <time>Hier</time>
+        <div class="dot" aria-hidden="true"></div>
+        <div>
+          <h2>Nettoyage du journal</h2>
+          <p>Les evenements repetitifs ont ete regroupes pour eviter le bruit. Le visiteur doit comprendre rapidement ce qui compte, pas defiler un mur de lignes opaques.</p>
+          <div class="tags">
+            <span class="tag">lisibilite</span>
+            <span class="tag">sobriete</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <div class="closing">
+        <span class="eyebrow">Suite logique</span>
+        <h2 style="margin-top:14px;">Voir les definitions et l'historique detaille.</h2>
+        <p>L'observatoire complete ce journal avec les metriques, les incidents clos et les versions, dans un vocabulaire strictement technique.</p>
+        <a href="/observatoire/" class="btn">Ouvrir l'observatoire</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -3,36 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Méthode | SOLVAI</title>
-<meta name="description" content="La méthode SOLVAI : observer ce qui casse réellement, corriger, documenter chaque décision et réduire ce qui dépend encore d'une personne.">
+<title>Methode | SOLVAI</title>
+<meta name="description" content="La methode SOLVAI: observer, corriger, documenter et montrer des preuves techniques avant toute promesse commerciale.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #16181b;
-    --muted: #5d6470;
-    --paper: #f6efe1;
-    --card: rgba(255, 255, 255, 0.76);
-    --line: rgba(22, 24, 27, 0.12);
-    --olive: #667443;
-    --ember: #8a4d2e;
-    --shadow: 0 22px 60px rgba(22, 24, 27, 0.08);
+    --ink: #161f26;
+    --muted: #5b6871;
+    --paper: #f5efe8;
+    --card: rgba(255,255,255,0.78);
+    --line: rgba(22,31,38,0.12);
+    --olive: #5f7148;
+    --ember: #9a5d3d;
+    --shadow: 0 22px 60px rgba(22,31,38,0.09);
     --font-body: "Manrope", sans-serif;
     --font-display: "Fraunces", serif;
   }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
   body {
     margin: 0;
     font-family: var(--font-body);
     color: var(--ink);
     background:
-      radial-gradient(circle at top left, rgba(102, 116, 67, 0.12), transparent 18%),
-      radial-gradient(circle at top right, rgba(138, 77, 46, 0.08), transparent 22%),
-      linear-gradient(180deg, #f8f3ea 0%, #f4eddf 50%, #efe6d7 100%);
+      radial-gradient(circle at top left, rgba(95, 113, 72, 0.10), transparent 18%),
+      radial-gradient(circle at top right, rgba(154, 93, 61, 0.08), transparent 22%),
+      linear-gradient(180deg, #f8f3ec 0%, #f2ece3 52%, #ece4d9 100%);
     line-height: 1.68;
     -webkit-font-smoothing: antialiased;
   }
@@ -49,8 +47,8 @@
     top: 0;
     z-index: 10;
     backdrop-filter: blur(14px);
-    background: rgba(248, 243, 234, 0.82);
-    border-bottom: 1px solid rgba(22, 24, 27, 0.06);
+    background: rgba(248, 243, 236, 0.84);
+    border-bottom: 1px solid rgba(22,31,38,0.07);
   }
 
   .topbar-inner {
@@ -83,7 +81,7 @@
     text-decoration: none;
     color: var(--muted);
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 800;
   }
 
   .nav-cta {
@@ -97,11 +95,11 @@
     font-weight: 800;
     background: var(--ink);
     color: #fff;
-    box-shadow: 0 14px 26px rgba(22, 24, 27, 0.13);
+    box-shadow: 0 14px 26px rgba(22,31,38,0.13);
   }
 
   .hero {
-    padding: 42px 0 22px;
+    padding: 38px 0 20px;
   }
 
   .hero-card,
@@ -115,8 +113,8 @@
   .hero-card {
     padding: 36px;
     background:
-      linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(236, 227, 209, 0.9)),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+      linear-gradient(150deg, rgba(255,255,255,0.84), rgba(236,227,214,0.92)),
+      linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0));
   }
 
   .eyebrow {
@@ -124,7 +122,7 @@
     align-items: center;
     padding: 8px 13px;
     border-radius: 999px;
-    background: rgba(102, 116, 67, 0.12);
+    background: rgba(95,113,72,0.12);
     color: var(--olive);
     font-size: 12px;
     text-transform: uppercase;
@@ -159,12 +157,20 @@
   .intro {
     max-width: 66ch;
     font-size: 18px;
-    color: rgba(22, 24, 27, 0.84);
+    color: rgba(22,31,38,0.84);
   }
 
-  main section {
-    padding: 18px 0;
+  .note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 20px;
+    background: rgba(154,93,61,0.08);
+    border: 1px solid rgba(154,93,61,0.18);
+    font-size: 13px;
+    color: rgba(22,31,38,0.8);
   }
+
+  main section { padding: 16px 0; }
 
   .section-card {
     padding: 26px;
@@ -185,15 +191,33 @@
     margin-top: 10px;
   }
 
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 800;
+    background: rgba(255,255,255,0.72);
+    border: 1px solid var(--line);
+  }
+
   .closing {
     padding: 28px;
     margin: 18px 0 34px;
-    background: linear-gradient(145deg, #f1e8d8, #ffffff);
+    background: linear-gradient(145deg, #f2eadc, #ffffff);
   }
 
-  footer {
-    padding: 0 0 34px;
-  }
+  footer { padding: 0 0 34px; }
 
   .footer-grid {
     display: grid;
@@ -201,7 +225,7 @@
     align-items: end;
     gap: 18px;
     padding-top: 24px;
-    border-top: 1px solid rgba(22, 24, 27, 0.1);
+    border-top: 1px solid rgba(22,31,38,0.10);
   }
 
   .footer-meta {
@@ -227,73 +251,76 @@
       <a href="/" class="logo">SOL<span>VAI</span></a>
       <div class="nav">
         <a href="/">Accueil</a>
-        <a href="#contenu">Méthode</a>
-        <a href="mailto:atelier@solvai.fr?subject=Situation%20%C3%A0%20structurer&body=Bonjour,%0A%0AVoici ce qui tourne d%C3%A9j%C3%A0 :%0A%0AVoici quand je dois encore intervenir :%0A%0AVoici ce que je veux rendre moins d%C3%A9pendant de moi :%0A" class="nav-cta">Décrivez votre situation</a>
+        <a href="/methode/">Methode</a>
+        <a href="/journal/">Journal</a>
+        <a href="/observatoire/">Observatoire</a>
+        <a href="mailto:atelier@solvai.fr?subject=Situation%20a%20structurer&body=Bonjour,%0A%0AVoici ce qui tourne deja :%0A%0AVoici ce qui m'oblige encore a intervenir :%0A%0AVoici les traces ou journaux disponibles :%0A" class="nav-cta">Contact</a>
       </div>
     </div>
   </div>
 
   <header class="hero wrap">
     <div class="hero-card">
-      <span class="eyebrow">Méthode</span>
-      <h1>Observer ce qui casse. Corriger. Documenter.</h1>
-      <p class="intro">
-        Depuis mai 2026, nous travaillons sur un système de décision automatisé qui exécute des opérations sur les marchés financiers, avec un objectif simple : réduire, étape par étape, le besoin d'intervention humaine sans jamais prétendre l'avoir supprimé.
-      </p>
-      <p class="intro" style="margin-top:14px;">
-        Ce que nous montrons ici n'est pas un résultat. C'est un chantier, avec ses erreurs corrigées et son travail encore en cours.
-      </p>
+      <span class="eyebrow">Methode</span>
+      <h1>Observer. Corriger. Documenter. Montrer.</h1>
+      <p class="intro">La methode SOLVAI part d'un principe simple: ne pas vendre une promesse abstraite, mais rendre visible un systeme, ses frictions, ses corrections et la discipline qui permet de le fiabiliser dans le temps.</p>
+      <p class="intro" style="margin-top:14px;">Le tableau de bord est la porte d'entree. Le journal raconte les evenements. L'observatoire expose ensuite les definitions, les incidents et l'historique de versions.</p>
+      <p class="note">Environnement de demonstration, aucune activite financiere reelle. Le langage, les indicateurs et les visualisations restent volontairement techniques et non financiers.</p>
     </div>
   </header>
 
-  <main class="wrap" id="contenu">
+  <main class="wrap">
     <section>
       <article class="section-card">
-        <h2>Ouvrir large, puis se heurter au réel</h2>
-        <p>Le système a d'abord été ouvert largement : plusieurs marchés suivis en parallèle, avec des seuils calqués sur des simulations passées. En conditions réelles, deux constats sont vite apparus :</p>
+        <h2>1. Commencer par ce qui vit</h2>
+        <p>L'accueil ne joue plus le role d'une vitrine classique. Il montre d'abord un tableau de bord actif, des compteurs de supervision et un fil horodate. L'utilisateur comprend avant meme de scroller qu'il ne regarde pas une maquette statique.</p>
+      </article>
+
+      <article class="section-card">
+        <h2>2. Choisir des preuves lisibles</h2>
+        <p>Les indicateurs mis en avant doivent parler d'ingenierie:</p>
         <ul>
-          <li>presque toutes les opérations étaient refusées à l'entrée : les seuils fixés en simulation ne correspondaient pas aux conditions réelles d'exécution ;</li>
-          <li>une fois ce premier réglage corrigé, le déclencheur retenu restait bien trop strict : sur plusieurs milliers d'évaluations, aucune décision n'était prise.</li>
+          <li>disponibilite glissante du systeme ;</li>
+          <li>cycles ou scenarios executes ;</li>
+          <li>versions deployees et comparees ;</li>
+          <li>volume de traces traitees ;</li>
+          <li>taux de tests passes ;</li>
+          <li>temps de fonctionnement continu.</li>
         </ul>
-        <p style="margin-top:14px;">Les deux problèmes ont été documentés, datés, et corrigés le jour même.</p>
       </article>
 
       <article class="section-card">
-        <h2>Assouplir, puis revenir en arrière</h2>
-        <p>Un réglage plus souple a été testé pour faire réagir le système. Il a permis d'obtenir des décisions, mais sans preuve solide derrière lui. Après quelques jours d'observation, le réglage d'origine, le seul confirmé par une simulation longue et fiable, a été rétabli. L'assouplissement est resté ce qu'il était : une exploration, pas une méthode.</p>
+        <h2>3. Rendre les incidents utiles a la confiance</h2>
+        <p>Une anomalie documentee puis resolue vaut davantage qu'une page qui n'affiche jamais aucun accroc. C'est pourquoi le journal d'ingenierie n'est pas un espace marketing, mais un flux factuel: date, evenement, action prise, statut de resolution.</p>
       </article>
 
       <article class="section-card">
-        <h2>Comparer plutôt que supposer</h2>
-        <p>Plutôt que de choisir une seule version sur intuition, deux réglages différents, un prudent, un plus risqué, ont été mis à tourner en parallèle, sur le même marché, pour trancher sur preuve plutôt que sur pari.</p>
+        <h2>4. Garder une architecture simple</h2>
+        <p>La structure cible tient en peu d'entrees: accueil, methode, journal, contact. La page observatoire reste accessible comme espace de preuve detaillee, sans surcharger la navigation principale.</p>
       </article>
 
       <article class="section-card">
-        <h2>Un risque assumé, écrit noir sur blanc</h2>
-        <p>Une version test a été déployée avec un risque techniquement non plafonné en cas de mouvement de marché prolongé. Ce risque n'a pas été minimisé : il a été écrit, daté, et limité au seul compte de test, jamais un compte réel.</p>
+        <h2>5. Viser une mise a jour sobre</h2>
+        <p>Le flux recommande pour brancher les donnees reelles est un SSE: leger, fiable, natif dans le navigateur et suffisant pour pousser des metriques et evenements serveur vers l'interface. Les animations restent courtes, sans clignotement ni agitation gratuite.</p>
       </article>
 
       <article class="section-card">
-        <h2>Le chantier actuel : réduire l'astreinte active</h2>
-        <p>Aujourd'hui, une partie du système tourne sans intervention quotidienne. Une autre en a encore besoin : quand un groupe de positions dérive anormalement, quelqu'un doit intervenir à la main.</p>
-        <p style="margin-top:14px;">Le travail en cours, commencé début juillet, consiste précisément à automatiser cette intervention : détecter la dérive, agir dessus, et alléger la position en difficulté sans attendre que quelqu'un s'en aperçoive. Ce chantier n'est pas terminé.</p>
-      </article>
-
-      <article class="section-card">
-        <h2>Ce que ça dit de notre façon de travailler</h2>
-        <p>Ce cas n'est pas un service que nous vendons. C'est la preuve qu'on applique, avant de le proposer à quelqu'un d'autre, un principe simple : observer ce qui casse réellement, corriger, documenter chaque décision, assumer ce qui reste risqué, et réduire, jamais prétendre supprimer, ce qui dépend encore d'une personne.</p>
+        <h2>6. Encadrer le risque de lecture</h2>
+        <p>Tout ce qui pourrait etre interprete comme une performance financiere doit rester hors champ. Le site parle d'automatisation, de supervision, de tests, de logs et de disponibilite. Pas de rendement, pas de gains, pas de courbe ambigue.</p>
+        <div class="cta-row">
+          <a href="/observatoire/" class="btn-secondary">Voir l'observatoire</a>
+          <a href="/journal/" class="btn-secondary">Lire le journal</a>
+        </div>
       </article>
     </section>
 
     <section id="contact">
       <div class="closing">
-        <span class="eyebrow">Contact écrit uniquement</span>
-        <h2 style="margin-top:14px;">Décrivez votre situation.</h2>
-        <p style="margin-top:12px; max-width:62ch;">
-          Si une automatisation tourne déjà chez vous mais continue de vous rappeler à l'ordre, écrivez-nous ce qui dérive, ce que vous surveillez encore et ce que vous voulez rendre moins dépendant de vous.
-        </p>
+        <span class="eyebrow">Contact</span>
+        <h2 style="margin-top:14px;">Partez de vos preuves techniques.</h2>
+        <p style="margin-top:12px; max-width:62ch;">Si vous avez deja des traces, des incidents repetes, des alertes ou un rituel de supervision trop lourd, c'est ce materiau-la qui sert de point de depart.</p>
         <p style="margin-top:18px;">
-          <a href="mailto:atelier@solvai.fr?subject=Situation%20%C3%A0%20structurer&body=Bonjour,%0A%0AVoici ce qui tourne d%C3%A9j%C3%A0 :%0A%0AVoici quand je dois encore intervenir :%0A%0AVoici ce que je veux rendre moins d%C3%A9pendant de moi :%0A" class="nav-cta">Décrivez votre situation</a>
+          <a href="mailto:atelier@solvai.fr?subject=Situation%20a%20structurer&body=Bonjour,%0A%0AVoici ce qui tourne deja :%0A%0AVoici ce qui m'oblige encore a intervenir :%0A%0AVoici les traces ou journaux disponibles :%0A" class="nav-cta">Ecrire a SOLVAI</a>
         </p>
       </div>
     </section>
@@ -302,7 +329,7 @@
       <div class="footer-grid">
         <div>
           <strong style="display:block; margin-bottom:8px;">SOLVAI</strong>
-          <p>Observer ce qui casse réellement, corriger, documenter, et réduire ce qui dépend encore d'une personne.</p>
+          <p>Un systeme qui tourne, des preuves qui se lisent, une methode qui s'assume.</p>
         </div>
         <div class="footer-meta">
           <p>Contact : atelier@solvai.fr</p>

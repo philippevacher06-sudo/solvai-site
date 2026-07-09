@@ -3,27 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOLVAI | Moins de feux à éteindre</title>
-<meta name="description" content="SOLVAI montre un chantier réel de fiabilité appliquée à des systèmes automatisés déjà en marche, avec un statut différencié par actif et des preuves d'ingénierie documentées.">
+<title>SOLVAI | Systeme sous surveillance active</title>
+<meta name="description" content="SOLVAI montre un systeme automatise en demonstration a travers une interface inspiree des plateformes de marche: monitoring vivant, journal factuel et observatoire technique.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #17191c;
-    --muted: #5e6672;
-    --paper: #f6efe2;
-    --paper-strong: #ece2d0;
-    --card: rgba(255, 255, 255, 0.74);
-    --line: rgba(23, 25, 28, 0.12);
-    --olive: #657444;
-    --olive-deep: #4c5a31;
-    --ember: #8a4c2c;
-    --night: #20252c;
-    --night-soft: #2c3139;
-    --shadow: 0 22px 60px rgba(23, 25, 28, 0.09);
+    --bg: #03090d;
+    --bg-deep: #07131a;
+    --bg-panel: rgba(10, 24, 31, 0.88);
+    --bg-soft: rgba(8, 19, 25, 0.72);
+    --line: rgba(78, 113, 126, 0.22);
+    --line-strong: rgba(75, 255, 111, 0.25);
+    --text: #f4fbf8;
+    --muted: #9fb5b7;
+    --muted-strong: #c9d8d9;
+    --signal: #43ff4d;
+    --signal-soft: rgba(67, 255, 77, 0.14);
+    --signal-bright: #8aff92;
+    --cyan: #62f7ff;
+    --danger: #ff6d6d;
+    --warning: #ffd166;
+    --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
     --font-body: "Manrope", sans-serif;
-    --font-display: "Fraunces", serif;
+    --font-display: "Space Grotesk", sans-serif;
   }
 
   * { box-sizing: border-box; }
@@ -32,48 +36,100 @@
   body {
     margin: 0;
     font-family: var(--font-body);
-    color: var(--ink);
+    color: var(--text);
     background:
-      radial-gradient(circle at top right, rgba(138, 76, 44, 0.08), transparent 22%),
-      radial-gradient(circle at top left, rgba(101, 116, 68, 0.12), transparent 18%),
-      linear-gradient(180deg, #f8f3ea 0%, #f4eddf 46%, #efe6d7 100%);
+      radial-gradient(circle at 14% 18%, rgba(67, 255, 77, 0.16), transparent 0 24%),
+      radial-gradient(circle at 82% 22%, rgba(98, 247, 255, 0.12), transparent 0 26%),
+      linear-gradient(180deg, #051017 0%, #03090d 60%, #02070a 100%);
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(77, 114, 127, 0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(77, 114, 127, 0.09) 1px, transparent 1px);
+    background-size: 62px 62px;
+    mask-image: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.1) 35%, transparent 72%);
+    pointer-events: none;
+    z-index: 0;
   }
 
   a { color: inherit; }
 
   .wrap {
-    width: min(1120px, calc(100% - 28px));
+    width: min(1220px, calc(100% - 30px));
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .risk-strip {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    color: var(--muted-strong);
+    font-size: 12px;
+    letter-spacing: 0.03em;
+  }
+
+  .risk-strip .wrap {
+    padding: 10px 0;
+    text-align: center;
   }
 
   .topbar {
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 20;
     backdrop-filter: blur(14px);
-    background: rgba(248, 243, 234, 0.82);
-    border-bottom: 1px solid rgba(23, 25, 28, 0.06);
+    background: rgba(3, 9, 13, 0.74);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
   .topbar-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 14px;
-    padding: 16px 0;
+    gap: 18px;
+    padding: 18px 0;
   }
 
   .logo {
-    font-family: var(--font-display);
-    font-size: 30px;
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     text-decoration: none;
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
   }
 
-  .logo span { color: var(--ember); }
+  .logo-mark {
+    display: grid;
+    grid-template-columns: repeat(3, 7px);
+    gap: 3px;
+    align-items: end;
+  }
+
+  .logo-mark span {
+    display: block;
+    width: 7px;
+    background: linear-gradient(180deg, var(--signal-bright), var(--signal));
+    border-radius: 999px;
+    box-shadow: 0 0 12px rgba(67, 255, 77, 0.45);
+  }
+
+  .logo-mark span:nth-child(1) { height: 11px; }
+  .logo-mark span:nth-child(2) { height: 18px; }
+  .logo-mark span:nth-child(3) { height: 26px; }
+
+  .logo span:last-child {
+    color: var(--signal);
+  }
 
   .nav {
     display: flex;
@@ -90,130 +146,119 @@
     font-weight: 700;
   }
 
-  .nav-cta,
   .btn-primary,
   .btn-secondary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 14px 22px;
-    border-radius: 999px;
+    border-radius: 14px;
     text-decoration: none;
     font-size: 15px;
     font-weight: 800;
     transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
   }
 
-  .nav-cta,
   .btn-primary {
-    background: var(--ink);
-    color: #fff;
-    box-shadow: 0 14px 26px rgba(23, 25, 28, 0.13);
+    background: linear-gradient(180deg, var(--signal-bright), var(--signal));
+    color: #041108;
+    box-shadow: 0 0 0 1px rgba(67, 255, 77, 0.22), 0 18px 40px rgba(67, 255, 77, 0.18);
   }
 
   .btn-secondary {
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid var(--line);
-    color: var(--ink);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(98, 247, 255, 0.18);
+    color: var(--text);
   }
 
-  .nav-cta:hover,
   .btn-primary:hover,
   .btn-secondary:hover {
     transform: translateY(-1px);
   }
 
   .hero {
-    padding: 42px 0 22px;
+    padding: 34px 0 12px;
   }
 
-  .hero-grid,
-  .status-grid,
-  .proof-grid,
-  .timeline-grid,
-  .offers-grid,
-  .footer-grid {
-    display: grid;
-    gap: 18px;
-  }
-
-  .hero-grid {
-    grid-template-columns: 1.08fr 0.92fr;
-    align-items: stretch;
-  }
-
-  .panel,
-  .night-panel,
-  .card,
-  .closing {
-    border: 1px solid var(--line);
-    border-radius: 30px;
+  .hero-shell {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 28px;
+    background:
+      linear-gradient(90deg, rgba(3,9,13,0.92) 0%, rgba(3,9,13,0.8) 38%, rgba(6,16,23,0.42) 100%),
+      radial-gradient(circle at 16% 40%, rgba(67, 255, 77, 0.12), transparent 0 32%),
+      linear-gradient(180deg, rgba(14, 32, 40, 0.5), rgba(3, 9, 13, 0.9));
     box-shadow: var(--shadow);
   }
 
-  .panel {
-    padding: 38px;
-    background:
-      linear-gradient(145deg, rgba(255, 255, 255, 0.84), rgba(236, 226, 208, 0.9)),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
-  }
-
-  .night-panel {
-    position: relative;
-    overflow: hidden;
-    padding: 22px;
-    background: linear-gradient(180deg, var(--night) 0%, var(--night-soft) 100%);
-    color: #f6f1e7;
-  }
-
-  .night-panel::after {
+  .hero-shell::before {
     content: "";
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-    background-size: 28px 28px;
-    mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), transparent);
+      linear-gradient(rgba(70, 110, 122, 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(70, 110, 122, 0.12) 1px, transparent 1px);
+    background-size: 74px 74px;
+    opacity: 0.6;
     pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 24px;
+    padding: 34px 34px 180px;
+    position: relative;
+    z-index: 1;
   }
 
   .eyebrow {
     display: inline-flex;
     align-items: center;
-    padding: 8px 13px;
+    gap: 10px;
+    padding: 8px 12px;
     border-radius: 999px;
-    background: rgba(101, 116, 68, 0.12);
-    color: var(--olive-deep);
+    background: rgba(67,255,77,0.08);
+    border: 1px solid rgba(67,255,77,0.18);
+    color: var(--signal-bright);
     font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     font-weight: 800;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--signal);
+    box-shadow: 0 0 0 0 rgba(67,255,77,0.45);
+    animation: pulse 2.6s infinite;
   }
 
   h1, h2, h3 {
     margin: 0;
     font-family: var(--font-display);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
   }
 
   h1 {
-    font-size: clamp(42px, 5.6vw, 72px);
-    line-height: 0.92;
-    margin: 18px 0 14px;
-    max-width: 9ch;
+    margin-top: 18px;
+    font-size: clamp(46px, 7vw, 94px);
+    line-height: 0.95;
+    max-width: 8.6ch;
   }
 
   h2 {
-    font-size: clamp(28px, 4vw, 46px);
+    font-size: clamp(28px, 4vw, 48px);
     line-height: 0.98;
-    margin-bottom: 10px;
   }
 
   h3 {
     font-size: 24px;
-    line-height: 1;
-    margin-bottom: 8px;
+    line-height: 1.02;
   }
 
   p {
@@ -221,617 +266,837 @@
     color: var(--muted);
   }
 
-  .hero-title-strong,
-  .hero-title-soft,
-  .hero-title-accent {
-    display: block;
+  .hero-copy p {
+    max-width: 36ch;
+    margin-top: 18px;
+    color: var(--muted-strong);
+    font-size: 18px;
   }
 
-  .hero-title-strong { color: var(--ink); }
-  .hero-title-soft { color: rgba(23, 25, 28, 0.4); }
-  .hero-title-accent {
-    color: var(--olive-deep);
-    text-shadow: 0 10px 22px rgba(101, 116, 68, 0.12);
-  }
-
-  .lead {
-    max-width: 34ch;
-    font-size: 17px;
-    color: rgba(23, 25, 28, 0.82);
-  }
-
-  .hero-strip,
+  .hero-tags,
   .hero-actions,
-  .proof-tags,
-  .asset-tags,
-  .offer-tags {
+  .metric-strip,
+  .side-stats,
+  .journal-tags,
+  .footer-links {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
   }
 
-  .hero-strip { margin-top: 16px; }
-  .hero-actions { margin-top: 22px; }
+  .hero-tags {
+    margin-top: 20px;
+  }
 
-  .hero-chip,
-  .proof-tag,
-  .asset-tag,
-  .offer-tag {
+  .tag {
     display: inline-flex;
     align-items: center;
     padding: 10px 14px;
     border-radius: 999px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--muted-strong);
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 700;
   }
 
-  .hero-chip {
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid var(--line);
-    color: var(--ink);
+  .hero-actions {
+    margin-top: 24px;
   }
 
-  .monitor {
+  .disclaimer {
+    margin-top: 20px;
+    padding: 14px 16px;
+    max-width: 58ch;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .terminal {
     position: relative;
-    z-index: 1;
-    display: grid;
-    gap: 14px;
-  }
-
-  .monitor-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-
-  .monitor-title {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 800;
-    color: rgba(246, 241, 231, 0.7);
-  }
-
-  .monitor-note {
-    padding: 8px 12px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-    color: rgba(246, 241, 231, 0.84);
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .status-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .asset-card {
-    position: relative;
-    overflow: hidden;
-    padding: 18px;
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 24px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba(9, 23, 30, 0.92), rgba(4, 12, 16, 0.98));
+    padding: 18px;
+    min-height: 480px;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(98,247,255,0.06);
   }
 
-  .asset-card::before {
+  .terminal::before {
     content: "";
     position: absolute;
-    inset: auto -30px -30px auto;
-    width: 110px;
-    height: 110px;
-    border-radius: 999px;
-    background: radial-gradient(circle, rgba(198, 230, 118, 0.16), transparent 68%);
+    inset: 0;
+    background:
+      radial-gradient(circle at 100% 0, rgba(98,247,255,0.12), transparent 0 28%),
+      radial-gradient(circle at 0 100%, rgba(67,255,77,0.12), transparent 0 34%);
     pointer-events: none;
   }
 
-  .asset-label {
-    display: inline-flex;
+  .terminal-top {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
-    padding: 7px 11px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .terminal-title {
     font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(246, 241, 231, 0.76);
+    color: var(--muted);
+    font-weight: 800;
   }
 
-  .asset-status {
-    font-family: var(--font-display);
-    font-size: 34px;
-    line-height: 0.94;
-    margin-bottom: 8px;
-    color: #fff;
+  .dots {
+    display: flex;
+    gap: 8px;
   }
 
-  .asset-status.safe { color: #c6e676; }
-  .asset-status.watch { color: #f3c27b; }
-
-  .asset-sub {
-    font-size: 14px;
-    color: rgba(246, 241, 231, 0.72);
-    min-height: 42px;
+  .dots span {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.22);
   }
 
-  .asset-tags {
-    margin-top: 12px;
+  .terminal-grid {
+    display: grid;
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 14px;
+    height: calc(100% - 30px);
   }
 
-  .asset-tag {
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(246, 241, 231, 0.86);
+  .watchlist,
+  .chart-shell {
+    border-radius: 18px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
   }
 
-  .story-strip {
-    margin-top: 6px;
-    padding-top: 14px;
-    border-top: 1px solid rgba(255,255,255,0.08);
+  .watchlist {
+    padding: 14px;
+    display: grid;
+    gap: 12px;
+    align-content: start;
   }
 
-  .story-label {
-    display: block;
-    margin-bottom: 8px;
+  .watch-head {
+    color: var(--muted);
     font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(246, 241, 231, 0.52);
+    letter-spacing: 0.08em;
+    font-weight: 800;
   }
 
-  .story-rotator {
+  .watch-item {
+    padding: 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .watch-item.active {
+    border-color: rgba(67,255,77,0.24);
+    background: rgba(67,255,77,0.08);
+    box-shadow: inset 0 0 0 1px rgba(67,255,77,0.08);
+  }
+
+  .watch-symbol {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .watch-item small {
+    display: block;
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .up { color: var(--signal-bright); }
+  .flat { color: var(--cyan); }
+  .down { color: var(--danger); }
+
+  .chart-shell {
+    padding: 14px;
+    display: grid;
+    gap: 12px;
     position: relative;
-    height: 30px;
   }
 
-  .story-line {
+  .quote-bar {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .quote {
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .quote-label {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+  }
+
+  .quote strong {
+    display: block;
+    margin-top: 6px;
+    font-family: var(--font-display);
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .chart {
+    position: relative;
+    height: 276px;
+    border-radius: 18px;
+    overflow: hidden;
+    background:
+      linear-gradient(rgba(97, 247, 255, 0.11) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(97, 247, 255, 0.11) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0));
+    background-size: 54px 54px, 54px 54px, auto;
+  }
+
+  .chart svg {
     position: absolute;
     inset: 0;
-    font-size: 22px;
-    line-height: 1.05;
-    font-family: var(--font-display);
-    color: #f6f1e7;
-    opacity: 0;
-    transform: translateY(10px);
-    animation: storyCycle 16s infinite;
+    width: 100%;
+    height: 100%;
   }
 
-  .story-line strong { color: #c6e676; }
-  .story-line.one { animation-delay: 0s; }
-  .story-line.two { animation-delay: 4s; }
-  .story-line.three { animation-delay: 8s; }
-  .story-line.four { animation-delay: 12s; }
+  .chart-axis {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    display: grid;
+    gap: 36px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+  }
 
-  main section { padding: 18px 0; }
+  .chart-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .chart-footer strong {
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: 18px;
+  }
+
+  .wave-band {
+    position: absolute;
+    inset: auto -3% -18px -3%;
+    height: 230px;
+    pointer-events: none;
+  }
+
+  .wave-band svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(0 0 20px rgba(67,255,77,0.26));
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+  }
+
+  section {
+    padding: 18px 0;
+  }
 
   .section-head {
     display: flex;
     justify-content: space-between;
     align-items: end;
     gap: 18px;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
 
-  .card {
-    padding: 26px;
-    background: var(--card);
+  .section-head p {
+    max-width: 48ch;
   }
 
-  .proof-grid,
-  .timeline-grid,
-  .offers-grid {
+  .metric-strip {
+    margin-top: -86px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .metric-card,
+  .journal-card,
+  .proof-card,
+  .contact-card {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 22px;
+    background: var(--bg-panel);
+    box-shadow: var(--shadow);
+  }
+
+  .metric-card {
+    flex: 1 1 180px;
+    min-width: 180px;
+    padding: 18px;
+    backdrop-filter: blur(14px);
+  }
+
+  .metric-card span {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+  }
+
+  .metric-card strong {
+    display: block;
+    margin-top: 10px;
+    font-family: var(--font-display);
+    font-size: 38px;
+    line-height: 0.95;
+  }
+
+  .metric-card p {
+    margin-top: 8px;
+    font-size: 13px;
+  }
+
+  .journal-layout,
+  .proof-grid {
+    display: grid;
+    gap: 16px;
+  }
+
+  .journal-layout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  }
+
+  .timeline {
+    display: grid;
+    gap: 14px;
+  }
+
+  .journal-card {
+    padding: 22px;
+  }
+
+  .journal-item {
+    display: grid;
+    grid-template-columns: 78px 14px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+  }
+
+  .journal-item + .journal-item {
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .journal-time {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--signal-bright);
+  }
+
+  .journal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    margin-top: 3px;
+    background: var(--signal);
+    box-shadow: 0 0 0 8px rgba(67,255,77,0.12);
+  }
+
+  .journal-item h3 {
+    margin-bottom: 6px;
+  }
+
+  .journal-side {
+    display: grid;
+    gap: 16px;
+  }
+
+  .side-stats {
+    margin-top: 14px;
+  }
+
+  .side-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--muted-strong);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .proof-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .proof-card {
-    animation: floatCard 7.6s ease-in-out infinite;
+    padding: 24px;
+    background:
+      linear-gradient(180deg, rgba(10,24,31,0.94), rgba(4,12,16,0.96)),
+      radial-gradient(circle at 100% 0, rgba(67,255,77,0.08), transparent 0 30%);
+  }
+
+  .proof-kicker {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--signal-bright);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 800;
   }
 
   .proof-number {
     font-family: var(--font-display);
-    font-size: clamp(36px, 4vw, 54px);
+    font-size: 52px;
     line-height: 0.92;
-    color: var(--olive-deep);
     margin-bottom: 10px;
   }
 
-  .proof-number span {
-    display: block;
-    font-size: 13px;
-    font-family: var(--font-body);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ember);
-    margin-bottom: 6px;
-  }
-
-  .proof-tags {
-    margin-top: 12px;
-  }
-
-  .proof-tag {
-    background: rgba(101, 116, 68, 0.1);
-    color: var(--olive-deep);
-  }
-
-  .timeline-card {
-    animation: floatCard 8.2s ease-in-out infinite;
-  }
-
-  .timeline-date {
-    display: inline-flex;
-    margin-bottom: 10px;
-    padding: 8px 12px;
-    border-radius: 999px;
-    background: rgba(138, 76, 44, 0.1);
-    color: var(--ember);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .timeline-card p {
-    font-size: 14px;
-  }
-
-  .method-lead {
+  .contact-card {
     padding: 28px;
-    background: linear-gradient(180deg, var(--night) 0%, var(--night-soft) 100%);
-    color: #f6f1e7;
+    background:
+      linear-gradient(180deg, rgba(10,24,31,0.92), rgba(4,12,16,0.98)),
+      radial-gradient(circle at 100% 0, rgba(98,247,255,0.12), transparent 0 24%);
   }
 
-  .method-lead p {
-    color: rgba(246, 241, 231, 0.74);
+  footer {
+    padding: 0 0 34px;
   }
 
-  .method-lead .btn-secondary {
-    background: rgba(255,255,255,0.08);
-    border-color: rgba(255,255,255,0.08);
-    color: #fff;
-  }
-
-  .offers-wrap {
-    display: grid;
+  .footer-shell {
+    display: flex;
+    justify-content: space-between;
     gap: 18px;
-  }
-
-  .offer-card {
-    position: relative;
-    overflow: hidden;
-    animation: floatCard 8.8s ease-in-out infinite;
-  }
-
-  .offer-card::after {
-    content: "";
-    position: absolute;
-    inset: auto -40px -40px auto;
-    width: 140px;
-    height: 140px;
-    border-radius: 999px;
-    background: radial-gradient(circle, rgba(101, 116, 68, 0.14), transparent 68%);
-    pointer-events: none;
-  }
-
-  .offer-kicker {
-    display: inline-block;
-    margin-bottom: 10px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 800;
-    color: var(--ember);
-  }
-
-  .offer-core {
-    font-size: 14px;
-    color: var(--ink);
-    margin: 8px 0 12px;
-  }
-
-  .offer-tags {
-    margin-bottom: 10px;
-  }
-
-  .offer-tag {
-    background: rgba(23, 25, 28, 0.05);
-    border: 1px solid rgba(23, 25, 28, 0.08);
-    color: var(--muted);
-  }
-
-  .offer-point {
-    padding: 14px 16px;
-    border-radius: 22px;
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(23, 25, 28, 0.08);
-  }
-
-  .closing {
-    padding: 24px;
-    margin: 12px 0 28px;
-    background: linear-gradient(145deg, #f1e8d8, #ffffff);
-  }
-
-  footer { padding: 0 0 34px; }
-
-  .footer-grid {
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    gap: 18px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(23, 25, 28, 0.1);
-  }
-
-  .footer-meta {
+    flex-wrap: wrap;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,0.08);
     color: var(--muted);
     font-size: 14px;
   }
 
-  @keyframes storyCycle {
-    0% { opacity: 0; transform: translateY(12px); }
-    8% { opacity: 1; transform: translateY(0); }
-    17% { opacity: 1; transform: translateY(0); }
-    24% { opacity: 0; transform: translateY(-10px); }
-    100% { opacity: 0; transform: translateY(-10px); }
+  .footer-links a {
+    text-decoration: none;
   }
 
-  @keyframes floatCard {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(67,255,77,0.42); }
+    70% { box-shadow: 0 0 0 14px rgba(67,255,77,0); }
+    100% { box-shadow: 0 0 0 0 rgba(67,255,77,0); }
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1120px) {
     .hero-grid,
-    .status-grid,
+    .journal-layout,
     .proof-grid,
-    .timeline-grid,
-    .offers-grid,
-    .footer-grid {
+    .terminal-grid {
       grid-template-columns: 1fr;
     }
 
-    .section-head {
-      flex-direction: column;
-      align-items: start;
+    .metric-strip {
+      margin-top: 18px;
+    }
+
+    .hero-shell {
+      overflow: visible;
+    }
+
+    .hero-grid {
+      padding-bottom: 130px;
     }
   }
 
   @media (max-width: 720px) {
-    .wrap { width: min(1120px, calc(100% - 22px)); }
-    .panel,
-    .night-panel,
-    .card,
-    .closing { padding: 22px; }
-    .nav a:not(.nav-cta) { display: none; }
-    h1 { font-size: 38px; }
+    .wrap { width: min(1220px, calc(100% - 22px)); }
+    .nav a:not(.btn-primary) { display: none; }
+    .topbar-inner { padding: 14px 0; }
+    h1 { font-size: 44px; }
     h2 { font-size: 30px; }
-    .story-line { font-size: 18px; }
+    .hero-grid { padding: 22px 22px 110px; }
+    .terminal { min-height: auto; }
+    .quote-bar { grid-template-columns: 1fr; }
+    .journal-item { grid-template-columns: 1fr; }
+    .journal-dot { display: none; }
+    .wave-band { height: 150px; bottom: -8px; }
   }
 </style>
 </head>
 <body>
+  <div class="risk-strip">
+    <div class="wrap">Environnement de demonstration uniquement. Aucune activite financiere reelle. Les indicateurs publics concernent la supervision, les tests, les versions et la continuite d'un systeme automatise.</div>
+  </div>
+
   <div class="topbar">
     <div class="wrap topbar-inner">
-      <a href="#top" class="logo">SOL<span>VAI</span></a>
+      <a href="#top" class="logo">
+        <span class="logo-mark"><span></span><span></span><span></span></span>
+        <span>SOL</span><span>VAI</span>
+      </a>
       <div class="nav">
-        <a href="#statuts">Statuts</a>
-        <a href="#preuve">Preuves</a>
-        <a href="/methode/">Méthode</a>
-        <a href="#contact" class="nav-cta">Décrivez votre situation</a>
+        <a href="/methode/">Methode</a>
+        <a href="/journal/">Journal</a>
+        <a href="/observatoire/">Observatoire</a>
+        <a href="#contact" class="btn-primary">Contact</a>
       </div>
     </div>
   </div>
 
   <header class="hero wrap" id="top">
-    <div class="hero-grid">
-      <div class="panel">
-        <span class="eyebrow">Vitrine technologique</span>
-        <h1><span class="hero-title-strong">Moins de surveillance.</span><span class="hero-title-soft">Plus de</span><span class="hero-title-accent">tranquillité.</span></h1>
-        <p class="lead">SOLVAI montre un chantier réel de fiabilité sur des systèmes automatisés déjà en marche, avec une question simple : où l'humain reste-t-il encore en astreinte active ?</p>
-        <div class="hero-strip">
-          <span class="hero-chip">US500 stable</span>
-          <span class="hero-chip">GOLD encore manuel</span>
-          <span class="hero-chip">écrit uniquement</span>
+    <div class="hero-shell">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Monitoring vivant</span>
+          <h1>Un systeme qui tourne. Une preuve qui se lit.</h1>
+          <p>SOLVAI reprend l'intensite visuelle d'une plateforme de marche pour montrer autre chose qu'un discours commercial: supervision continue, incidents documentes, tests visibles et iterations tracees.</p>
+          <div class="hero-tags">
+            <span class="tag">grille technique</span>
+            <span class="tag">signal vert en temps reel</span>
+            <span class="tag">journal horodate</span>
+          </div>
+          <div class="hero-actions">
+            <a href="/observatoire/" class="btn-primary">Ouvrir l'observatoire</a>
+            <a href="/journal/" class="btn-secondary">Lire le journal</a>
+          </div>
+          <p class="disclaimer">Le langage reste strictement technique. Aucun rendement, aucun gain, aucune courbe interpretable comme une performance financiere: seulement l'etat, les incidents, les tests et les versions d'un systeme automatise en demonstration.</p>
         </div>
-        <div class="hero-actions">
-          <a href="#statuts" class="btn-primary">Voir les statuts</a>
-          <a href="/methode/" class="btn-secondary">Lire la méthode</a>
-        </div>
-      </div>
 
-      <aside class="night-panel">
-        <div class="monitor">
-          <div class="monitor-head">
-            <span class="monitor-title">Statut différencié par actif</span>
-            <span class="monitor-note">chantier réel</span>
+        <aside class="terminal">
+          <div class="terminal-top">
+            <span class="terminal-title">SOLVAI monitor / session active</span>
+            <div class="dots"><span></span><span></span><span></span></div>
           </div>
-          <div class="status-grid">
-            <article class="asset-card">
-              <span class="asset-label">US500</span>
-              <div class="asset-status safe">Stable</div>
-              <p class="asset-sub">Deux bots tournent en parallèle depuis fin juin, sans intervention humaine quotidienne à ce stade.</p>
-              <div class="asset-tags">
-                <span class="asset-tag">2 bots</span>
-                <span class="asset-tag">fin juin</span>
-                <span class="asset-tag">état documenté</span>
+          <div class="terminal-grid">
+            <div class="watchlist">
+              <div class="watch-head">Actifs surveilles</div>
+              <div class="watch-item active">
+                <div class="watch-symbol"><span>SUPERVISION</span><span class="up">+ stable</span></div>
+                <small>Disponibilite 24h</small>
               </div>
-            </article>
-            <article class="asset-card">
-              <span class="asset-label">GOLD</span>
-              <div class="asset-status watch">Astreinte active</div>
-              <p class="asset-sub">Quand un panier dérive anormalement, une intervention humaine reste encore nécessaire.</p>
-              <div class="asset-tags">
-                <span class="asset-tag">cas manuel</span>
-                <span class="asset-tag">chantier ouvert</span>
-                <span class="asset-tag">réduction en cours</span>
+              <div class="watch-item">
+                <div class="watch-symbol"><span>TESTS</span><span class="flat">98.7%</span></div>
+                <small>Lot du matin valide</small>
               </div>
-            </article>
-          </div>
-          <div class="story-strip" aria-live="polite">
-            <span class="story-label">Ce que le chantier a déjà obligé à faire</span>
-            <div class="story-rotator">
-              <div class="story-line one">Onze marchés <strong>ouverts</strong></div>
-              <div class="story-line two">5 141 évaluations <strong>sans signal</strong></div>
-              <div class="story-line three">Deux versions US500 <strong>comparées</strong></div>
-              <div class="story-line four">Un chantier <strong>anti-astreinte</strong></div>
+              <div class="watch-item">
+                <div class="watch-symbol"><span>INCIDENTS</span><span class="down">01 mineur</span></div>
+                <small>Corrige puis historise</small>
+              </div>
+              <div class="watch-item">
+                <div class="watch-symbol"><span>VERSIONS</span><span class="up">v27</span></div>
+                <small>Derniere etiquette publiee</small>
+              </div>
+            </div>
+
+            <div class="chart-shell">
+              <div class="quote-bar">
+                <div class="quote">
+                  <span class="quote-label">Disponibilite</span>
+                  <strong id="uptimeValue">99.94%</strong>
+                </div>
+                <div class="quote">
+                  <span class="quote-label">Cycles executes</span>
+                  <strong id="cyclesValue">18 426</strong>
+                </div>
+                <div class="quote">
+                  <span class="quote-label">Versions deployees</span>
+                  <strong id="versionsValue">27</strong>
+                </div>
+              </div>
+              <div class="chart">
+                <svg viewBox="0 0 640 280" aria-hidden="true">
+                  <g id="candles"></g>
+                  <path id="signalLine" fill="none" stroke="#62f7ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"></path>
+                </svg>
+                <div class="chart-axis">
+                  <span>MAX</span>
+                  <span>MED</span>
+                  <span>MIN</span>
+                </div>
+              </div>
+              <div class="chart-footer">
+                <span>Dernier evenement: <strong id="eventLabel">Flux de supervision consolide</strong></span>
+                <span>Horodatage: <strong id="liveClock">09:00:00</strong></span>
+              </div>
             </div>
           </div>
-        </div>
-      </aside>
+        </aside>
+      </div>
+
+      <div class="wave-band" aria-hidden="true">
+        <svg viewBox="0 0 1440 260" preserveAspectRatio="none">
+          <path d="M0 184 C150 214, 260 70, 420 124 S760 270, 930 182 S1250 76, 1440 152" fill="none" stroke="rgba(67,255,77,0.22)" stroke-width="24" stroke-linecap="round"></path>
+          <path d="M0 198 C150 226, 260 86, 420 140 S760 286, 930 196 S1250 92, 1440 168" fill="none" stroke="rgba(67,255,77,0.55)" stroke-width="10" stroke-linecap="round"></path>
+          <path d="M0 204 C150 232, 260 92, 420 146 S760 292, 930 202 S1250 98, 1440 174" fill="none" stroke="#8aff92" stroke-width="4" stroke-linecap="round"></path>
+        </svg>
+      </div>
     </div>
   </header>
 
   <main class="wrap">
-    <section id="statuts">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Statuts</span>
-          <h2>Le système ne dit pas une seule chose.</h2>
-        </div>
-        <p>US500 et GOLD n'en sont pas au même point. C'est précisément ce décalage, observé et documenté, qui fonde la crédibilité du site.</p>
-      </div>
-      <div class="proof-grid">
-        <article class="card proof-card">
-          <div class="proof-number"><span>Actifs ouverts au départ</span>11</div>
-          <p>Le chantier a commencé large, avec plusieurs marchés suivis en parallèle avant de se heurter au réel.</p>
-          <div class="proof-tags">
-            <span class="proof-tag">ouverture large</span>
-            <span class="proof-tag">retour au réel</span>
-          </div>
-        </article>
-        <article class="card proof-card">
-          <div class="proof-number"><span>Évaluations sans entrée</span>5 141</div>
-          <p>Le déclencheur réel s'est d'abord révélé trop strict. Le problème a été daté, tracé, puis corrigé.</p>
-          <div class="proof-tags">
-            <span class="proof-tag">zéro signal</span>
-            <span class="proof-tag">correction</span>
-          </div>
-        </article>
-        <article class="card proof-card">
-          <div class="proof-number"><span>Versions comparées sur US500</span>2</div>
-          <p>Deux réglages ont été mis à tourner en parallèle pour trancher sur preuve plutôt que sur intuition.</p>
-          <div class="proof-tags">
-            <span class="proof-tag">preuve réelle</span>
-            <span class="proof-tag">comparaison</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="preuve">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Chronologie</span>
-          <h2>Le récit réel passe avant l'offre.</h2>
-        </div>
-        <p>La pièce centrale du site n'est pas un service abstrait. C'est un chantier suivi, corrigé, et encore en cours.</p>
-      </div>
-      <div class="timeline-grid">
-        <article class="card timeline-card">
-          <span class="timeline-date">22/06/2026</span>
-          <h3>Ouvrir large</h3>
-          <p>Plusieurs marchés sont lancés en parallèle. Les seuils hérités des simulations se heurtent aux conditions réelles.</p>
-        </article>
-        <article class="card timeline-card">
-          <span class="timeline-date">23/06/2026</span>
-          <h3>Comparer sur US500</h3>
-          <p>Deux versions sont mises à tourner en parallèle pour comparer des choix de réglage sur preuve réelle.</p>
-        </article>
-        <article class="card timeline-card">
-          <span class="timeline-date">06/07/2026</span>
-          <h3>Réduire l'astreinte</h3>
-          <p>Un bot séparé est ouvert pour détecter une dérive anormale et intervenir avant l'humain sur les cas encore manuels.</p>
-        </article>
-      </div>
-      <article class="card method-lead" style="margin-top:18px;">
-        <span class="eyebrow" style="background:rgba(255,255,255,0.08); color:#f6f1e7;">Méthode</span>
-        <h3 style="margin-top:14px;">Observer. Corriger. Documenter.</h3>
-        <p>La page Méthode contient la chronologie complète, sans chiffre financier, avec les retours en arrière, les risques assumés et le chantier encore ouvert pour réduire ce qui dépend d'une personne.</p>
-        <div class="hero-actions">
-          <a href="/methode/" class="btn-secondary">Lire la chronologie complète</a>
-        </div>
+    <section class="metric-strip">
+      <article class="metric-card">
+        <span>Disponibilite glissante</span>
+        <strong>99.94%</strong>
+        <p>Lecture simple du systeme sur les 24 dernieres heures.</p>
+      </article>
+      <article class="metric-card">
+        <span>Tests passes</span>
+        <strong>98.7%</strong>
+        <p>Le lot du matin est rejoue avant affichage public.</p>
+      </article>
+      <article class="metric-card">
+        <span>Volume de traces</span>
+        <strong>2.8 Go</strong>
+        <p>Logs, incidents et versions agreges pour analyse.</p>
+      </article>
+      <article class="metric-card">
+        <span>Fonctionnement continu</span>
+        <strong>312 h</strong>
+        <p>Tenue dans la duree plutot qu'effet vitrine.</p>
+      </article>
+      <article class="metric-card">
+        <span>Derniere version</span>
+        <strong>v27</strong>
+        <p>Definitions unifiees entre tableau et journal.</p>
       </article>
     </section>
 
-    <section id="offres">
+    <section>
       <div class="section-head">
         <div>
-          <span class="eyebrow">Déclinaisons</span>
-          <h2>Ce que ce savoir-faire permet de produire.</h2>
+          <span class="eyebrow">Journal d'activite</span>
+          <h2>Le flux dit aussi ce qui a du etre corrige.</h2>
         </div>
-        <p>Les offres restent là, mais elles viennent après la preuve. Elles montrent comment cette discipline de travail peut s'appliquer à un tiers.</p>
+        <p>Comme sur un bon terminal, ce qui rassure n'est pas l'absence apparente de probleme. C'est la capacite a voir l'evenement, comprendre l'impact et suivre la resolution.</p>
       </div>
-      <div class="offers-grid">
-        <article class="card offer-card">
-          <span class="offer-kicker">Offre 1</span>
-          <h3>Protocole d'Astreinte</h3>
-          <p class="offer-core">Quoi faire. Quand s'arrêter.</p>
-          <div class="offer-tags">
-            <span class="offer-tag">fragilités</span>
-            <span class="offer-tag">STOP</span>
-          </div>
-          <div class="offer-point">
-            <strong>Livrable</strong>
-            <p>Le protocole écrit d'intervention.</p>
-          </div>
+
+      <div class="journal-layout">
+        <div class="journal-card timeline" id="activityFeed"></div>
+
+        <div class="journal-side">
+          <article class="journal-card">
+            <span class="proof-kicker">Direction visuelle</span>
+            <h3>Noir dense, vert signal, cyan de grille.</h3>
+            <p>L'inspiration vient de vos interfaces broker: contraste fort, lecture immediate, sensation d'ecran actif, mais au service d'un message d'ingenierie et non d'un appel au trading.</p>
+            <div class="side-stats">
+              <span class="side-pill">inspire d'un terminal</span>
+              <span class="side-pill">pas de copie de marque</span>
+              <span class="side-pill">preuve avant discours</span>
+            </div>
+          </article>
+          <article class="journal-card">
+            <span class="proof-kicker">Architecture recommandee</span>
+            <h3>SSE pour pousser l'etat vivant.</h3>
+            <p>Le front peut conserver cette apparence "desk de supervision" tout en recevant des mises a jour secondes par seconde depuis un agregateur de logs JSONL via SSE.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Observatoire</span>
+          <h2>Trois niveaux de preuve au lieu d'une simple vitrine.</h2>
+        </div>
+        <p>L'accueil montre le systeme vivant. Le journal raconte les evenements. L'observatoire detaille ensuite les definitions, les incidents resolus et l'historique de versions.</p>
+      </div>
+
+      <div class="proof-grid">
+        <article class="proof-card">
+          <span class="proof-kicker">Definitions</span>
+          <div class="proof-number">05</div>
+          <p>Chaque compteur expose sa fenetre de calcul, son unite et sa limite d'interpretation.</p>
         </article>
-        <article class="card offer-card">
-          <span class="offer-kicker">Offre 2</span>
-          <h3>Carnet de Stabilité</h3>
-          <p class="offer-core">Une trace claire.</p>
-          <div class="offer-tags">
-            <span class="offer-tag">incidents</span>
-            <span class="offer-tag">GO / NO GO</span>
-          </div>
-          <div class="offer-point">
-            <strong>Livrable</strong>
-            <p>Le carnet vivant des dérives et des corrections.</p>
-          </div>
+        <article class="proof-card">
+          <span class="proof-kicker">Incidents visibles</span>
+          <div class="proof-number">01</div>
+          <p>Un incident mineur affiche, puis clos, inspire davantage confiance qu'une page eternement lisse.</p>
         </article>
-        <article class="card offer-card">
-          <span class="offer-kicker">Offre 3</span>
-          <h3>Maintenance évolutive</h3>
-          <p class="offer-core">Plus d'air entre deux alertes.</p>
-          <div class="offer-tags">
-            <span class="offer-tag">ajustements</span>
-            <span class="offer-tag">tranquillité</span>
-          </div>
-          <div class="offer-point">
-            <strong>Livrable</strong>
-            <p>Le suivi périodique des dérives encore actives.</p>
-          </div>
+        <article class="proof-card">
+          <span class="proof-kicker">Iterations tracees</span>
+          <div class="proof-number">27</div>
+          <p>Chaque version garde son intention, son effet observe et sa date de publication.</p>
         </article>
       </div>
     </section>
 
     <section id="contact">
-      <div class="closing">
-        <span class="eyebrow">Contact écrit uniquement</span>
-        <h2 style="margin-top:14px;">Décrivez votre situation.</h2>
-        <p style="max-width:64ch;">Si quelque chose tourne déjà chez vous mais continue de dépendre d'une présence humaine régulière, écrivez ce qui tient, ce qui dérive, et ce qui vous remet encore en astreinte active.</p>
+      <div class="contact-card">
+        <span class="eyebrow">Contact</span>
+        <h2 style="margin-top:14px;">Si quelque chose tourne deja chez vous, partons de ses traces.</h2>
+        <p style="max-width:64ch; margin-top:14px;">Incidents repetes, alertes trop frequentes, supervision encore trop humaine, changements sans historique clair: ce sont ces signaux techniques qui ouvrent la discussion.</p>
         <div class="hero-actions">
-          <a href="mailto:atelier@solvai.fr?subject=Situation%20%C3%A0%20structurer&body=Bonjour,%0A%0AVoici ce qui tourne d%C3%A9j%C3%A0 :%0A%0AVoici quand je dois encore intervenir :%0A%0AVoici ce que je veux rendre moins d%C3%A9pendant de moi :%0A" class="btn-primary">Décrivez votre situation</a>
+          <a href="mailto:atelier@solvai.fr?subject=Situation%20a%20structurer&body=Bonjour,%0A%0AVoici ce qui tourne deja :%0A%0AVoici ce qui m'oblige encore a intervenir :%0A%0AVoici les traces ou journaux disponibles :%0A" class="btn-primary">Ecrire a SOLVAI</a>
+          <a href="/methode/" class="btn-secondary">Voir la methode</a>
         </div>
       </div>
     </section>
 
     <footer>
-      <div class="footer-grid">
+      <div class="footer-shell">
         <div>
-          <strong style="display:block; margin-bottom:8px;">SOLVAI</strong>
-          <p>Un chantier réel de fiabilité, documenté, avec un statut différencié par actif et des décisions écrites noir sur blanc.</p>
+          <strong style="display:block; margin-bottom:8px; color:var(--text);">SOLVAI</strong>
+          <span>Interface de preuve technique inspiree d'un terminal de marche.</span>
         </div>
-        <div class="footer-meta">
-          <p>Contact : atelier@solvai.fr</p>
+        <div class="footer-links">
+          <a href="/methode/">Methode</a>
+          <a href="/journal/">Journal</a>
+          <a href="/observatoire/">Observatoire</a>
         </div>
       </div>
     </footer>
   </main>
+
+<script>
+  const dashboardStates = [
+    {
+      uptime: "99.94%",
+      cycles: "18 426",
+      versions: "27",
+      event: "Flux de supervision consolide",
+      candles: [
+        [42, 180, 124, 96], [74, 192, 116, 148], [106, 162, 120, 136], [138, 146, 112, 128],
+        [170, 176, 126, 164], [202, 210, 158, 182], [234, 162, 122, 130], [266, 140, 104, 118],
+        [298, 152, 110, 144], [330, 168, 130, 156], [362, 186, 142, 172], [394, 160, 126, 134],
+        [426, 144, 96, 114], [458, 138, 102, 128], [490, 120, 84, 100], [522, 108, 78, 96]
+      ],
+      line: [170, 168, 164, 159, 156, 152, 148, 144, 138, 134, 130, 126, 122, 118, 114, 108]
+    },
+    {
+      uptime: "99.97%",
+      cycles: "18 612",
+      versions: "27",
+      event: "Serie de tests revalidee",
+      candles: [
+        [42, 188, 134, 152], [74, 182, 138, 162], [106, 166, 134, 142], [138, 154, 120, 130],
+        [170, 140, 108, 118], [202, 146, 112, 140], [234, 172, 126, 166], [266, 184, 138, 178],
+        [298, 168, 132, 148], [330, 152, 118, 138], [362, 146, 112, 128], [394, 134, 106, 124],
+        [426, 126, 98, 118], [458, 136, 100, 130], [490, 154, 118, 148], [522, 174, 134, 164]
+      ],
+      line: [178, 172, 168, 160, 154, 150, 144, 138, 132, 126, 122, 118, 120, 126, 134, 142]
+    },
+    {
+      uptime: "99.89%",
+      cycles: "18 701",
+      versions: "28",
+      event: "Incident mineur referme",
+      candles: [
+        [42, 170, 136, 154], [74, 160, 124, 132], [106, 150, 114, 120], [138, 146, 110, 142],
+        [170, 166, 124, 158], [202, 180, 136, 174], [234, 194, 148, 184], [266, 188, 144, 160],
+        [298, 172, 134, 148], [330, 156, 118, 126], [362, 150, 114, 146], [394, 162, 126, 154],
+        [426, 176, 136, 162], [458, 192, 148, 186], [490, 208, 164, 196], [522, 220, 170, 182]
+      ],
+      line: [166, 160, 154, 150, 148, 144, 140, 138, 134, 132, 130, 132, 138, 146, 154, 162]
+    }
+  ];
+
+  const journalItems = [
+    { time: "09:06", title: "Incident de collecte resolu", body: "Une latence ponctuelle dans la remontee des traces a ete detectee, consignee puis refermee apres reprise de la file technique." },
+    { time: "08:41", title: "Version v27 etiquetee", body: "Clarification des definitions de compteurs, uniformisation des libelles et nettoyage du flux pour garder uniquement les evenements utiles." },
+    { time: "07:58", title: "Serie de tests rejouee", body: "Le lot du matin a ete relance avec journalisation complete pour verifier que l'etat public repose sur des verifications coherentes." },
+    { time: "Hier", title: "Nettoyage du journal", body: "Les evenements repetitifs ont ete regroupes pour eviter le bruit et garder une lecture nette de ce qui compte reellement." }
+  ];
+
+  const candlesNode = document.getElementById("candles");
+  const signalLineNode = document.getElementById("signalLine");
+  const uptimeValue = document.getElementById("uptimeValue");
+  const cyclesValue = document.getElementById("cyclesValue");
+  const versionsValue = document.getElementById("versionsValue");
+  const eventLabel = document.getElementById("eventLabel");
+  const liveClock = document.getElementById("liveClock");
+  const activityFeed = document.getElementById("activityFeed");
+
+  function renderJournal() {
+    activityFeed.innerHTML = journalItems.map((item) => `
+      <article class="journal-item">
+        <div class="journal-time">${item.time}</div>
+        <div class="journal-dot" aria-hidden="true"></div>
+        <div>
+          <h3>${item.title}</h3>
+          <p>${item.body}</p>
+        </div>
+      </article>
+    `).join("");
+  }
+
+  function buildLine(values) {
+    return values.map((value, index) => `${index === 0 ? "M" : "L"} ${30 + index * 38} ${value}`).join(" ");
+  }
+
+  function renderCandles(candles) {
+    candlesNode.innerHTML = candles.map(([x, high, low, close], index) => {
+      const open = index === 0 ? close + 18 : candles[Math.max(index - 1, 0)][3];
+      const up = close < open;
+      const top = Math.min(open, close);
+      const height = Math.max(Math.abs(close - open), 10);
+      const color = up ? "#5bff63" : "#f4fbf8";
+      return `
+        <line x1="${x}" y1="${high}" x2="${x}" y2="${low}" stroke="${color}" stroke-width="2"/>
+        <rect x="${x - 9}" y="${top}" width="18" height="${height}" fill="${up ? "rgba(67,255,77,0.22)" : "#f4fbf8"}" stroke="${color}" stroke-width="2"/>
+      `;
+    }).join("");
+  }
+
+  function tickClock() {
+    const now = new Date();
+    liveClock.textContent = now.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+  }
+
+  let stateIndex = 0;
+  function renderState(state) {
+    uptimeValue.textContent = state.uptime;
+    cyclesValue.textContent = state.cycles;
+    versionsValue.textContent = state.versions;
+    eventLabel.textContent = state.event;
+    renderCandles(state.candles);
+    signalLineNode.setAttribute("d", buildLine(state.line));
+  }
+
+  renderJournal();
+  renderState(dashboardStates[0]);
+  tickClock();
+
+  setInterval(() => {
+    stateIndex = (stateIndex + 1) % dashboardStates.length;
+    renderState(dashboardStates[stateIndex]);
+  }, 2600);
+
+  setInterval(tickClock, 1000);
+</script>
 </body>
 </html>
