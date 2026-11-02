@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Politique de confidentialité de l'application personnelle US500 WIN Drive Sync pour la connexion Google Drive.">
+<title>Politique de confidentialité — US500 WIN Drive Sync</title>
+<style>
+:root{color-scheme:light;--ink:#18263b;--muted:#53647b;--line:#dce3ed;--bg:#f7f9fc}
+*{box-sizing:border-box}body{margin:0;font:16px/1.7 system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink)}
+main{max-width:780px;margin:6vh auto;padding:40px;background:#fff;border:1px solid var(--line);border-radius:12px}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.2;margin:0 0 12px}
+h2{font-size:1.2rem;margin-top:28px}p{margin:12px 0}a{color:#174da4}a:focus-visible{outline:2px solid #174da4;outline-offset:3px}
+small,.muted{color:var(--muted)}footer{border-top:1px solid var(--line);padding-top:18px;margin-top:34px}
+@media(max-width:760px){main{margin:0;padding:26px 20px;border-radius:0;border:0}}
+</style>
+</head>
+<body>
+<main>
+<p class="muted">US500 WIN Drive Sync · Mise à jour : 2 novembre 2026</p>
+<h1>Politique de confidentialité</h1>
+<p>US500 WIN Drive Sync est un outil privé destiné à un seul utilisateur, pour transférer des journaux techniques d'un serveur personnel vers son propre compte Google Drive à l'aide de rclone. Il ne propose ni inscription ni accès au public.</p>
+<h2>Données concernées</h2>
+<p>L'application peut utiliser les autorisations Google OAuth consenties par le titulaire pour accéder à Google Drive, ainsi que les jetons d'accès et de renouvellement nécessaires à la connexion. Les données destinées au transfert sont des journaux techniques du projet : <code>ETAT_BOT.json</code>, <code>EVENEMENTS.jsonl</code>, <code>TRADES.csv</code> et <code>BILAN_QUOTIDIEN.md</code>. Ces fichiers peuvent contenir des événements de trading de démonstration et des informations de fonctionnement du bot.</p>
+<h2>Finalité et accès</h2>
+<p>La seule finalité prévue est la copie automatisée de ces fichiers vers un dossier du Google Drive du titulaire, pour leur consultation et leur analyse. Le périmètre technique OAuth accordé à rclone peut donner accès à d'autres fichiers Drive ; la tâche de synchronisation sera configurée pour ne transférer que les quatre fichiers indiqués. Elle ne vend ni ne publie de données Drive et ne transmet aucun ordre de trading.</p>
+<h2>Stockage, sécurité et transmission</h2>
+<p>Les fichiers d'origine demeurent sur le serveur privé. Les copies sont envoyées au Google Drive du titulaire. Les jetons OAuth sont destinés à être conservés dans une configuration rclone privée sur le serveur, inaccessible depuis les pages publiques. Les données transitent entre ce serveur et les services Google ; leur hébergement dans Google Drive est soumis aux conditions et politiques applicables de Google. Aucun fichier de trading, secret OAuth ou jeton n'est stocké sur ce site web public.</p>
+<h2>Partage et durée de conservation</h2>
+<p>Aucune vente de données ni mise à disposition à des annonceurs n'est prévue. Aucune transmission à un autre service que Google Drive n'est prévue dans ce flux de synchronisation. Les fichiers restent sous le contrôle du titulaire, qui décide de leur suppression et de leur conservation dans son serveur et son Google Drive.</p>
+<h2>Contrôle et révocation</h2>
+<p>Le titulaire peut interrompre la tâche de synchronisation, supprimer les fichiers copiés et révoquer l'accès OAuth dans les paramètres de sécurité de son compte Google. Il peut supprimer les jetons sauvegardés dans la configuration rclone du serveur.</p>
+<h2>Données des visiteurs du site</h2>
+<p>Ces pages sont statiques : elles ne demandent aucune donnée personnelle, n'intègrent aucun formulaire ni traceur analytique. L'hébergeur GitHub Pages peut traiter des données techniques nécessaires à la diffusion du site selon ses propres politiques.</p>
+<footer>
+<p><a href="./">Retour à la présentation de l'application</a> · <a href="./#conditions-utilisation">Conditions d'utilisation</a></p>
+<small>US500 WIN Drive Sync — politique concernant l'usage personnel de Google Drive</small>
+</footer>
+</main>
+</body>
+</html>
