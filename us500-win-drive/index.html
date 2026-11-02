@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Présentation de US500 WIN Drive Sync, utilitaire privé de copie de journaux techniques vers Google Drive.">
+<title>US500 WIN Drive Sync — Application de synchronisation privée</title>
+<style>
+:root{color-scheme:light;--ink:#18263b;--muted:#53647b;--line:#dce3ed;--bg:#f7f9fc}
+*{box-sizing:border-box}body{margin:0;font:16px/1.7 system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink)}
+main{max-width:780px;margin:6vh auto;padding:40px;background:#fff;border:1px solid var(--line);border-radius:12px}
+h1{font-size:clamp(1.6rem,4vw,2.35rem);line-height:1.2;margin:0 0 12px}
+h2{font-size:1.2rem;margin-top:28px}p{margin:12px 0}a{color:#174da4}a:focus-visible{outline:2px solid #174da4;outline-offset:3px}
+small,.muted{color:var(--muted)}footer{border-top:1px solid var(--line);padding-top:18px;margin-top:34px}
+@media(max-width:760px){main{margin:0;padding:26px 20px;border-radius:0;border:0}}
+</style>
+</head>
+<body>
+<main>
+<p class="muted"><strong>US500 WIN</strong> · Utilitaire personnel de synchronisation</p>
+<h1>US500 WIN Drive Sync</h1>
+<p>Cette application OAuth est réservée à l'usage personnel du propriétaire du projet US500 WIN. Elle sert à autoriser un outil de transfert <strong>rclone</strong>, installé sur un serveur privé, à déposer des journaux techniques dans son propre espace Google Drive.</p>
+<h2>Fonctionnement prévu</h2>
+<p>Lorsqu'elle sera activée, la synchronisation copiera depuis le serveur quatre fichiers techniques : <code>ETAT_BOT.json</code>, <code>EVENEMENTS.jsonl</code>, <code>TRADES.csv</code> et <code>BILAN_QUOTIDIEN.md</code>, dans le dossier Drive réservé au suivi DEMO du projet.</p>
+<p>Il ne s'agit ni d'un service offert au public ni d'une application de trading. La synchronisation de fichiers ne permet pas de transmettre d'ordres de marché.</p>
+<h2>Accès à Google Drive</h2>
+<p>Le propriétaire autorise lui-même l'accès OAuth. Selon le périmètre d'autorisation accordé à rclone, l'accès technique à Drive peut être plus large que les quatre fichiers à transférer ; le service configuré est destiné exclusivement à la copie vers le dossier désigné. L'autorisation peut être révoquée à tout moment dans les paramètres du compte Google.</p>
+<h2 id="conditions-utilisation">Conditions d'utilisation</h2>
+<p>Outil personnel fourni sans accès public ni inscription d'utilisateurs. L'utilisation est limitée au titulaire du compte Google qui autorise la connexion. Les fonctionnalités et autorisations peuvent être interrompues ou révoquées par ce titulaire.</p>
+<footer>
+<p><a href="./confidentialite.html">Politique de confidentialité</a> · <a href="#conditions-utilisation">Conditions d'utilisation</a></p>
+<small>US500 WIN Drive Sync · Informations sur l'application OAuth personnelle</small>
+</footer>
+</main>
+</body>
+</html>
