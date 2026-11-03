@@ -14,7 +14,7 @@ Ne jamais publier les règles de stratégie, paramètres de trading, signaux, co
 
 ## Technique
 
-Site statique, HTML/CSS/JS, sans système de collecte de données personnelles. Le graphique S&P 500 est fourni par un module tiers TradingView ; ce cours ne correspond pas nécessairement au CFD Pepperstone US500. Les données externes peuvent être différées. Les calendriers macro sont éditoriaux et doivent être datés et vérifiés avant modification.
+Site statique, HTML/CSS/JS, sans système de collecte de données personnelles. Le graphique US500 Pepperstone est fourni par un module tiers TradingView ; ce cours ne correspond pas nécessairement au CFD Pepperstone US500. Les données externes peuvent être différées. Les calendriers macro sont éditoriaux et doivent être datés et vérifiés avant modification.
 
 L'outil OAuth personnel sous `/us500-win-drive/` est conservé indépendamment de la navigation publique.
 
