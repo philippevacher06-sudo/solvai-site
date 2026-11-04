@@ -9,4 +9,7 @@
 <url><loc>https://solvai.agency/laboratoire/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://solvai.agency/journal/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://solvai.agency/sources/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://solvai.agency/contact/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+<url><loc>https://solvai.agency/mentions-legales/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+<url><loc>https://solvai.agency/confidentialite/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
