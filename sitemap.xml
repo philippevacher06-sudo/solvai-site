@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://solvai.fr/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-<url><loc>https://solvai.fr/marche/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
-<url><loc>https://solvai.fr/heatmap/</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-<url><loc>https://solvai.fr/calendrier/</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-<url><loc>https://solvai.fr/macro/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-<url><loc>https://solvai.fr/entreprises/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-<url><loc>https://solvai.fr/laboratoire/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://solvai.fr/journal/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://solvai.fr/sources/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://solvai.agency/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+<url><loc>https://solvai.agency/marche/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+<url><loc>https://solvai.agency/heatmap/</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://solvai.agency/calendrier/</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+<url><loc>https://solvai.agency/macro/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://solvai.agency/entreprises/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://solvai.agency/laboratoire/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://solvai.agency/journal/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://solvai.agency/sources/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
