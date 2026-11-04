@@ -28,3 +28,12 @@ body:before{content:'';position:fixed;inset:0;background-image:linear-gradient(r
 .tv-consent a{color:var(--cyan);text-decoration:underline}
 .tv-consent .btn{margin:12px auto}
 .tv-consent .tv-error{color:var(--rose);font-weight:600}
+
+/* Accessible language selector, visible on desktop and mobile. */
+.lang-switch{display:flex;align-items:center;gap:8px;margin-left:2px;white-space:nowrap;font-size:12px;font-weight:800;letter-spacing:.04em;color:#779196}
+.lang-switch a{color:#9aafb8;padding:6px 4px;border-radius:4px}
+.lang-switch a:hover,.lang-switch a[aria-current="true"]{color:var(--lime)}
+.lang-switch a[aria-current="true"]{text-decoration:underline;text-underline-offset:5px}
+@media(max-width:1060px){.header-inner{gap:15px}.nav{gap:12px}}
+@media(max-width:800px){.lang-switch{margin-left:0}}
+@media(max-width:375px){.brand-sub{display:none}.header-inner{gap:10px}}
