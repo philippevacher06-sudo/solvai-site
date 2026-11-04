@@ -31,17 +31,17 @@
       script.src=src;
       script.async=true;
       script.textContent=options.textContent;
+      script.onload=()=>overlay?.remove();
       script.onerror=()=>{
         script.remove();
         box.dataset.tvLoaded='false';
         button.disabled=false;
         button.textContent='Réessayer le chargement';
-        const hint=overlay.querySelector('.tv-error');
+        const hint=overlay?.querySelector('.tv-error');
         if(hint)hint.hidden=false;
       };
       box.dataset.tvLoaded='true';
       box.appendChild(script);
-      overlay?.remove();
     });
   });
   const hero=document.querySelector('.page-hero');
