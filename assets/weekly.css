@@ -16,3 +16,18 @@
 .home-feature-cta:hover{background:#d5ffaa}
 @media(max-width:1020px){.home-feature-inner{grid-template-columns:minmax(0,1fr) auto;gap:14px}.home-feature-metrics{grid-column:1;grid-row:2}.home-feature-cta{grid-column:2;grid-row:1/3}}
 @media(max-width:650px){.home-feature-inner{display:block;padding-block:22px}.home-feature h2{font-size:1.65rem}.home-feature-metrics{margin:14px 0 18px;gap:26px}.home-feature-cta{display:flex;width:100%}}
+
+/* Small screens: data tables become fully readable labeled cards; no horizontal panning. */
+@media(max-width:680px){
+  .table-scroll{overflow-x:visible;max-width:100%;border:0;border-radius:0;background:transparent}
+  .article-table{display:block;width:100%;min-width:0;table-layout:auto;font-size:13px}
+  .article-table thead{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .article-table tbody{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;min-width:0}
+  .article-table tbody tr{display:block;min-width:0;border:1px solid #304b57;border-radius:10px;overflow:hidden;background:#101e29}
+  .article-table tbody tr:hover{background:#101e29}
+  .article-table td{display:grid;grid-template-columns:minmax(0,88px) minmax(0,1fr);gap:12px;align-items:start;min-width:0;padding:12px 14px;border-bottom:1px solid #273e48;white-space:normal;overflow-wrap:anywhere;word-break:normal;line-height:1.5}
+  .article-table td::before{content:attr(data-label);color:#8fb5bd;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;white-space:normal;overflow-wrap:anywhere}
+  .article-table td:first-child{background:#172d37;color:#ecf4f1;font-weight:800}
+  .article-table td:last-child{border-bottom:0}
+}
+@media(max-width:350px){.article-table td{grid-template-columns:minmax(0,74px) minmax(0,1fr);gap:8px;padding:10px}}
